@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_6hbi4"]
 [ext_resource type="Script" path="res://scripts/map.gd" id="2_t8deg"]
 [ext_resource type="PackedScene" uid="uid://b18iwfskgx8ub" path="res://scenes/player.tscn" id="2_w8s8l"]
-[ext_resource type="PackedScene" uid="uid://1vis5lncdscc" path="res://scenes/Belt_Curve_Left.tscn" id="4_51kn7"]
+[ext_resource type="PackedScene" path="res://scenes/Belt_Curve_Left.tscn" id="4_51kn7"]
 [ext_resource type="TileSet" uid="uid://cvlrd54vclrv1" path="res://assets/sprites/background.tres" id="4_wy3k2"]
 [ext_resource type="PackedScene" uid="uid://dwpbpntc3kkgh" path="res://scenes/belt.tscn" id="5_d42kx"]
 [ext_resource type="PackedScene" uid="uid://tmgj130g0t8g" path="res://scenes/bomb.tscn" id="5_mbjfg"]
