@@ -7,7 +7,6 @@ extends CharacterBody2D
 # animations
 @onready var bomb: Sprite2D = $animations/bomb
 @onready var activated_animation: AnimatedSprite2D = $animations/activated_animation
-@onready var explosion: AnimatedSprite2D = $animations/explosion
 
 const DAMAGE = 40
 const EXPLOSION = preload("res://scenes/explosion.tscn")
@@ -25,12 +24,16 @@ func _on_timer_timeout():
 	activated_animation.stop()
 	activated_animation.hide()
 	bomb.hide()
-	var expl = EXPLOSION.instantiate()
-	self.add_child(expl)
-	expl.global_position = map.tilemap_to_global(tilemap_pos + direction)
+	var tiles = map.get_cells(tilemap_pos)
+	tiles.append(tilemap_pos)
+	for tile in tiles:
+		var expl = EXPLOSION.instantiate()
+		self.add_child(expl)
+		expl.global_position = map.tilemap_to_global(tile)
+		print('tile explosion ', tile, tilemap_pos)
 	
-	await expl.animation_finished()
+	#await expl.animation_finished()
 
 	print('timeout')
-	queue_free()
+	#queue_free()
 	

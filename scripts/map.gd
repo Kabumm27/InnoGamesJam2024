@@ -13,3 +13,6 @@ func tilemap_to_global(tilemap_pos: Vector2i):
 func global_to_tilemap(global_pos: Vector2):
 	var pos_relative_to_tilemap = fg.to_local(global_pos)
 	return fg.local_to_map(pos_relative_to_tilemap)
+
+func get_cells(vector: Vector2i):
+	return fg.get_surrounding_cells(vector)
