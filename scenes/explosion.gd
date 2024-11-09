@@ -3,7 +3,7 @@ extends Node2D
 @onready var explosion: AnimatedSprite2D = $explosion
 
 func _ready() -> void:
-	explosion.play();
+	explosion.play()
 
 func animation_finished() -> void:
-	await explosion.animation_finished;
+	await explosion.animation_finished
