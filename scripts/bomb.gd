@@ -25,7 +25,7 @@ func _on_timer_timeout():
 	activated_animation.stop()
 	activated_animation.hide()
 	bomb.hide()
-	var tiles = map.get_cells(tilemap_pos)
+	var tiles = get_shape('vertical', tilemap_pos) #map.get_cells(tilemap_pos)
 	tiles.append(tilemap_pos)
 	var explosions = []
 	for tile in tiles:
@@ -42,6 +42,36 @@ func _on_timer_timeout():
 	
 func get_shape(shape: String, tile_pos: Vector2i):
 	match(shape):
+		'x':
+			var cross = [tile_pos]
+			for i in [[-1,-1], [-1,1], [1, -1], [1, 1]]:
+				var e = tile_pos
+				e.x += i[0]
+				e.y += i[1]
+				cross.append(e)
+			return cross
 		'circle':
-			var circle = [tile_pos, tile_pos]
+			var circle = [tile_pos]
+			for i in [[-1,0], [0,-1], [0, 1], [1,0]]:
+				var e = tile_pos
+				e.x += i[0]
+				e.y += i[1]
+				circle.append(e)
 			return circle
+		'+':
+			var plus = []
+			for i in range(-2, 2):
+				var e = tile_pos
+				e.x += i
+				plus.append(e)
+				var f = tile_pos
+				f.y += i
+				plus.append(f)
+			return plus
+		'vertical':
+			var vertical = []
+			for i in range(-5, 5):
+				var e = tile_pos
+				e.y += i
+				vertical.append(e)
+			return vertical
