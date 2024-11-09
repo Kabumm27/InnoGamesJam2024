@@ -61,6 +61,9 @@ func set_sprite_state():
 		animated_sprite.play("idle")
 
 	var rot = roundi(rotation_node.rotation_degrees + 90) % 360
+	if rot < 0:
+		rot += 360
+	print(rot)
 	if rot % 180 != 0:
 		animated_sprite.flip_h = rot < 180
 
