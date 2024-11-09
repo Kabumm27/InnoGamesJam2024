@@ -18,6 +18,8 @@ var health = 3
 var handle_object: Node2D = null
 var carry_object: Node2D = null
 
+var last_move_dir: Vector2 = Vector2.RIGHT
+
 
 func pick_up(object: Node2D):
 	if object.has_method("toggle_collision"):
@@ -60,6 +62,8 @@ func _input(event):
 	if event.device == gamepad_id:
 		var input_direction = Input.get_vector("left", "right", "up", "down")
 		velocity = input_direction * speed
+		if input_direction.length_squared() > 0:
+			last_move_dir = input_direction.normalized()
 
 		if event.is_action_pressed('use'):
 			if !carry_object and handle_object:
@@ -69,6 +73,8 @@ func _input(event):
 
 
 func _process(_delta):
+	rotation_node.look_at(global_transform.origin + last_move_dir)
+
 	if (health <= 0):
 		print('player died')
 	
@@ -79,7 +85,6 @@ func _process(_delta):
 
 
 func _physics_process(_delta):
-	rotation_node.look_at(global_transform.origin + velocity)
 	move_and_slide()
 
 
