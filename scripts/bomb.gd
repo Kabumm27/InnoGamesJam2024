@@ -11,6 +11,7 @@ extends CharacterBody2D
 
 const DAMAGE = 40
 const EXPLOSION = preload("res://scenes/explosion.tscn")
+enum PATTERNS {CIRCLE = 0, CROSS = 1, PLUS = 2, VERTICAL = 3}
 
 func toggle_collision(state: bool):
 	collision_shape.disabled = !state
@@ -25,24 +26,21 @@ func _on_timer_timeout():
 	activated_animation.stop()
 	activated_animation.hide()
 	bomb.hide()
-	var tiles = get_shape('vertical', tilemap_pos) #map.get_cells(tilemap_pos)
+	var tiles = get_shape(PATTERNS.VERTICAL, tilemap_pos) #map.get_cells(tilemap_pos)
 	tiles.append(tilemap_pos)
 	var explosions = []
 	for tile in tiles:
 		var expl = EXPLOSION.instantiate()
 		explosions.append(expl)
 		self.add_child(expl)
-		expl.global_position = map.tilemap_to_global(tile)
-		print('tile explosion ', tile, tilemap_pos)
-	
+		expl.global_position = map.tilemap_to_global(tile)	
 	await explosions[0].animation_finished()
 
-	print('timeout')
 	queue_free()
 	
-func get_shape(shape: String, tile_pos: Vector2i):
-	match(shape):
-		'x':
+func get_shape(pattern: PATTERNS, tile_pos: Vector2i):
+	match(pattern):
+		PATTERNS.CROSS:
 			var cross = [tile_pos]
 			for i in [[-1,-1], [-1,1], [1, -1], [1, 1]]:
 				var e = tile_pos
@@ -50,7 +48,7 @@ func get_shape(shape: String, tile_pos: Vector2i):
 				e.y += i[1]
 				cross.append(e)
 			return cross
-		'circle':
+		PATTERNS.CIRCLE:
 			var circle = [tile_pos]
 			for i in [[-1,0], [0,-1], [0, 1], [1,0]]:
 				var e = tile_pos
@@ -58,7 +56,7 @@ func get_shape(shape: String, tile_pos: Vector2i):
 				e.y += i[1]
 				circle.append(e)
 			return circle
-		'+':
+		PATTERNS.PLUS:
 			var plus = []
 			for i in range(-2, 2):
 				var e = tile_pos
@@ -68,7 +66,7 @@ func get_shape(shape: String, tile_pos: Vector2i):
 				f.y += i
 				plus.append(f)
 			return plus
-		'vertical':
+		PATTERNS.VERTICAL:
 			var vertical = []
 			for i in range(-5, 5):
 				var e = tile_pos
