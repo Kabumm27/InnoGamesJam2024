@@ -253,6 +253,9 @@ position = Vector2(-256, -192)
 [node name="BeltCurve" parent="Map/Belts/Belt_Right2" instance=ExtResource("4_51kn7")]
 position = Vector2(-256, -320)
 
+[node name="belt_end_zone" parent="Map/Belts/Belt_Right2" instance=ExtResource("7_fdk73")]
+position = Vector2(1030, -188)
+
 [node name="Belt_Right3" type="Node2D" parent="Map/Belts"]
 
 [node name="BeltPickupZone" parent="Map/Belts/Belt_Right3" instance=ExtResource("6_hrx5p")]
@@ -322,6 +325,9 @@ position = Vector2(-512, 448)
 
 [node name="Belt4" parent="Map/Belts/Belt_Right3" instance=ExtResource("17_dr55a")]
 position = Vector2(-256, 448)
+
+[node name="belt_end_zone" parent="Map/Belts/Belt_Right3" instance=ExtResource("7_fdk73")]
+position = Vector2(1032, 319)
 
 [node name="Belt_Left1" type="Node2D" parent="Map/Belts"]
 material = SubResource("ShaderMaterial_hhtsw")
@@ -397,6 +403,9 @@ position = Vector2(-512, -320)
 [node name="BeltEnd" parent="Map/Belts/Belt_Left1" instance=ExtResource("15_g6jjp")]
 use_parent_material = true
 position = Vector2(-1024, -192)
+
+[node name="belt_end_zone" parent="Map/Belts/Belt_Left1" instance=ExtResource("7_fdk73")]
+position = Vector2(-1023, -193)
 
 [node name="Belt_Left2" type="Node2D" parent="Map/Belts"]
 material = SubResource("ShaderMaterial_hhtsw")
@@ -481,6 +490,9 @@ position = Vector2(-256, 64)
 use_parent_material = true
 position = Vector2(-512, 64)
 
+[node name="belt_end_zone" parent="Map/Belts/Belt_Left2" instance=ExtResource("7_fdk73")]
+position = Vector2(-1030, 190)
+
 [node name="Belt_Left3" type="Node2D" parent="Map/Belts"]
 material = SubResource("ShaderMaterial_6p5ti")
 
@@ -549,6 +561,9 @@ position = Vector2(-896, 448)
 [node name="BeltEnd" parent="Map/Belts/Belt_Left3" instance=ExtResource("15_g6jjp")]
 use_parent_material = true
 position = Vector2(-1024, 448)
+
+[node name="belt_end_zone" parent="Map/Belts/Belt_Left3" instance=ExtResource("7_fdk73")]
+position = Vector2(-1022, 449)
 
 [node name="Players" type="Node2D" parent="."]
 
