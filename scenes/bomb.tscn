@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://tmgj130g0t8g"]
+[gd_scene load_steps=15 format=3 uid="uid://tmgj130g0t8g"]
 
 [ext_resource type="Script" path="res://scripts/bomb.gd" id="1_tv2jc"]
 [ext_resource type="Texture2D" uid="uid://dtw6mjwskia8j" path="res://assets/sprites/bomben_128x128.png" id="2_e08hp"]
@@ -78,6 +78,10 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_y40d4"]
+atlas = ExtResource("2_e08hp")
+region = Rect2(256, 0, 128, 128)
+
 [node name="Bomb" type="CharacterBody2D"]
 collision_layer = 17
 script = ExtResource("1_tv2jc")
@@ -86,18 +90,24 @@ script = ExtResource("1_tv2jc")
 shape = SubResource("CircleShape2D_sre7l")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 30.0
+wait_time = 5.0
 one_shot = true
 
 [node name="animations" type="Node2D" parent="."]
 
 [node name="activated_animation" type="AnimatedSprite2D" parent="animations"]
+visible = false
 sprite_frames = SubResource("SpriteFrames_kyjba")
 frame_progress = 0.837586
 
 [node name="explosion" type="AnimatedSprite2D" parent="animations"]
+visible = false
 sprite_frames = SubResource("SpriteFrames_yfojm")
 frame = 5
 frame_progress = 1.0
 
+[node name="bomb" type="Sprite2D" parent="animations"]
+texture = SubResource("AtlasTexture_y40d4")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="animation_finished" from="animations/explosion" to="." method="_on_explosion_animation_finished"]

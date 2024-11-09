@@ -3,6 +3,7 @@ class_name Player
 
 # @export 
 var speed = 400
+var health = 100
 
 @onready var map: Map = get_node("%Map")
 @onready var indicator: ColorRect = get_node("Indicator")
@@ -19,12 +20,14 @@ func get_input():
 
 func pick_up(object: Node2D):
 	if object.has_method("toggle_collision"):
-		object.toggle_collision(false)
+		object.toggle_collision(false, self)
 	object.get_parent().remove_child(object)
 	object.global_position = Vector2.ZERO
 	carry_location.add_child(object)
 	carry_object = handle_object
 
+func reduce_health(damage: int):
+	health -= damage
 
 func drop(object: Node2D):
 	carry_object = null
@@ -42,7 +45,14 @@ func drop(object: Node2D):
 
 
 func _process(_delta):
+	if(health <= 0):
+		print('player died')
+	
+	if(!is_instance_valid(carry_object)):
+		carry_object = null
+	
 	if Input.is_action_just_pressed('use'):
+		print('use')
 		if !carry_object and handle_object:
 			pick_up(handle_object)
 		elif carry_object:
