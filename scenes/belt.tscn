@@ -1,13 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://dwpbpntc3kkgh"]
-
-[ext_resource type="Texture2D" uid="uid://drjmxo4dwbnri" path="res://assets/sprites/laufband_gerade_gelb_state_01.png" id="1_0d8kn"]
-[ext_resource type="Shader" path="res://scenes/shader/recolor_belt.gdshader" id="1_marj0"]
-[ext_resource type="Texture2D" uid="uid://b0cvd30ef6pw" path="res://assets/sprites/laufband_gerade_gelb_state_02.png" id="2_1dl5v"]
-[ext_resource type="Texture2D" uid="uid://0xpy6rnrpvqp" path="res://assets/sprites/laufband_gerade_gelb_state_03.png" id="3_uknho"]
-[ext_resource type="Texture2D" uid="uid://dkmm4floeck4b" path="res://assets/sprites/laufband_gerade_gelb_state_04.png" id="4_ced6m"]
-
+[gd_scene load_steps=9 format=3 uid="uid://dwpbpntc3kkgh"]
 
 [ext_resource type="Texture2D" uid="uid://d0r3ba5xmup2w" path="res://assets/sprites/laufbaender_128x128.png" id="1_2oxko"]
+[ext_resource type="Shader" path="res://scenes/shader/recolor_belt.gdshader" id="1_marj0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lcidt"]
+shader = ExtResource("1_marj0")
+shader_parameter/color = Color(0.764706, 0.627451, 0.168627, 1)
+shader_parameter/replace_color = Color(0.764706, 0.627451, 0.168627, 1)
+shader_parameter/color_threshold = 0.1
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5sq6w"]
 atlas = ExtResource("1_2oxko")
@@ -24,12 +24,6 @@ region = Rect2(256, 0, 128, 128)
 [sub_resource type="AtlasTexture" id="AtlasTexture_djx0p"]
 atlas = ExtResource("1_2oxko")
 region = Rect2(384, 0, 128, 128)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lcidt"]
-shader = ExtResource("1_marj0")
-shader_parameter/color = Color(0.764706, 0.627451, 0.168627, 1)
-shader_parameter/replace_color = Color(0.764706, 0.627451, 0.168627, 1)
-shader_parameter/color_threshold = 0.1
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xn4xx"]
 animations = [{
@@ -52,6 +46,7 @@ animations = [{
 }]
 
 [node name="Belt" type="Node2D"]
+z_index = 10
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_lcidt")

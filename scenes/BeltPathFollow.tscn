@@ -3,4 +3,5 @@
 [ext_resource type="Script" path="res://scripts/belt_path_follow.gd" id="1_n02rl"]
 
 [node name="BeltPathFollow" type="PathFollow2D"]
+loop = false
 script = ExtResource("1_n02rl")
