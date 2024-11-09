@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://scripts/bomb_spawner.gd" id="1_cjuny"]
 [ext_resource type="PackedScene" uid="uid://tmgj130g0t8g" path="res://scenes/bomb.tscn" id="2_clhut"]
-[ext_resource type="Texture2D" uid="uid://ne2mq1lvnt4" path="res://assets/sprites/Raw/bg_tile_placeholder_red.png" id="2_i7gpx"]
 [ext_resource type="PackedScene" uid="uid://cx1hqhorn20kj" path="res://scenes/molotow.tscn" id="3_vyweu"]
+[ext_resource type="Texture2D" uid="uid://mwp1wd87nsf0" path="res://assets/sprites/bg_pickup_area.png" id="4_0hyon"]
 
 [node name="BombSpawner" type="Node2D"]
 position = Vector2(-1408, -320)
@@ -11,8 +11,8 @@ scale = Vector2(1, 1.00487)
 script = ExtResource("1_cjuny")
 bombs = Array[PackedScene]([ExtResource("2_clhut"), ExtResource("3_vyweu")])
 
-[node name="BgTilePlaceholderRed" type="Sprite2D" parent="."]
-texture = ExtResource("2_i7gpx")
+[node name="BgPickupArea" type="Sprite2D" parent="."]
+texture = ExtResource("4_0hyon")
 
 [node name="SpawnTimer" type="Timer" parent="."]
 autostart = true

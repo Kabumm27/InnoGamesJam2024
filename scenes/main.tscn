@@ -311,4 +311,23 @@ gamepad_id = 1
 
 [node name="Items" type="Node2D" parent="."]
 
-[node name="BombSpawner" parent="." instance=ExtResource("7_p2hvq")]
+[node name="BombSpawners" type="Node2D" parent="."]
+
+[node name="BombSpawner" parent="BombSpawners" instance=ExtResource("7_p2hvq")]
+
+[node name="BombSpawner2" parent="BombSpawners" instance=ExtResource("7_p2hvq")]
+
+[node name="BombSpawner3" parent="BombSpawners" instance=ExtResource("7_p2hvq")]
+position = Vector2(-1408, -64)
+
+[node name="BombSpawner4" parent="BombSpawners" instance=ExtResource("7_p2hvq")]
+position = Vector2(-1408, 192)
+
+[node name="BombSpawner5" parent="BombSpawners" instance=ExtResource("7_p2hvq")]
+position = Vector2(-1408, 448)
+
+[node name="BombSpawner6" parent="BombSpawners" instance=ExtResource("7_p2hvq")]
+position = Vector2(-1408, -576)
+
+[node name="BombSpawner7" parent="BombSpawners" instance=ExtResource("7_p2hvq")]
+position = Vector2(-1408, 704)
