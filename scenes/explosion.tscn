@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://b5lkmmaqhlyrl"]
 
 [ext_resource type="Texture2D" uid="uid://dtw6mjwskia8j" path="res://assets/sprites/bomben_128x128.png" id="1_pvw1p"]
-[ext_resource type="Script" path="res://scenes/explosion.gd" id="1_vybj0"]
+[ext_resource type="Script" path="res://scripts/explosion.gd" id="1_vybj0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m0w6t"]
 atlas = ExtResource("1_pvw1p")
