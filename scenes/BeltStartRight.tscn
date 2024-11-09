@@ -1,37 +1,37 @@
-[gd_scene load_steps=7 format=3 uid="uid://cjfvh2j8xy4g7"]
+[gd_scene load_steps=7 format=3 uid="uid://cs6d56u5u6fhf"]
 
 [ext_resource type="Texture2D" uid="uid://d0r3ba5xmup2w" path="res://assets/sprites/laufbaender_128x128.png" id="1_ahlv0"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4gx5a"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_v7m3k"]
 atlas = ExtResource("1_ahlv0")
-region = Rect2(0, 384, 128, 128)
+region = Rect2(512, 256, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_c80ju"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ktuee"]
 atlas = ExtResource("1_ahlv0")
-region = Rect2(128, 384, 128, 128)
+region = Rect2(640, 256, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_udg3i"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_4lj3f"]
 atlas = ExtResource("1_ahlv0")
-region = Rect2(256, 384, 128, 128)
+region = Rect2(768, 256, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rqgpx"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1pjya"]
 atlas = ExtResource("1_ahlv0")
-region = Rect2(384, 384, 128, 128)
+region = Rect2(896, 256, 128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5lroe"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4gx5a")
+"texture": SubResource("AtlasTexture_v7m3k")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_c80ju")
+"texture": SubResource("AtlasTexture_ktuee")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_udg3i")
+"texture": SubResource("AtlasTexture_4lj3f")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rqgpx")
+"texture": SubResource("AtlasTexture_1pjya")
 }],
 "loop": true,
 "name": &"default",
@@ -43,7 +43,6 @@ z_index = 10
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 use_parent_material = true
+rotation = 3.14159
 sprite_frames = SubResource("SpriteFrames_5lroe")
 autoplay = "default"
-flip_h = true
-flip_v = true
