@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://53mxft6s6k2h"]
+
+[ext_resource type="Shader" path="res://scenes/shader/recolor_belt.gdshader" id="1_wjx02"]
+[ext_resource type="Texture2D" uid="uid://d0r3ba5xmup2w" path="res://assets/sprites/laufbaender_128x128.png" id="2_m1g3n"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lcidt"]
+shader = ExtResource("1_wjx02")
+shader_parameter/color = Color(0.764706, 0.627451, 0.168627, 1)
+shader_parameter/replace_color = Color(0.764706, 0.627451, 0.168627, 1)
+shader_parameter/color_threshold = 0.1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5sq6w"]
+atlas = ExtResource("2_m1g3n")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ntwt"]
+atlas = ExtResource("2_m1g3n")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7wc3c"]
+atlas = ExtResource("2_m1g3n")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_djx0p"]
+atlas = ExtResource("2_m1g3n")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xn4xx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5sq6w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ntwt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7wc3c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_djx0p")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Belt" type="Node2D"]
+z_index = 10
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_lcidt")
+use_parent_material = true
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_xn4xx")
+autoplay = "default"
+frame_progress = 0.0

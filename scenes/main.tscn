@@ -1,17 +1,26 @@
-[gd_scene load_steps=21 format=4 uid="uid://dnxh1bnwsohr"]
+[gd_scene load_steps=32 format=4 uid="uid://dnxh1bnwsohr"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_6hbi4"]
 [ext_resource type="Script" path="res://scripts/map.gd" id="2_t8deg"]
 [ext_resource type="PackedScene" uid="uid://b18iwfskgx8ub" path="res://scenes/player.tscn" id="2_w8s8l"]
-[ext_resource type="PackedScene" uid="uid://1vis5lncdscc" path="res://scenes/Belt_Curve__Right_Down.tscn" id="4_51kn7"]
+[ext_resource type="PackedScene" uid="uid://1vis5lncdscc" path="res://scenes/Belt_Curve_Right_Down.tscn" id="4_51kn7"]
 [ext_resource type="TileSet" uid="uid://cvlrd54vclrv1" path="res://assets/sprites/background.tres" id="4_wy3k2"]
-[ext_resource type="PackedScene" uid="uid://dwpbpntc3kkgh" path="res://scenes/belt.tscn" id="5_d42kx"]
+[ext_resource type="PackedScene" uid="uid://dwpbpntc3kkgh" path="res://scenes/belt_right.tscn" id="5_d42kx"]
 [ext_resource type="PackedScene" uid="uid://dj16kh5p4bqut" path="res://scenes/Belt_Curve_Up_Right.tscn" id="5_oicp3"]
 [ext_resource type="PackedScene" uid="uid://dv03yk1mjgcdw" path="res://scenes/BeltPickupZone.tscn" id="6_hrx5p"]
 [ext_resource type="PackedScene" uid="uid://icbkrb75bslc" path="res://scenes/bomb_spawner.tscn" id="7_p2hvq"]
-[ext_resource type="PackedScene" uid="uid://ducyrvq6hmgri" path="res://scenes/BeltEnd.tscn" id="10_n4pyp"]
-[ext_resource type="PackedScene" uid="uid://be067u7l8wmit" path="res://scenes/Belt_Curve__Down_Right.tscn" id="11_5l40s"]
+[ext_resource type="PackedScene" uid="uid://ducyrvq6hmgri" path="res://scenes/BeltEndRight.tscn" id="10_n4pyp"]
+[ext_resource type="PackedScene" uid="uid://be067u7l8wmit" path="res://scenes/Belt_Curve_Down_Right.tscn" id="11_5l40s"]
 [ext_resource type="PackedScene" uid="uid://cjlj6rfcp3m4d" path="res://scenes/Belt_Curve_Right_Up.tscn" id="12_fn5l2"]
+[ext_resource type="PackedScene" uid="uid://g78vjxll8i5r" path="res://scenes/belt_left.tscn" id="13_2k6al"]
+[ext_resource type="PackedScene" uid="uid://cw3vgtvoesn2i" path="res://scenes/Belt_Curve_Left_Down.tscn" id="14_2bcno"]
+[ext_resource type="PackedScene" uid="uid://53mxft6s6k2h" path="res://scenes/belt_down.tscn" id="15_1fjqu"]
+[ext_resource type="PackedScene" uid="uid://cs6d56u5u6fhf" path="res://scenes/BeltEndLeft.tscn" id="15_g6jjp"]
+[ext_resource type="PackedScene" uid="uid://3khm3dh8j4iq" path="res://scenes/Belt_Curve_Down_Left.tscn" id="16_hkesh"]
+[ext_resource type="PackedScene" uid="uid://j7v7yxxkghrh" path="res://scenes/Belt_Curve_Left_Up.tscn" id="16_qcqah"]
+[ext_resource type="PackedScene" uid="uid://x1hx1mc3ttlg" path="res://scenes/belt_up.tscn" id="17_dr55a"]
+[ext_resource type="PackedScene" uid="uid://ddx4gu37fhwu3" path="res://scenes/Belt_Curve_Up_Left.tscn" id="18_xq5t2"]
+[ext_resource type="Shader" path="res://scenes/shader/recolor_belt.gdshader" id="19_22n0l"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lbhqj"]
 distance = -773.0
@@ -48,6 +57,18 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, -896, -640, 0, 0, 0, 0, -512, -640, 0, 0, 0, 0, -512, -384, 0, 0, 0, 0, -256, -384, 0, 0, 0, 0, -256, -640, 0, 0, 0, 0, 1024, -640)
 }
 point_count = 6
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hhtsw"]
+shader = ExtResource("19_22n0l")
+shader_parameter/color = Color(0.764706, 0.627451, 0.168627, 1)
+shader_parameter/replace_color = Color(0.141176, 0.360784, 0.529412, 1)
+shader_parameter/color_threshold = 0.45
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6p5ti"]
+shader = ExtResource("19_22n0l")
+shader_parameter/color = Color(0.764706, 0.627451, 0.168627, 1)
+shader_parameter/replace_color = Color(0.1431, 0.362343, 0.53, 1)
+shader_parameter/color_threshold = 0.45
 
 [node name="World" type="Node2D"]
 
@@ -112,193 +133,418 @@ shape = SubResource("RectangleShape2D_xt1ex")
 
 [node name="Belts" type="Node2D" parent="Map"]
 
-[node name="Belt1" type="Node2D" parent="Map/Belts"]
+[node name="Belt_Right1" type="Node2D" parent="Map/Belts"]
 
-[node name="BeltPath" type="Path2D" parent="Map/Belts/Belt1"]
+[node name="BeltPath" type="Path2D" parent="Map/Belts/Belt_Right1"]
 curve = SubResource("Curve2D_v56ia")
 
-[node name="BeltPickupZone" parent="Map/Belts/Belt1" instance=ExtResource("6_hrx5p")]
+[node name="BeltPickupZone" parent="Map/Belts/Belt_Right1" instance=ExtResource("6_hrx5p")]
 position = Vector2(-896, -576)
 
-[node name="Belt" parent="Map/Belts/Belt1" instance=ExtResource("5_d42kx")]
+[node name="Belt" parent="Map/Belts/Belt_Right1" instance=ExtResource("5_d42kx")]
 position = Vector2(-896, -576)
 
-[node name="Belt2" parent="Map/Belts/Belt1" instance=ExtResource("5_d42kx")]
+[node name="Belt2" parent="Map/Belts/Belt_Right1" instance=ExtResource("5_d42kx")]
 position = Vector2(-768, -576)
 
-[node name="Belt3" parent="Map/Belts/Belt1" instance=ExtResource("5_d42kx")]
+[node name="Belt3" parent="Map/Belts/Belt_Right1" instance=ExtResource("5_d42kx")]
 position = Vector2(-640, -576)
 
-[node name="Belt4" parent="Map/Belts/Belt1" instance=ExtResource("5_d42kx")]
+[node name="Belt4" parent="Map/Belts/Belt_Right1" instance=ExtResource("5_d42kx")]
 position = Vector2(-512, -576)
 
-[node name="Belt5" parent="Map/Belts/Belt1" instance=ExtResource("5_d42kx")]
+[node name="Belt5" parent="Map/Belts/Belt_Right1" instance=ExtResource("5_d42kx")]
 position = Vector2(-384, -576)
 
-[node name="Belt6" parent="Map/Belts/Belt1" instance=ExtResource("5_d42kx")]
+[node name="Belt6" parent="Map/Belts/Belt_Right1" instance=ExtResource("5_d42kx")]
 position = Vector2(-256, -576)
 
-[node name="Belt7" parent="Map/Belts/Belt1" instance=ExtResource("5_d42kx")]
+[node name="Belt7" parent="Map/Belts/Belt_Right1" instance=ExtResource("5_d42kx")]
 position = Vector2(-128, -576)
 
-[node name="Belt8" parent="Map/Belts/Belt1" instance=ExtResource("5_d42kx")]
+[node name="Belt8" parent="Map/Belts/Belt_Right1" instance=ExtResource("5_d42kx")]
 position = Vector2(0, -576)
 
-[node name="Belt9" parent="Map/Belts/Belt1" instance=ExtResource("5_d42kx")]
+[node name="Belt9" parent="Map/Belts/Belt_Right1" instance=ExtResource("5_d42kx")]
 position = Vector2(128, -576)
 
-[node name="Belt10" parent="Map/Belts/Belt1" instance=ExtResource("5_d42kx")]
+[node name="Belt10" parent="Map/Belts/Belt_Right1" instance=ExtResource("5_d42kx")]
 position = Vector2(256, -576)
 
-[node name="Belt11" parent="Map/Belts/Belt1" instance=ExtResource("5_d42kx")]
+[node name="Belt11" parent="Map/Belts/Belt_Right1" instance=ExtResource("5_d42kx")]
 position = Vector2(384, -576)
 
-[node name="Belt12" parent="Map/Belts/Belt1" instance=ExtResource("5_d42kx")]
+[node name="Belt12" parent="Map/Belts/Belt_Right1" instance=ExtResource("5_d42kx")]
 position = Vector2(512, -576)
 
-[node name="Belt13" parent="Map/Belts/Belt1" instance=ExtResource("5_d42kx")]
+[node name="Belt13" parent="Map/Belts/Belt_Right1" instance=ExtResource("5_d42kx")]
 position = Vector2(640, -576)
 
-[node name="Belt14" parent="Map/Belts/Belt1" instance=ExtResource("5_d42kx")]
+[node name="Belt14" parent="Map/Belts/Belt_Right1" instance=ExtResource("5_d42kx")]
 position = Vector2(768, -576)
 
-[node name="Belt15" parent="Map/Belts/Belt1" instance=ExtResource("5_d42kx")]
+[node name="Belt15" parent="Map/Belts/Belt_Right1" instance=ExtResource("5_d42kx")]
 position = Vector2(896, -576)
 
-[node name="BeltEnd" parent="Map/Belts/Belt1" instance=ExtResource("10_n4pyp")]
+[node name="BeltEnd" parent="Map/Belts/Belt_Right1" instance=ExtResource("10_n4pyp")]
 position = Vector2(1024, -576)
 
-[node name="Belt2" type="Node2D" parent="Map/Belts"]
+[node name="Belt_Right2" type="Node2D" parent="Map/Belts"]
 
-[node name="BeltPath" type="Path2D" parent="Map/Belts/Belt2"]
+[node name="BeltPath" type="Path2D" parent="Map/Belts/Belt_Right2"]
 z_index = 16
 curve = SubResource("Curve2D_qs4vs")
 
-[node name="BeltPickupZone" parent="Map/Belts/Belt2" instance=ExtResource("6_hrx5p")]
+[node name="BeltPickupZone" parent="Map/Belts/Belt_Right2" instance=ExtResource("6_hrx5p")]
 position = Vector2(-896, -320)
 
-[node name="Belt" parent="Map/Belts/Belt2" instance=ExtResource("5_d42kx")]
+[node name="Belt" parent="Map/Belts/Belt_Right2" instance=ExtResource("5_d42kx")]
 position = Vector2(-896, -320)
 
-[node name="Belt4" parent="Map/Belts/Belt2" instance=ExtResource("5_d42kx")]
+[node name="Belt4" parent="Map/Belts/Belt_Right2" instance=ExtResource("5_d42kx")]
 position = Vector2(-768, -320)
 
-[node name="Belt5" parent="Map/Belts/Belt2" instance=ExtResource("5_d42kx")]
+[node name="Belt5" parent="Map/Belts/Belt_Right2" instance=ExtResource("5_d42kx")]
 position = Vector2(-640, -320)
 
-[node name="Belt6" parent="Map/Belts/Belt2" instance=ExtResource("5_d42kx")]
+[node name="Belt6" parent="Map/Belts/Belt_Right2" instance=ExtResource("5_d42kx")]
 position = Vector2(-512, -320)
 
-[node name="Belt7" parent="Map/Belts/Belt2" instance=ExtResource("5_d42kx")]
+[node name="Belt7" parent="Map/Belts/Belt_Right2" instance=ExtResource("5_d42kx")]
 position = Vector2(-384, -320)
 
-[node name="Belt8" parent="Map/Belts/Belt2" instance=ExtResource("5_d42kx")]
+[node name="Belt8" parent="Map/Belts/Belt_Right2" instance=ExtResource("5_d42kx")]
 position = Vector2(-128, -192)
 
-[node name="Belt9" parent="Map/Belts/Belt2" instance=ExtResource("5_d42kx")]
+[node name="Belt9" parent="Map/Belts/Belt_Right2" instance=ExtResource("5_d42kx")]
 position = Vector2(0, -192)
 
-[node name="Belt10" parent="Map/Belts/Belt2" instance=ExtResource("5_d42kx")]
+[node name="Belt10" parent="Map/Belts/Belt_Right2" instance=ExtResource("5_d42kx")]
 position = Vector2(128, -192)
 
-[node name="Belt11" parent="Map/Belts/Belt2" instance=ExtResource("5_d42kx")]
+[node name="Belt11" parent="Map/Belts/Belt_Right2" instance=ExtResource("5_d42kx")]
 position = Vector2(256, -192)
 
-[node name="Belt12" parent="Map/Belts/Belt2" instance=ExtResource("5_d42kx")]
+[node name="Belt12" parent="Map/Belts/Belt_Right2" instance=ExtResource("5_d42kx")]
 position = Vector2(384, -192)
 
-[node name="Belt13" parent="Map/Belts/Belt2" instance=ExtResource("5_d42kx")]
+[node name="Belt13" parent="Map/Belts/Belt_Right2" instance=ExtResource("5_d42kx")]
 position = Vector2(512, -192)
 
-[node name="Belt14" parent="Map/Belts/Belt2" instance=ExtResource("5_d42kx")]
+[node name="Belt14" parent="Map/Belts/Belt_Right2" instance=ExtResource("5_d42kx")]
 position = Vector2(640, -192)
 
-[node name="Belt15" parent="Map/Belts/Belt2" instance=ExtResource("5_d42kx")]
+[node name="Belt15" parent="Map/Belts/Belt_Right2" instance=ExtResource("5_d42kx")]
 position = Vector2(768, -192)
 
-[node name="Belt16" parent="Map/Belts/Belt2" instance=ExtResource("5_d42kx")]
+[node name="Belt16" parent="Map/Belts/Belt_Right2" instance=ExtResource("5_d42kx")]
 position = Vector2(896, -192)
 
-[node name="BeltEnd" parent="Map/Belts/Belt2" instance=ExtResource("10_n4pyp")]
+[node name="BeltEnd" parent="Map/Belts/Belt_Right2" instance=ExtResource("10_n4pyp")]
 position = Vector2(1024, -192)
 
-[node name="BeltCurve" parent="Map/Belts/Belt2" instance=ExtResource("4_51kn7")]
-position = Vector2(-256, -320)
-
-[node name="BeltCurve2" parent="Map/Belts/Belt2" instance=ExtResource("11_5l40s")]
+[node name="BeltCurve2" parent="Map/Belts/Belt_Right2" instance=ExtResource("11_5l40s")]
 position = Vector2(-256, -192)
 
-[node name="Belt3" type="Node2D" parent="Map/Belts"]
+[node name="BeltCurve" parent="Map/Belts/Belt_Right2" instance=ExtResource("4_51kn7")]
+position = Vector2(-256, -320)
 
-[node name="BeltPickupZone" parent="Map/Belts/Belt3" instance=ExtResource("6_hrx5p")]
+[node name="Belt_Right3" type="Node2D" parent="Map/Belts"]
+
+[node name="BeltPickupZone" parent="Map/Belts/Belt_Right3" instance=ExtResource("6_hrx5p")]
 position = Vector2(-896, 320)
 
-[node name="BeltPath" type="Path2D" parent="Map/Belts/Belt3"]
+[node name="BeltPath" type="Path2D" parent="Map/Belts/Belt_Right3"]
 z_index = 10
 position = Vector2(0, 960)
 curve = SubResource("Curve2D_u1v2p")
 
-[node name="Belt2" parent="Map/Belts/Belt3" instance=ExtResource("5_d42kx")]
+[node name="Belt2" parent="Map/Belts/Belt_Right3" instance=ExtResource("5_d42kx")]
 position = Vector2(-896, 320)
 
-[node name="Belt3" parent="Map/Belts/Belt3" instance=ExtResource("5_d42kx")]
+[node name="Belt3" parent="Map/Belts/Belt_Right3" instance=ExtResource("5_d42kx")]
 position = Vector2(-768, 320)
 
-[node name="Belt17" parent="Map/Belts/Belt3" instance=ExtResource("5_d42kx")]
+[node name="Belt17" parent="Map/Belts/Belt_Right3" instance=ExtResource("5_d42kx")]
 position = Vector2(-640, 320)
 
-[node name="Belt18" parent="Map/Belts/Belt3" instance=ExtResource("5_d42kx")]
+[node name="Belt18" parent="Map/Belts/Belt_Right3" instance=ExtResource("5_d42kx")]
 position = Vector2(-384, 576)
 
-[node name="Belt19" parent="Map/Belts/Belt3" instance=ExtResource("5_d42kx")]
+[node name="Belt19" parent="Map/Belts/Belt_Right3" instance=ExtResource("5_d42kx")]
 position = Vector2(-128, 320)
 
-[node name="Belt20" parent="Map/Belts/Belt3" instance=ExtResource("5_d42kx")]
+[node name="Belt20" parent="Map/Belts/Belt_Right3" instance=ExtResource("5_d42kx")]
 position = Vector2(0, 320)
 
-[node name="Belt21" parent="Map/Belts/Belt3" instance=ExtResource("5_d42kx")]
+[node name="Belt21" parent="Map/Belts/Belt_Right3" instance=ExtResource("5_d42kx")]
 position = Vector2(128, 320)
 
-[node name="Belt22" parent="Map/Belts/Belt3" instance=ExtResource("5_d42kx")]
+[node name="Belt22" parent="Map/Belts/Belt_Right3" instance=ExtResource("5_d42kx")]
 position = Vector2(256, 320)
 
-[node name="Belt23" parent="Map/Belts/Belt3" instance=ExtResource("5_d42kx")]
+[node name="Belt23" parent="Map/Belts/Belt_Right3" instance=ExtResource("5_d42kx")]
 position = Vector2(384, 320)
 
-[node name="Belt24" parent="Map/Belts/Belt3" instance=ExtResource("5_d42kx")]
+[node name="Belt24" parent="Map/Belts/Belt_Right3" instance=ExtResource("5_d42kx")]
 position = Vector2(512, 320)
 
-[node name="Belt25" parent="Map/Belts/Belt3" instance=ExtResource("5_d42kx")]
+[node name="Belt25" parent="Map/Belts/Belt_Right3" instance=ExtResource("5_d42kx")]
 position = Vector2(640, 320)
 
-[node name="Belt26" parent="Map/Belts/Belt3" instance=ExtResource("5_d42kx")]
+[node name="Belt26" parent="Map/Belts/Belt_Right3" instance=ExtResource("5_d42kx")]
 position = Vector2(768, 320)
 
-[node name="Belt27" parent="Map/Belts/Belt3" instance=ExtResource("5_d42kx")]
+[node name="Belt27" parent="Map/Belts/Belt_Right3" instance=ExtResource("5_d42kx")]
 position = Vector2(896, 320)
 
-[node name="Belt28" parent="Map/Belts/Belt3" instance=ExtResource("5_d42kx")]
-position = Vector2(-512, 448)
-rotation = 1.5708
-
-[node name="Belt29" parent="Map/Belts/Belt3" instance=ExtResource("5_d42kx")]
-position = Vector2(-256, 448)
-rotation = -1.5708
-
-[node name="BeltCurve3" parent="Map/Belts/Belt3" instance=ExtResource("11_5l40s")]
+[node name="BeltCurve3" parent="Map/Belts/Belt_Right3" instance=ExtResource("11_5l40s")]
 position = Vector2(-512, 576)
 
-[node name="BeltCurve4" parent="Map/Belts/Belt3" instance=ExtResource("4_51kn7")]
+[node name="BeltCurve4" parent="Map/Belts/Belt_Right3" instance=ExtResource("4_51kn7")]
 position = Vector2(-512, 320)
 
-[node name="BeltCurve5" parent="Map/Belts/Belt3" instance=ExtResource("5_oicp3")]
+[node name="BeltCurve5" parent="Map/Belts/Belt_Right3" instance=ExtResource("5_oicp3")]
 position = Vector2(-256, 320)
 
-[node name="BeltCurve6" parent="Map/Belts/Belt3" instance=ExtResource("12_fn5l2")]
+[node name="BeltCurve6" parent="Map/Belts/Belt_Right3" instance=ExtResource("12_fn5l2")]
 position = Vector2(-256, 576)
 
-[node name="BeltEnd" parent="Map/Belts/Belt3" instance=ExtResource("10_n4pyp")]
+[node name="BeltEnd" parent="Map/Belts/Belt_Right3" instance=ExtResource("10_n4pyp")]
 position = Vector2(1024, 320)
+
+[node name="Belt" parent="Map/Belts/Belt_Right3" instance=ExtResource("15_1fjqu")]
+position = Vector2(-512, 448)
+
+[node name="Belt4" parent="Map/Belts/Belt_Right3" instance=ExtResource("17_dr55a")]
+position = Vector2(-256, 448)
+
+[node name="Belt_Left1" type="Node2D" parent="Map/Belts"]
+material = SubResource("ShaderMaterial_hhtsw")
+
+[node name="Belt" parent="Map/Belts/Belt_Left1" instance=ExtResource("13_2k6al")]
+use_parent_material = true
+position = Vector2(896, -448)
+
+[node name="Belt2" parent="Map/Belts/Belt_Left1" instance=ExtResource("13_2k6al")]
+use_parent_material = true
+position = Vector2(768, -448)
+
+[node name="Belt3" parent="Map/Belts/Belt_Left1" instance=ExtResource("13_2k6al")]
+use_parent_material = true
+position = Vector2(640, -448)
+
+[node name="Belt4" parent="Map/Belts/Belt_Left1" instance=ExtResource("13_2k6al")]
+use_parent_material = true
+position = Vector2(512, -448)
+
+[node name="Belt5" parent="Map/Belts/Belt_Left1" instance=ExtResource("13_2k6al")]
+use_parent_material = true
+position = Vector2(384, -448)
+
+[node name="Belt6" parent="Map/Belts/Belt_Left1" instance=ExtResource("13_2k6al")]
+use_parent_material = true
+position = Vector2(256, -448)
+
+[node name="Belt7" parent="Map/Belts/Belt_Left1" instance=ExtResource("13_2k6al")]
+use_parent_material = true
+position = Vector2(128, -448)
+
+[node name="Belt8" parent="Map/Belts/Belt_Left1" instance=ExtResource("13_2k6al")]
+use_parent_material = true
+position = Vector2(0, -448)
+
+[node name="Belt9" parent="Map/Belts/Belt_Left1" instance=ExtResource("13_2k6al")]
+use_parent_material = true
+position = Vector2(-128, -448)
+
+[node name="Belt10" parent="Map/Belts/Belt_Left1" instance=ExtResource("13_2k6al")]
+use_parent_material = true
+position = Vector2(-256, -448)
+
+[node name="Belt11" parent="Map/Belts/Belt_Left1" instance=ExtResource("13_2k6al")]
+use_parent_material = true
+position = Vector2(-384, -448)
+
+[node name="BeltCurve" parent="Map/Belts/Belt_Left1" instance=ExtResource("14_2bcno")]
+use_parent_material = true
+position = Vector2(-512, -448)
+
+[node name="BeltCurve2" parent="Map/Belts/Belt_Left1" instance=ExtResource("16_hkesh")]
+use_parent_material = true
+position = Vector2(-512, -192)
+
+[node name="Belt13" parent="Map/Belts/Belt_Left1" instance=ExtResource("13_2k6al")]
+use_parent_material = true
+position = Vector2(-640, -192)
+
+[node name="Belt14" parent="Map/Belts/Belt_Left1" instance=ExtResource("13_2k6al")]
+use_parent_material = true
+position = Vector2(-768, -192)
+
+[node name="Belt15" parent="Map/Belts/Belt_Left1" instance=ExtResource("13_2k6al")]
+use_parent_material = true
+position = Vector2(-896, -192)
+
+[node name="Belt12" parent="Map/Belts/Belt_Left1" instance=ExtResource("15_1fjqu")]
+use_parent_material = true
+position = Vector2(-512, -320)
+
+[node name="BeltEnd" parent="Map/Belts/Belt_Left1" instance=ExtResource("15_g6jjp")]
+use_parent_material = true
+position = Vector2(-1024, -192)
+
+[node name="Belt_Left2" type="Node2D" parent="Map/Belts"]
+material = SubResource("ShaderMaterial_hhtsw")
+
+[node name="Belt" parent="Map/Belts/Belt_Left2" instance=ExtResource("13_2k6al")]
+use_parent_material = true
+position = Vector2(896, 192)
+
+[node name="Belt2" parent="Map/Belts/Belt_Left2" instance=ExtResource("13_2k6al")]
+use_parent_material = true
+position = Vector2(768, 192)
+
+[node name="Belt3" parent="Map/Belts/Belt_Left2" instance=ExtResource("13_2k6al")]
+use_parent_material = true
+position = Vector2(640, 192)
+
+[node name="Belt4" parent="Map/Belts/Belt_Left2" instance=ExtResource("13_2k6al")]
+use_parent_material = true
+position = Vector2(512, 192)
+
+[node name="Belt5" parent="Map/Belts/Belt_Left2" instance=ExtResource("13_2k6al")]
+use_parent_material = true
+position = Vector2(384, 192)
+
+[node name="Belt6" parent="Map/Belts/Belt_Left2" instance=ExtResource("13_2k6al")]
+use_parent_material = true
+position = Vector2(256, 192)
+
+[node name="Belt7" parent="Map/Belts/Belt_Left2" instance=ExtResource("13_2k6al")]
+use_parent_material = true
+position = Vector2(128, 192)
+
+[node name="Belt8" parent="Map/Belts/Belt_Left2" instance=ExtResource("13_2k6al")]
+use_parent_material = true
+position = Vector2(0, 192)
+
+[node name="Belt9" parent="Map/Belts/Belt_Left2" instance=ExtResource("13_2k6al")]
+use_parent_material = true
+position = Vector2(-128, 192)
+
+[node name="BeltCurve" parent="Map/Belts/Belt_Left2" instance=ExtResource("16_qcqah")]
+use_parent_material = true
+position = Vector2(-256, 192)
+
+[node name="BeltCurve2" parent="Map/Belts/Belt_Left2" instance=ExtResource("18_xq5t2")]
+use_parent_material = true
+position = Vector2(-256, -64)
+
+[node name="Belt11" parent="Map/Belts/Belt_Left2" instance=ExtResource("13_2k6al")]
+use_parent_material = true
+position = Vector2(-384, -64)
+
+[node name="BeltCurve3" parent="Map/Belts/Belt_Left2" instance=ExtResource("14_2bcno")]
+use_parent_material = true
+position = Vector2(-512, -64)
+
+[node name="BeltCurve4" parent="Map/Belts/Belt_Left2" instance=ExtResource("16_hkesh")]
+use_parent_material = true
+position = Vector2(-512, 192)
+
+[node name="Belt13" parent="Map/Belts/Belt_Left2" instance=ExtResource("13_2k6al")]
+use_parent_material = true
+position = Vector2(-640, 192)
+
+[node name="Belt14" parent="Map/Belts/Belt_Left2" instance=ExtResource("13_2k6al")]
+use_parent_material = true
+position = Vector2(-768, 192)
+
+[node name="Belt15" parent="Map/Belts/Belt_Left2" instance=ExtResource("13_2k6al")]
+use_parent_material = true
+position = Vector2(-896, 192)
+
+[node name="BeltEnd" parent="Map/Belts/Belt_Left2" instance=ExtResource("15_g6jjp")]
+use_parent_material = true
+position = Vector2(-1024, 192)
+
+[node name="Belt10" parent="Map/Belts/Belt_Left2" instance=ExtResource("17_dr55a")]
+use_parent_material = true
+position = Vector2(-256, 64)
+
+[node name="Belt12" parent="Map/Belts/Belt_Left2" instance=ExtResource("15_1fjqu")]
+use_parent_material = true
+position = Vector2(-512, 64)
+
+[node name="Belt_Left3" type="Node2D" parent="Map/Belts"]
+material = SubResource("ShaderMaterial_6p5ti")
+
+[node name="Belt" parent="Map/Belts/Belt_Left3" instance=ExtResource("13_2k6al")]
+use_parent_material = true
+position = Vector2(896, 448)
+
+[node name="Belt2" parent="Map/Belts/Belt_Left3" instance=ExtResource("13_2k6al")]
+use_parent_material = true
+position = Vector2(768, 448)
+
+[node name="Belt3" parent="Map/Belts/Belt_Left3" instance=ExtResource("13_2k6al")]
+use_parent_material = true
+position = Vector2(640, 448)
+
+[node name="Belt4" parent="Map/Belts/Belt_Left3" instance=ExtResource("13_2k6al")]
+use_parent_material = true
+position = Vector2(512, 448)
+
+[node name="Belt5" parent="Map/Belts/Belt_Left3" instance=ExtResource("13_2k6al")]
+use_parent_material = true
+position = Vector2(384, 448)
+
+[node name="Belt6" parent="Map/Belts/Belt_Left3" instance=ExtResource("13_2k6al")]
+use_parent_material = true
+position = Vector2(256, 448)
+
+[node name="Belt7" parent="Map/Belts/Belt_Left3" instance=ExtResource("13_2k6al")]
+use_parent_material = true
+position = Vector2(128, 448)
+
+[node name="Belt8" parent="Map/Belts/Belt_Left3" instance=ExtResource("13_2k6al")]
+use_parent_material = true
+position = Vector2(0, 448)
+
+[node name="Belt9" parent="Map/Belts/Belt_Left3" instance=ExtResource("13_2k6al")]
+use_parent_material = true
+position = Vector2(-128, 448)
+
+[node name="Belt10" parent="Map/Belts/Belt_Left3" instance=ExtResource("13_2k6al")]
+z_index = 9
+use_parent_material = true
+position = Vector2(-256, 448)
+
+[node name="Belt11" parent="Map/Belts/Belt_Left3" instance=ExtResource("13_2k6al")]
+use_parent_material = true
+position = Vector2(-384, 448)
+
+[node name="Belt12" parent="Map/Belts/Belt_Left3" instance=ExtResource("13_2k6al")]
+z_index = 9
+use_parent_material = true
+position = Vector2(-512, 448)
+
+[node name="Belt13" parent="Map/Belts/Belt_Left3" instance=ExtResource("13_2k6al")]
+use_parent_material = true
+position = Vector2(-640, 448)
+
+[node name="Belt14" parent="Map/Belts/Belt_Left3" instance=ExtResource("13_2k6al")]
+use_parent_material = true
+position = Vector2(-768, 448)
+
+[node name="Belt15" parent="Map/Belts/Belt_Left3" instance=ExtResource("13_2k6al")]
+use_parent_material = true
+position = Vector2(-896, 448)
+
+[node name="BeltEnd" parent="Map/Belts/Belt_Left3" instance=ExtResource("15_g6jjp")]
+use_parent_material = true
+position = Vector2(-1024, 448)
 
 [node name="Players" type="Node2D" parent="."]
 
