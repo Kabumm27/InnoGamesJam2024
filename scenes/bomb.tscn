@@ -39,12 +39,10 @@ shape = SubResource("CircleShape2D_sre7l")
 wait_time = 30.0
 one_shot = true
 
-[node name="animations" type="Node" parent="."]
+[node name="animations" type="Node2D" parent="."]
 
 [node name="activated_animation" type="AnimatedSprite2D" parent="animations"]
 sprite_frames = SubResource("SpriteFrames_kyjba")
-frame_progress = 0.339986
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="animations"]
+frame_progress = 0.837586
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

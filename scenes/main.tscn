@@ -138,5 +138,4 @@ z_index = 100
 position = Vector2(-1286, -576)
 
 [node name="Bomb" parent="." instance=ExtResource("5_mbjfg")]
-z_index = 90
-position = Vector2(-1216, 64)
+position = Vector2(-1182, -79)
