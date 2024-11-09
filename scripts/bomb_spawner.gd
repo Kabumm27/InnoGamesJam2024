@@ -1,9 +1,10 @@
 extends Node2D
+class_name BombSpawner
 
-@export var min_spawn_time = 10
-@export var max_spawn_time = 20
+var min_spawn_time = 10
+var max_spawn_time = 20
 
-@export var bombs: Array[PackedScene] = []
+var bombs: Array[PackedScene] = []
 
 @onready var spawn_timer: Timer = $SpawnTimer
 @onready var map: Map = $%Map
@@ -17,10 +18,19 @@ func spawn_bomb():
 		add_child(bomb)
 
 
-func _ready():
-	spawn_timer.wait_time = randf_range(min_spawn_time, max_spawn_time)
+func initalize():
+	spawn_timer.wait_time = randf_range(1, 3)
+	spawn_timer.start()
 
 
 func _on_spawn_timer_timeout():
 	spawn_timer.wait_time = randf_range(min_spawn_time, max_spawn_time)
 	spawn_bomb()
+
+
+func _on_detector_body_entered(_body: Node2D):
+	spawn_timer.paused = true
+
+
+func _on_detector_body_exited(_body: Node2D):
+	spawn_timer.paused = false

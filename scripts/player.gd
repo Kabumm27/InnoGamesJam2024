@@ -13,8 +13,7 @@ var health = 3
 @onready var rotation_node: Node2D = $RotationNode
 @onready var health_bar: HBoxContainer = $health_bar
 
-@onready var sprite_default: Sprite2D = $CharacterDefault
-@onready var sprite_carry: Sprite2D = $CharacterCarry
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite
 
 var handle_object: Node2D = null
 var carry_object: Node2D = null
@@ -53,13 +52,17 @@ func reduce_health(damage: int):
 
 
 func set_sprite_state():
-	sprite_carry.visible = !!carry_object
-	sprite_default.visible = !carry_object
+	# sprite_carry.visible = !!carry_object
+	# sprite_default.visible = !carry_object
+
+	if velocity.length() > 0:
+		animated_sprite.play("walk")
+	else:
+		animated_sprite.play("idle")
 
 	var rot = roundi(rotation_node.rotation_degrees + 90) % 360
 	if rot % 180 != 0:
-		sprite_carry.flip_h = rot < 180
-		sprite_default.flip_h = rot < 180
+		animated_sprite.flip_h = rot < 180
 
 
 func get_input():

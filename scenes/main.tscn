@@ -18,10 +18,13 @@
 [ext_resource type="PackedScene" path="res://scenes/belt_down.tscn" id="15_1fjqu"]
 [ext_resource type="PackedScene" path="res://scenes/BeltEndLeft.tscn" id="15_g6jjp"]
 [ext_resource type="PackedScene" path="res://scenes/Belt_Curve_Down_Left.tscn" id="16_hkesh"]
+[ext_resource type="Script" path="res://scripts/bomb_spawner_manager.gd" id="12_c5iff"]
 [ext_resource type="PackedScene" path="res://scenes/Belt_Curve_Left_Up.tscn" id="16_qcqah"]
 [ext_resource type="PackedScene" path="res://scenes/belt_up.tscn" id="17_dr55a"]
 [ext_resource type="PackedScene" path="res://scenes/Belt_Curve_Up_Left.tscn" id="18_xq5t2"]
 [ext_resource type="Shader" path="res://scenes/shader/recolor_belt.gdshader" id="19_22n0l"]
+[ext_resource type="PackedScene" uid="uid://tmgj130g0t8g" path="res://scenes/bomb.tscn" id="13_h7ax1"]
+[ext_resource type="PackedScene" uid="uid://cx1hqhorn20kj" path="res://scenes/molotow.tscn" id="14_sxl7d"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lbhqj"]
 distance = -773.0
@@ -576,23 +579,46 @@ gamepad_id = 1
 
 [node name="Items" type="Node2D" parent="."]
 
-[node name="BombSpawners" type="Node2D" parent="."]
+[node name="BombSpawnerManager" type="Node2D" parent="."]
+scale = Vector2(1, 0.987352)
+script = ExtResource("12_c5iff")
+bombs = Array[PackedScene]([ExtResource("13_h7ax1"), ExtResource("14_sxl7d")])
 
-[node name="BombSpawner" parent="BombSpawners" instance=ExtResource("7_p2hvq")]
+[node name="Left" type="Node2D" parent="BombSpawnerManager"]
 
-[node name="BombSpawner2" parent="BombSpawners" instance=ExtResource("7_p2hvq")]
+[node name="BombSpawner" parent="BombSpawnerManager/Left" instance=ExtResource("7_p2hvq")]
 
-[node name="BombSpawner3" parent="BombSpawners" instance=ExtResource("7_p2hvq")]
+[node name="BombSpawner3" parent="BombSpawnerManager/Left" instance=ExtResource("7_p2hvq")]
 position = Vector2(-1408, -64)
 
-[node name="BombSpawner4" parent="BombSpawners" instance=ExtResource("7_p2hvq")]
+[node name="BombSpawner4" parent="BombSpawnerManager/Left" instance=ExtResource("7_p2hvq")]
 position = Vector2(-1408, 192)
 
-[node name="BombSpawner5" parent="BombSpawners" instance=ExtResource("7_p2hvq")]
+[node name="BombSpawner5" parent="BombSpawnerManager/Left" instance=ExtResource("7_p2hvq")]
 position = Vector2(-1408, 448)
 
-[node name="BombSpawner6" parent="BombSpawners" instance=ExtResource("7_p2hvq")]
+[node name="BombSpawner6" parent="BombSpawnerManager/Left" instance=ExtResource("7_p2hvq")]
 position = Vector2(-1408, -576)
 
-[node name="BombSpawner7" parent="BombSpawners" instance=ExtResource("7_p2hvq")]
+[node name="BombSpawner7" parent="BombSpawnerManager/Left" instance=ExtResource("7_p2hvq")]
 position = Vector2(-1408, 704)
+
+[node name="Right" type="Node2D" parent="BombSpawnerManager"]
+
+[node name="BombSpawner" parent="BombSpawnerManager/Right" instance=ExtResource("7_p2hvq")]
+position = Vector2(1408, -320)
+
+[node name="BombSpawner3" parent="BombSpawnerManager/Right" instance=ExtResource("7_p2hvq")]
+position = Vector2(1408, -64)
+
+[node name="BombSpawner4" parent="BombSpawnerManager/Right" instance=ExtResource("7_p2hvq")]
+position = Vector2(1408, 192)
+
+[node name="BombSpawner5" parent="BombSpawnerManager/Right" instance=ExtResource("7_p2hvq")]
+position = Vector2(1408, 448)
+
+[node name="BombSpawner6" parent="BombSpawnerManager/Right" instance=ExtResource("7_p2hvq")]
+position = Vector2(1408, -576)
+
+[node name="BombSpawner7" parent="BombSpawnerManager/Right" instance=ExtResource("7_p2hvq")]
+position = Vector2(1408, 704)
