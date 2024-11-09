@@ -69,3 +69,7 @@ use={
 [physics]
 
 2d/default_gravity_vector=Vector2(0, 0)
+
+[rendering]
+
+textures/vram_compression/import_etc2_astc=true
