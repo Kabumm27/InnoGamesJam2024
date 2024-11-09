@@ -19,6 +19,10 @@ func toggle_collision(state: bool):
 	activated_animation.visible = true
 	activated_animation.play() # start timer on first "collision" (pick up)
 	timer.start()
+	
+func pause_timer(pause: bool):
+	print(pause, timer.time_left)
+	timer.paused = pause
 
 func _on_timer_timeout():
 	# var direction = Vector2i(Vector2.RIGHT.rotated(global_rotation).round())

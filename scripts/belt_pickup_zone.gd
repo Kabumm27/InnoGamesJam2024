@@ -12,6 +12,9 @@ func _on_body_entered(body: Node2D):
 			if item.has_method("toggle_collision"):
 				item.toggle_collision(false)
 				
+			if item.has_method("pause_timer"):
+				item.pause_timer(true)
+				
 			var beltPathFollowInstance = BELT_PATH_FOLLOW.instantiate()
 			
 			beltPathFollowInstance._end_reached.connect(enable_collision.bind(item))
@@ -33,3 +36,5 @@ func _on_body_entered(body: Node2D):
 func enable_collision(body: Node2D):
 	if body.has_method("toggle_collision"):
 		body.toggle_collision(true)
+	if body.has_method("pause_timer"):
+		body.pause_timer(false)
