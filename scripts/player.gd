@@ -35,7 +35,7 @@ func drop(object: Node2D):
 	object.get_parent().remove_child(object)
 	get_tree().get_root().add_child(object)
 
-	var direction = Vector2i(Vector2.RIGHT.rotated(global_rotation).round())
+	var direction = Vector2i(Vector2.RIGHT.rotated(rotation_node.global_rotation).round())
 	var tilemap_pos = map.global_to_tilemap(global_position)
 	object.global_position = map.tilemap_to_global(tilemap_pos + direction)
 
