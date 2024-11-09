@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" path="res://scenes/Belt Curve_Right.tscn" id="5_oicp3"]
 [ext_resource type="PackedScene" path="res://scenes/BeltPickupZone.tscn" id="6_hrx5p"]
 [ext_resource type="PackedScene" uid="uid://tspbiuqx0lyq" path="res://scenes/bomb_spawner.tscn" id="7_p2hvq"]
+[ext_resource type="PackedScene" uid="uid://ducyrvq6hmgri" path="res://scenes/BeltEnd.tscn" id="10_n4pyp"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lbhqj"]
 distance = -773.0
@@ -220,3 +221,6 @@ gamepad_id = 1
 
 [node name="BombSpawner" parent="." instance=ExtResource("7_p2hvq")]
 bombs = Array[PackedScene]([ExtResource("5_mbjfg")])
+
+[node name="BeltEnd" parent="." instance=ExtResource("10_n4pyp")]
+position = Vector2(1024, -192)
