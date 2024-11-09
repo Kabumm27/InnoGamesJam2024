@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://dwpbpntc3kkgh"]
+
+[ext_resource type="Texture2D" uid="uid://drjmxo4dwbnri" path="res://assets/sprites/laufband_gerade_gelb_state_01.png" id="1_0d8kn"]
+[ext_resource type="Texture2D" uid="uid://b0cvd30ef6pw" path="res://assets/sprites/laufband_gerade_gelb_state_02.png" id="2_1dl5v"]
+[ext_resource type="Texture2D" uid="uid://0xpy6rnrpvqp" path="res://assets/sprites/laufband_gerade_gelb_state_03.png" id="3_uknho"]
+[ext_resource type="Texture2D" uid="uid://dkmm4floeck4b" path="res://assets/sprites/laufband_gerade_gelb_state_04.png" id="4_ced6m"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xn4xx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_0d8kn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_1dl5v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_uknho")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ced6m")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Belt" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_xn4xx")
+autoplay = "default"
+frame_progress = 0.987683

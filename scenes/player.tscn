@@ -1,0 +1,81 @@
+[gd_scene load_steps=10 format=3 uid="uid://b18iwfskgx8ub"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_7p7au"]
+[ext_resource type="Texture2D" uid="uid://diqrpxmy0wdc1" path="res://assets/sprites/knight.png" id="2_0w22u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cijng"]
+atlas = ExtResource("2_0w22u")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tcbu6"]
+atlas = ExtResource("2_0w22u")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6hgop"]
+atlas = ExtResource("2_0w22u")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3v5m0"]
+atlas = ExtResource("2_0w22u")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_142is"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cijng")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tcbu6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6hgop")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3v5m0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7sucb"]
+radius = 64.0312
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ms7m1"]
+size = Vector2(18, 36)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_7p7au")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(5.835, -76.01)
+scale = Vector2(11.695, 11.695)
+sprite_frames = SubResource("SpriteFrames_142is")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_7sucb")
+
+[node name="HandleArea" type="Area2D" parent="."]
+position = Vector2(80, 0)
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HandleArea"]
+shape = SubResource("RectangleShape2D_ms7m1")
+
+[node name="Indicator" type="ColorRect" parent="."]
+visible = false
+offset_left = 13.0
+offset_top = 14.0
+offset_right = 53.0
+offset_bottom = 54.0
+color = Color(1, 0, 0, 1)
+
+[node name="CarryLocation" type="Node2D" parent="."]
+position = Vector2(32, -32)
+
+[connection signal="body_entered" from="HandleArea" to="." method="_on_handle_area_body_entered"]
+[connection signal="body_exited" from="HandleArea" to="." method="_on_handle_area_body_exited"]
