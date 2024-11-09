@@ -5,17 +5,14 @@ class_name Player
 var speed = 400
 var health = 100
 
+@export var gamepad_id = 0
+
 @onready var map: Map = get_node("%Map")
 @onready var indicator: ColorRect = get_node("Indicator")
 @onready var carry_location: Node2D = get_node("CarryLocation")
 
 var handle_object: Node2D = null
 var carry_object: Node2D = null
-
-
-func get_input():
-	var input_direction = Input.get_vector("left", "right", "up", "down")
-	velocity = input_direction * speed
 
 
 func pick_up(object: Node2D):
@@ -34,7 +31,7 @@ func drop(object: Node2D):
 	object.get_parent().remove_child(object)
 	get_tree().get_root().add_child(object)
 
-	var direction = Vector2i(Vector2.RIGHT.rotated(global_rotation))
+	var direction = Vector2i(Vector2.RIGHT.rotated(global_rotation).round())
 	var tilemap_pos = map.global_to_tilemap(global_position)
 	object.global_position = map.tilemap_to_global(tilemap_pos + direction)
 
@@ -44,23 +41,27 @@ func drop(object: Node2D):
 		object.toggle_collision(true)
 
 
+func _input(event):
+	if event.device == gamepad_id:
+		var input_direction = Input.get_vector("left", "right", "up", "down")
+		velocity = input_direction * speed
+
+		if event.is_action_pressed('use'):
+			if !carry_object and handle_object:
+				pick_up(handle_object)
+			elif carry_object:
+				drop(carry_object)
+
+
 func _process(_delta):
-	if(health <= 0):
+	if (health <= 0):
 		print('player died')
 	
-	if(!is_instance_valid(carry_object)):
+	if (!is_instance_valid(carry_object)):
 		carry_object = null
-	
-	if Input.is_action_just_pressed('use'):
-		print('use')
-		if !carry_object and handle_object:
-			pick_up(handle_object)
-		elif carry_object:
-			drop(carry_object)
 
 
 func _physics_process(_delta):
-	get_input()
 	look_at(global_transform.origin + velocity)
 	move_and_slide()
 

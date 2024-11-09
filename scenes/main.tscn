@@ -133,9 +133,14 @@ position = Vector2(768, -320)
 [node name="Belt15" parent="Map/Belts" instance=ExtResource("5_d42kx")]
 position = Vector2(896, -320)
 
-[node name="Player" parent="." instance=ExtResource("2_w8s8l")]
-z_index = 100
+[node name="Players" type="Node2D" parent="."]
+
+[node name="Player" parent="Players" instance=ExtResource("2_w8s8l")]
 position = Vector2(-1286, -576)
+
+[node name="Player2" parent="Players" instance=ExtResource("2_w8s8l")]
+position = Vector2(1216, -465)
+gamepad_id = 1
 
 [node name="Bomb" parent="." instance=ExtResource("5_mbjfg")]
 position = Vector2(-1182, -79)
