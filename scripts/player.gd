@@ -30,10 +30,6 @@ func pick_up(object: Node2D):
 	carry_location.add_child(object)
 	carry_object = handle_object
 
-func reduce_health(damage: int):
-	health -= damage
-	print('reduce health ', health)
-	health_bar.update_health(health)
 
 func drop(object: Node2D):
 	carry_object = null
@@ -50,6 +46,12 @@ func drop(object: Node2D):
 		object.toggle_collision(true)
 
 
+func reduce_health(damage: int):
+	health -= damage
+	print('reduce health ', health)
+	health_bar.update_health(health)
+
+
 func set_sprite_state():
 	sprite_carry.visible = !!carry_object
 	sprite_default.visible = !carry_object
@@ -60,22 +62,21 @@ func set_sprite_state():
 		sprite_default.flip_h = rot < 180
 
 
-func _input(event):
-	if event.device == gamepad_id:
-		var input_direction = Input.get_vector("left", "right", "up", "down")
-		velocity = input_direction * speed
-		if input_direction.length_squared() > 0:
-			last_move_dir = input_direction.normalized()
-
-		if event.is_action_pressed('use'):
-			if !carry_object and handle_object:
-				pick_up(handle_object)
-			elif carry_object:
-				drop(carry_object)
+func get_input():
+	var left = "p" + str(gamepad_id) + "_move_left"
+	var right = "p" + str(gamepad_id) + "_move_right"
+	var up = "p" + str(gamepad_id) + "_move_up"
+	var down = "p" + str(gamepad_id) + "_move_down"
+	var input_direction = Input.get_vector(left, right, up, down)
+	velocity = input_direction * speed
 
 
 func _process(_delta):
-	rotation_node.look_at(global_transform.origin + last_move_dir)
+	if Input.is_action_just_pressed("p" + str(gamepad_id) + '_action_use'):
+		if !carry_object and handle_object:
+			pick_up(handle_object)
+		elif carry_object:
+			drop(carry_object)
 
 	if (health <= 0):
 		print('player died')
@@ -87,6 +88,8 @@ func _process(_delta):
 
 
 func _physics_process(_delta):
+	get_input()
+	rotation_node.look_at(global_transform.origin + velocity)
 	move_and_slide()
 
 
