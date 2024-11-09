@@ -275,7 +275,6 @@ gamepad_id = 1
 [node name="Items" type="Node2D" parent="."]
 
 [node name="BombSpawner" parent="." instance=ExtResource("7_p2hvq")]
-bombs = Array[PackedScene]([ExtResource("5_mbjfg")])
 
 [node name="BeltEnd" parent="." instance=ExtResource("10_n4pyp")]
 position = Vector2(1024, -192)

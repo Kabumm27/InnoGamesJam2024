@@ -6,6 +6,10 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_sre7l"]
 radius = 56.0089
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_y40d4"]
+atlas = ExtResource("2_e08hp")
+region = Rect2(256, 0, 128, 128)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_2hnni"]
 atlas = ExtResource("2_e08hp")
 region = Rect2(0, 0, 128, 128)
@@ -28,10 +32,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_y40d4"]
-atlas = ExtResource("2_e08hp")
-region = Rect2(256, 0, 128, 128)
-
 [node name="Bomb" type="CharacterBody2D"]
 z_index = 15
 collision_layer = 17
@@ -47,12 +47,12 @@ one_shot = true
 
 [node name="animations" type="Node2D" parent="."]
 
+[node name="bomb" type="Sprite2D" parent="animations"]
+texture = SubResource("AtlasTexture_y40d4")
+
 [node name="activated_animation" type="AnimatedSprite2D" parent="animations"]
 visible = false
 sprite_frames = SubResource("SpriteFrames_kyjba")
 frame_progress = 0.837586
-
-[node name="bomb" type="Sprite2D" parent="animations"]
-texture = SubResource("AtlasTexture_y40d4")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

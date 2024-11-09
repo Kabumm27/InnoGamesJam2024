@@ -15,6 +15,7 @@ enum PATTERNS {CIRCLE = 0, CROSS = 1, PLUS = 2, VERTICAL = 3}
 
 func toggle_collision(state: bool):
 	collision_shape.disabled = !state
+	bomb.hide()
 	activated_animation.visible = true
 	activated_animation.play() # start timer on first "collision" (pick up)
 	timer.start()
@@ -25,7 +26,6 @@ func _on_timer_timeout():
 
 	activated_animation.stop()
 	activated_animation.hide()
-	bomb.hide()
 	var tiles = get_shape(PATTERNS.VERTICAL, tilemap_pos) #map.get_cells(tilemap_pos)
 	tiles.append(tilemap_pos)
 	var explosions = []

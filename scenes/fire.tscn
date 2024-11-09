@@ -1,0 +1,93 @@
+[gd_scene load_steps=13 format=3 uid="uid://dpsopoxdvkmge"]
+
+[ext_resource type="Script" path="res://scripts/fire.gd" id="1_8k2re"]
+[ext_resource type="Texture2D" uid="uid://dtw6mjwskia8j" path="res://assets/sprites/bomben_128x128.png" id="1_45u3q"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6tged"]
+atlas = ExtResource("1_45u3q")
+region = Rect2(0, 384, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_04q8t"]
+atlas = ExtResource("1_45u3q")
+region = Rect2(128, 384, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fmrwk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6tged")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_04q8t")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0v16m"]
+atlas = ExtResource("1_45u3q")
+region = Rect2(256, 384, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_evd7e"]
+atlas = ExtResource("1_45u3q")
+region = Rect2(384, 384, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vplg6"]
+atlas = ExtResource("1_45u3q")
+region = Rect2(512, 384, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wlweh"]
+atlas = ExtResource("1_45u3q")
+region = Rect2(640, 384, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1mog"]
+atlas = ExtResource("1_45u3q")
+region = Rect2(768, 384, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jlhci"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0v16m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_evd7e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vplg6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wlweh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1mog")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y0nsy"]
+size = Vector2(128, 128)
+
+[node name="fire" type="Node2D"]
+script = ExtResource("1_8k2re")
+
+[node name="fire" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_fmrwk")
+
+[node name="fire_ending" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_jlhci")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_y0nsy")
+
+[node name="burning_time" type="Timer" parent="."]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="burning_time" to="." method="_on_burning_time_timeout"]

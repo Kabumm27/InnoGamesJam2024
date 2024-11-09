@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://cx1hqhorn20kj"]
+
+[ext_resource type="Texture2D" uid="uid://dtw6mjwskia8j" path="res://assets/sprites/bomben_128x128.png" id="1_udfyv"]
+[ext_resource type="Script" path="res://scripts/molotow.gd" id="1_vn5jp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mtb25"]
+radius = 56.01
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_802xa"]
+atlas = ExtResource("1_udfyv")
+region = Rect2(256, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gbpq0"]
+atlas = ExtResource("1_udfyv")
+region = Rect2(0, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sv3bv"]
+atlas = ExtResource("1_udfyv")
+region = Rect2(128, 256, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cfw0o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gbpq0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sv3bv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="molotow" type="CharacterBody2D"]
+light_mask = 17
+visibility_layer = 17
+z_index = 15
+collision_layer = 17
+collision_mask = 17
+script = ExtResource("1_vn5jp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_mtb25")
+
+[node name="molotow" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_802xa")
+
+[node name="molotow_activated" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = SubResource("SpriteFrames_cfw0o")
+frame_progress = 0.41011
