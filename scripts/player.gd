@@ -1,8 +1,10 @@
 extends CharacterBody2D
+class_name Player
 
 # @export 
 var speed = 400
 
+@onready var map: Map = get_node("%Map")
 @onready var indicator: ColorRect = get_node("Indicator")
 @onready var carry_location: Node2D = get_node("CarryLocation")
 
@@ -28,8 +30,10 @@ func drop(object: Node2D):
 	carry_object = null
 	object.get_parent().remove_child(object)
 	get_tree().get_root().add_child(object)
-	var direction = Vector2.RIGHT.rotated(global_rotation)
-	object.global_position = global_position + (128 * direction)
+
+	var direction = Vector2i(Vector2.RIGHT.rotated(global_rotation))
+	var tilemap_pos = map.global_to_tilemap(global_position)
+	object.global_position = map.tilemap_to_global(tilemap_pos + direction)
 
 	await get_tree().create_timer(0.03).timeout
 

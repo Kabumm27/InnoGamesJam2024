@@ -1,4 +1,2 @@
 extends Node
-
-
-#Insert custom functions here
+class_name GameManager
