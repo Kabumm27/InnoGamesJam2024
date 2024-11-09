@@ -14,6 +14,8 @@ func _on_body_entered(body: Node2D):
 				
 			var beltPathFollowInstance = BELT_PATH_FOLLOW.instantiate()
 			
+			beltPathFollowInstance._end_reached.connect(enable_collision.bind(item))
+			
 			item.position = Vector2.ZERO
 			belt_path.add_child(beltPathFollowInstance)
 			
@@ -27,3 +29,7 @@ func _on_body_entered(body: Node2D):
 			#print(belt_path)
 		else:
 			print("No item")
+
+func enable_collision(body: Node2D):
+	if body.has_method("toggle_collision"):
+		body.toggle_collision(true)

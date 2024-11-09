@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://dv03yk1mjgcdw"]
+[gd_scene load_steps=3 format=3 uid="uid://ceg5rf2benfuk"]
 
 [ext_resource type="Script" path="res://scripts/belt_pickup_zone.gd" id="1_fdc5d"]
 

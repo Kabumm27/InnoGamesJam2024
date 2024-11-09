@@ -7,6 +7,7 @@ extends Node2D
 func _ready() -> void:
 	fire.play()
 	burning_time.start()
+	fire_ending.hide()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if(body.has_method('reduce_health')):
@@ -16,7 +17,10 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 func _on_burning_time_timeout() -> void:
 	fire.stop()
 	fire.hide()
+	fire_ending.visible = 1
 	fire_ending.play()
 	
 func fire_out() -> void:
 	await fire_ending.animation_finished
+	fire_ending.stop()
+	fire_ending.hide()

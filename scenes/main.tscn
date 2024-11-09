@@ -191,6 +191,11 @@ position = Vector2(1024, -576)
 
 [node name="Belt_Right2" type="Node2D" parent="Map/Belts"]
 
+[node name="belt_end_zone" parent="Map/Belts/Belt1" instance=ExtResource("7_ii7ug")]
+position = Vector2(1036, -580)
+collision_layer = 8209
+collision_mask = 8209
+
 [node name="BeltPath" type="Path2D" parent="Map/Belts/Belt_Right2"]
 z_index = 16
 curve = SubResource("Curve2D_qs4vs")

@@ -5,6 +5,10 @@ extends PathFollow2D
 @export var duration :float = 10.0
 @export var speed :float = 400.0
 
+var hasSend = false
+
+signal _end_reached
+
 func _ready():
 	pass
 	##print(belt_path_follow)
@@ -17,3 +21,7 @@ func _ready():
 
 func _physics_process(delta):
 	belt_path_follow.set_progress(belt_path_follow.get_progress() + speed * delta)
+	if belt_path_follow.progress_ratio == 1 && !hasSend:
+		_end_reached.emit()
+		hasSend = true
+		

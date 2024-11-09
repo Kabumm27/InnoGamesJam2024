@@ -58,7 +58,7 @@ func get_shape(pattern: PATTERNS, tile_pos: Vector2i):
 			return circle
 		PATTERNS.PLUS:
 			var plus = []
-			for i in range(-2, 2):
+			for i in range(-2, 3):
 				var e = tile_pos
 				e.x += i
 				plus.append(e)
@@ -68,7 +68,7 @@ func get_shape(pattern: PATTERNS, tile_pos: Vector2i):
 			return plus
 		PATTERNS.VERTICAL:
 			var vertical = []
-			for i in range(-5, 5):
+			for i in range(-5, 6):
 				var e = tile_pos
 				e.y += i
 				vertical.append(e)
