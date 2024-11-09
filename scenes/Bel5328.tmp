@@ -6,3 +6,4 @@
 rotates = false
 loop = false
 script = ExtResource("1_n02rl")
+duration = null

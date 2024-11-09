@@ -2,36 +2,36 @@
 
 [ext_resource type="Texture2D" uid="uid://d0r3ba5xmup2w" path="res://assets/sprites/laufbaender_128x128.png" id="1_ullyb"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_q7rp7"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_7e3yp"]
 atlas = ExtResource("1_ullyb")
-region = Rect2(0, 128, 128, 128)
+region = Rect2(512, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_moelu"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_6m7r0"]
 atlas = ExtResource("1_ullyb")
-region = Rect2(128, 128, 128, 128)
+region = Rect2(640, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_37bwx"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_x02mb"]
 atlas = ExtResource("1_ullyb")
-region = Rect2(256, 128, 128, 128)
+region = Rect2(768, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nvdyt"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_qq825"]
 atlas = ExtResource("1_ullyb")
-region = Rect2(384, 128, 128, 128)
+region = Rect2(896, 0, 128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wg000"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_q7rp7")
+"texture": SubResource("AtlasTexture_7e3yp")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_moelu")
+"texture": SubResource("AtlasTexture_6m7r0")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_37bwx")
+"texture": SubResource("AtlasTexture_x02mb")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nvdyt")
+"texture": SubResource("AtlasTexture_qq825")
 }],
 "loop": true,
 "name": &"default",
@@ -43,4 +43,4 @@ animations = [{
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_wg000")
 autoplay = "default"
-frame_progress = 0.815413
+frame_progress = 0.836212

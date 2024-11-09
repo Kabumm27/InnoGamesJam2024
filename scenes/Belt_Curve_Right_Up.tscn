@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://cjlj6rfcp3m4d"]
+
+[ext_resource type="Texture2D" uid="uid://d0r3ba5xmup2w" path="res://assets/sprites/laufbaender_128x128.png" id="1_awn3t"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2d376"]
+atlas = ExtResource("1_awn3t")
+region = Rect2(512, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qg6v8"]
+atlas = ExtResource("1_awn3t")
+region = Rect2(640, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ainw4"]
+atlas = ExtResource("1_awn3t")
+region = Rect2(768, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_engdr"]
+atlas = ExtResource("1_awn3t")
+region = Rect2(896, 128, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wg000"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2d376")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qg6v8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ainw4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_engdr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="BeltCurve" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_wg000")
+autoplay = "default"
+frame_progress = 0.628314

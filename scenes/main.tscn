@@ -1,16 +1,18 @@
-[gd_scene load_steps=18 format=4 uid="uid://dnxh1bnwsohr"]
+[gd_scene load_steps=22 format=4 uid="uid://dnxh1bnwsohr"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_6hbi4"]
 [ext_resource type="Script" path="res://scripts/map.gd" id="2_t8deg"]
 [ext_resource type="PackedScene" uid="uid://b18iwfskgx8ub" path="res://scenes/player.tscn" id="2_w8s8l"]
-[ext_resource type="PackedScene" uid="uid://1vis5lncdscc" path="res://scenes/Belt_Curve_Left.tscn" id="4_51kn7"]
+[ext_resource type="PackedScene" uid="uid://1vis5lncdscc" path="res://scenes/Belt_Curve__Right_Down.tscn" id="4_51kn7"]
 [ext_resource type="TileSet" uid="uid://cvlrd54vclrv1" path="res://assets/sprites/background.tres" id="4_wy3k2"]
 [ext_resource type="PackedScene" uid="uid://dwpbpntc3kkgh" path="res://scenes/belt.tscn" id="5_d42kx"]
 [ext_resource type="PackedScene" uid="uid://tmgj130g0t8g" path="res://scenes/bomb.tscn" id="5_mbjfg"]
-[ext_resource type="PackedScene" uid="uid://dj16kh5p4bqut" path="res://scenes/Belt Curve_Right.tscn" id="5_oicp3"]
+[ext_resource type="PackedScene" uid="uid://dj16kh5p4bqut" path="res://scenes/Belt_Curve_Up_Right.tscn" id="5_oicp3"]
 [ext_resource type="PackedScene" uid="uid://dv03yk1mjgcdw" path="res://scenes/BeltPickupZone.tscn" id="6_hrx5p"]
 [ext_resource type="PackedScene" path="res://scenes/bomb_spawner.tscn" id="7_p2hvq"]
 [ext_resource type="PackedScene" uid="uid://ducyrvq6hmgri" path="res://scenes/BeltEnd.tscn" id="10_n4pyp"]
+[ext_resource type="PackedScene" uid="uid://be067u7l8wmit" path="res://scenes/Belt_Curve__Down_Right.tscn" id="11_5l40s"]
+[ext_resource type="PackedScene" uid="uid://cjlj6rfcp3m4d" path="res://scenes/Belt_Curve_Right_Up.tscn" id="12_fn5l2"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lbhqj"]
 distance = -773.0
@@ -30,11 +32,23 @@ distance = 255.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xt1ex"]
 size = Vector2(128, 1536)
 
+[sub_resource type="Curve2D" id="Curve2D_v56ia"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -896, -576, 0, 0, 0, 0, 1024, -576)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_qs4vs"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -896, -320, 0, 0, 0, 0, -896, -320, -38, -10, 38, 10, -256, -320, -59.755, 0.652983, 59.755, -0.652983, -256, -192, 0, 0, 0, 0, 1024, -192)
+}
+point_count = 5
+
 [sub_resource type="Curve2D" id="Curve2D_u1v2p"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -896, -576, 0, 0, 0, 0, -896, -576, 0, 0, 0, 0, -768, -576, 0, 0, 0, 0, -640, -576, 0, 0, 0, 0, -576, -640, 10.1022, -181.839, -10.1022, 181.839, -512, -640, 0, 0, 0, 0, -384, -576, 0, 0, 0, 0, -256, -576, 0, 0, 0, 0, -128, -576, 0, 0, 0, 0, 0, -576, 0, 0, 0, 0, 128, -576, 0, 0, 0, 0, 256, -576, 0, 0, 0, 0, 384, -576, 0, 0, 0, 0, 512, -576, 0, 0, 0, 0, 640, -576, 0, 0, 0, 0, 768, -576, 0, 0, 0, 0, 896, -576, 0, 0, 0, 0, 1024, -576)
+"points": PackedVector2Array(0, 0, 0, 0, -896, -640, 0, 0, 0, 0, -512, -640, 0, 0, 0, 0, -512, -384, 0, 0, 0, 0, -256, -384, 0, 0, 0, 0, -256, -640, 0, 0, 0, 0, 1024, -640)
 }
-point_count = 18
+point_count = 6
 
 [node name="World" type="Node2D"]
 
@@ -143,15 +157,11 @@ position = Vector2(768, -192)
 [node name="BeltBlock14" parent="Map/Belts/Belt1" instance=ExtResource("5_d42kx")]
 position = Vector2(896, -192)
 
-[node name="BeltCurveBlock" parent="Map/Belts/Belt1" instance=ExtResource("4_51kn7")]
-position = Vector2(-896, 704)
+[node name="BeltPath" type="Path2D" parent="Map/Belts/Belt1"]
+curve = SubResource("Curve2D_v56ia")
 
-[node name="BeltCurveBlock2" parent="Map/Belts/Belt1" instance=ExtResource("4_51kn7")]
-position = Vector2(-256, -192)
-rotation = 1.57079
-
-[node name="BeltCurveBlock3" parent="Map/Belts/Belt1" instance=ExtResource("5_oicp3")]
-position = Vector2(-256, -320)
+[node name="BeltPickupZone" parent="Map/Belts/Belt1" instance=ExtResource("6_hrx5p")]
+position = Vector2(-896, -576)
 
 [node name="Belt2" type="Node2D" parent="Map/Belts"]
 
@@ -201,12 +211,57 @@ position = Vector2(768, -576)
 position = Vector2(896, -576)
 
 [node name="BeltPath" type="Path2D" parent="Map/Belts/Belt2"]
-z_index = 10
-position = Vector2(0, 896)
-curve = SubResource("Curve2D_u1v2p")
+z_index = 16
+curve = SubResource("Curve2D_qs4vs")
 
 [node name="BeltPickupZone" parent="Map/Belts/Belt2" instance=ExtResource("6_hrx5p")]
+position = Vector2(-896, -320)
+
+[node name="Belt3" type="Node2D" parent="Map/Belts"]
+
+[node name="BeltPickupZone" parent="Map/Belts/Belt3" instance=ExtResource("6_hrx5p")]
 position = Vector2(-896, 320)
+
+[node name="BeltPath" type="Path2D" parent="Map/Belts/Belt3"]
+z_index = 10
+position = Vector2(0, 960)
+curve = SubResource("Curve2D_u1v2p")
+
+[node name="Belt" parent="Map/Belts/Belt3" instance=ExtResource("5_d42kx")]
+position = Vector2(-896, 320)
+
+[node name="Belt2" parent="Map/Belts/Belt3" instance=ExtResource("5_d42kx")]
+position = Vector2(-768, 320)
+
+[node name="Belt3" parent="Map/Belts/Belt3" instance=ExtResource("5_d42kx")]
+position = Vector2(-640, 320)
+
+[node name="Belt12" parent="Map/Belts/Belt3" instance=ExtResource("5_d42kx")]
+position = Vector2(-128, 320)
+
+[node name="Belt11" parent="Map/Belts/Belt3" instance=ExtResource("5_d42kx")]
+position = Vector2(0, 320)
+
+[node name="Belt10" parent="Map/Belts/Belt3" instance=ExtResource("5_d42kx")]
+position = Vector2(128, 320)
+
+[node name="Belt4" parent="Map/Belts/Belt3" instance=ExtResource("5_d42kx")]
+position = Vector2(256, 320)
+
+[node name="Belt5" parent="Map/Belts/Belt3" instance=ExtResource("5_d42kx")]
+position = Vector2(384, 320)
+
+[node name="Belt6" parent="Map/Belts/Belt3" instance=ExtResource("5_d42kx")]
+position = Vector2(512, 320)
+
+[node name="Belt7" parent="Map/Belts/Belt3" instance=ExtResource("5_d42kx")]
+position = Vector2(640, 320)
+
+[node name="Belt8" parent="Map/Belts/Belt3" instance=ExtResource("5_d42kx")]
+position = Vector2(768, 320)
+
+[node name="Belt9" parent="Map/Belts/Belt3" instance=ExtResource("5_d42kx")]
+position = Vector2(896, 320)
 
 [node name="Players" type="Node2D" parent="."]
 
@@ -224,3 +279,38 @@ bombs = Array[PackedScene]([ExtResource("5_mbjfg")])
 
 [node name="BeltEnd" parent="." instance=ExtResource("10_n4pyp")]
 position = Vector2(1024, -192)
+
+[node name="Belt" parent="." instance=ExtResource("5_d42kx")]
+position = Vector2(-512, 448)
+rotation = 1.5708
+
+[node name="Belt2" parent="." instance=ExtResource("5_d42kx")]
+position = Vector2(-384, 576)
+
+[node name="Belt3" parent="." instance=ExtResource("5_d42kx")]
+position = Vector2(-256, 448)
+rotation = 4.71239
+
+[node name="BeltCurve" parent="." instance=ExtResource("4_51kn7")]
+position = Vector2(-512, 320)
+
+[node name="BeltCurve4" parent="." instance=ExtResource("11_5l40s")]
+position = Vector2(-512, 576)
+
+[node name="BeltCurve5" parent="." instance=ExtResource("12_fn5l2")]
+position = Vector2(-256, 576)
+
+[node name="BeltCurve6" parent="." instance=ExtResource("5_oicp3")]
+position = Vector2(-256, 320)
+
+[node name="BeltCurve2" parent="." instance=ExtResource("4_51kn7")]
+position = Vector2(-256, -320)
+
+[node name="BeltCurve3" parent="." instance=ExtResource("11_5l40s")]
+position = Vector2(-256, -192)
+
+[node name="BeltEnd2" parent="." instance=ExtResource("10_n4pyp")]
+position = Vector2(1024, 320)
+
+[node name="BeltEnd3" parent="." instance=ExtResource("10_n4pyp")]
+position = Vector2(1024, -576)
