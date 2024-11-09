@@ -1,8 +1,9 @@
 extends CharacterBody2D
 
+@export var map: Map
+
 @onready var collision_shape: CollisionShape2D = get_node("CollisionShape2D")
 @onready var timer: Timer = $Timer
-@onready var map: Map = get_node("%Map")
 
 # animations
 @onready var bomb: Sprite2D = $animations/bomb
@@ -14,11 +15,11 @@ const EXPLOSION = preload("res://scenes/explosion.tscn")
 func toggle_collision(state: bool):
 	collision_shape.disabled = !state
 	activated_animation.visible = true
-	activated_animation.play() #start timer on first "collision" (pick up)
+	activated_animation.play() # start timer on first "collision" (pick up)
 	timer.start()
 
 func _on_timer_timeout():
-	var direction = Vector2i(Vector2.RIGHT.rotated(global_rotation).round())
+	# var direction = Vector2i(Vector2.RIGHT.rotated(global_rotation).round())
 	var tilemap_pos = map.global_to_tilemap(global_position)
 
 	activated_animation.stop()
@@ -36,4 +37,3 @@ func _on_timer_timeout():
 
 	print('timeout')
 	#queue_free()
-	

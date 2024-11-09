@@ -1,7 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://b18iwfskgx8ub"]
+[gd_scene load_steps=12 format=3 uid="uid://b18iwfskgx8ub"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_7p7au"]
 [ext_resource type="Texture2D" uid="uid://diqrpxmy0wdc1" path="res://assets/sprites/knight.png" id="2_0w22u"]
+[ext_resource type="Texture2D" uid="uid://7frnmtx0jr37" path="res://assets/sprites/character01_state_01.png" id="3_lxise"]
+[ext_resource type="Texture2D" uid="uid://bjil8bu42ykk0" path="res://assets/sprites/character01_state_02.png" id="4_anwi2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7sucb"]
+radius = 64.0312
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cijng"]
 atlas = ExtResource("2_0w22u")
@@ -39,9 +44,6 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_7sucb"]
-radius = 64.0312
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ms7m1"]
 size = Vector2(18, 36)
 
@@ -50,22 +52,34 @@ z_index = 100
 collision_layer = 513
 script = ExtResource("1_7p7au")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_7sucb")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
 texture_filter = 1
 position = Vector2(5.835, -76.01)
 scale = Vector2(11.695, 11.695)
 sprite_frames = SubResource("SpriteFrames_142is")
 autoplay = "default"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_7sucb")
+[node name="CharacterDefault" type="Sprite2D" parent="."]
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("3_lxise")
 
-[node name="HandleArea" type="Area2D" parent="."]
+[node name="CharacterCarry" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("4_anwi2")
+
+[node name="RotationNode" type="Node2D" parent="."]
+
+[node name="HandleArea" type="Area2D" parent="RotationNode"]
 position = Vector2(80, 0)
 collision_layer = 512
 collision_mask = 528
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HandleArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RotationNode/HandleArea"]
 shape = SubResource("RectangleShape2D_ms7m1")
 
 [node name="Indicator" type="ColorRect" parent="."]
@@ -79,5 +93,5 @@ color = Color(1, 0, 0, 1)
 [node name="CarryLocation" type="Node2D" parent="."]
 position = Vector2(32, -32)
 
-[connection signal="body_entered" from="HandleArea" to="." method="_on_handle_area_body_entered"]
-[connection signal="body_exited" from="HandleArea" to="." method="_on_handle_area_body_exited"]
+[connection signal="body_entered" from="RotationNode/HandleArea" to="." method="_on_handle_area_body_entered"]
+[connection signal="body_exited" from="RotationNode/HandleArea" to="." method="_on_handle_area_body_exited"]

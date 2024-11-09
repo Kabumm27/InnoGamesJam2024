@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://tspbiuqx0lyq"]
+
+[ext_resource type="Script" path="res://scripts/bomb_spawner.gd" id="1_cjuny"]
+[ext_resource type="Texture2D" uid="uid://ne2mq1lvnt4" path="res://assets/sprites/Raw/bg_tile_placeholder_red.png" id="2_i7gpx"]
+
+[node name="BombSpawner" type="Node2D"]
+position = Vector2(-1408, -320)
+scale = Vector2(1, 1.00487)
+script = ExtResource("1_cjuny")
+bombs = Array[PackedScene]([null])
+
+[node name="BgTilePlaceholderRed" type="Sprite2D" parent="."]
+texture = ExtResource("2_i7gpx")
+
+[node name="SpawnTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

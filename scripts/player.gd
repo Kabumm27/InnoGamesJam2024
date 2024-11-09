@@ -7,9 +7,13 @@ var health = 100
 
 @export var gamepad_id = 0
 
-@onready var map: Map = get_node("%Map")
-@onready var indicator: ColorRect = get_node("Indicator")
-@onready var carry_location: Node2D = get_node("CarryLocation")
+@onready var map: Map = $%Map
+@onready var indicator: ColorRect = $Indicator
+@onready var carry_location: Node2D = $CarryLocation
+@onready var rotation_node: Node2D = $RotationNode
+
+@onready var sprite_default: Sprite2D = $CharacterDefault
+@onready var sprite_carry: Sprite2D = $CharacterCarry
 
 var handle_object: Node2D = null
 var carry_object: Node2D = null
@@ -41,6 +45,16 @@ func drop(object: Node2D):
 		object.toggle_collision(true)
 
 
+func set_sprite_state():
+	sprite_carry.visible = !!carry_object
+	sprite_default.visible = !carry_object
+
+	var rot = roundi(rotation_node.rotation_degrees + 90) % 360
+	if rot % 180 != 0:
+		sprite_carry.flip_h = rot < 180
+		sprite_default.flip_h = rot < 180
+
+
 func _input(event):
 	if event.device == gamepad_id:
 		var input_direction = Input.get_vector("left", "right", "up", "down")
@@ -60,9 +74,11 @@ func _process(_delta):
 	if (!is_instance_valid(carry_object)):
 		carry_object = null
 
+	set_sprite_state()
+
 
 func _physics_process(_delta):
-	look_at(global_transform.origin + velocity)
+	rotation_node.look_at(global_transform.origin + velocity)
 	move_and_slide()
 
 
