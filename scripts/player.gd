@@ -3,7 +3,7 @@ class_name Player
 
 # @export 
 var speed = 400
-var health = 100
+var health = 3
 
 @export var gamepad_id = 0
 
@@ -29,6 +29,7 @@ func pick_up(object: Node2D):
 
 func reduce_health(damage: int):
 	health -= damage
+	print('reduce health ', health)
 
 func drop(object: Node2D):
 	carry_object = null

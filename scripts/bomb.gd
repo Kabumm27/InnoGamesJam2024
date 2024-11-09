@@ -27,13 +27,21 @@ func _on_timer_timeout():
 	bomb.hide()
 	var tiles = map.get_cells(tilemap_pos)
 	tiles.append(tilemap_pos)
+	var explosions = []
 	for tile in tiles:
 		var expl = EXPLOSION.instantiate()
+		explosions.append(expl)
 		self.add_child(expl)
 		expl.global_position = map.tilemap_to_global(tile)
 		print('tile explosion ', tile, tilemap_pos)
 	
-	#await expl.animation_finished()
+	await explosions[0].animation_finished()
 
 	print('timeout')
-	#queue_free()
+	queue_free()
+	
+func get_shape(shape: String, tile_pos: Vector2i):
+	match(shape):
+		'circle':
+			var circle = [tile_pos, tile_pos]
+			return circle

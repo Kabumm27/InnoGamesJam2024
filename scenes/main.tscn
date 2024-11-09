@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://tmgj130g0t8g" path="res://scenes/bomb.tscn" id="5_mbjfg"]
 [ext_resource type="PackedScene" path="res://scenes/Belt Curve_Right.tscn" id="5_oicp3"]
 [ext_resource type="PackedScene" path="res://scenes/BeltPickupZone.tscn" id="6_hrx5p"]
-[ext_resource type="PackedScene" uid="uid://tspbiuqx0lyq" path="res://scenes/bomb_spawner.tscn" id="7_p2hvq"]
+[ext_resource type="PackedScene" path="res://scenes/bomb_spawner.tscn" id="7_p2hvq"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lbhqj"]
 distance = -773.0
