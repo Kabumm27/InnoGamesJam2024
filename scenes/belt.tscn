@@ -1,9 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://dwpbpntc3kkgh"]
+[gd_scene load_steps=8 format=3 uid="uid://ceo2ai3ivd8vj"]
 
 [ext_resource type="Texture2D" uid="uid://drjmxo4dwbnri" path="res://assets/sprites/laufband_gerade_gelb_state_01.png" id="1_0d8kn"]
+[ext_resource type="Shader" path="res://scenes/shader/recolor_belt.gdshader" id="1_marj0"]
 [ext_resource type="Texture2D" uid="uid://b0cvd30ef6pw" path="res://assets/sprites/laufband_gerade_gelb_state_02.png" id="2_1dl5v"]
 [ext_resource type="Texture2D" uid="uid://0xpy6rnrpvqp" path="res://assets/sprites/laufband_gerade_gelb_state_03.png" id="3_uknho"]
 [ext_resource type="Texture2D" uid="uid://dkmm4floeck4b" path="res://assets/sprites/laufband_gerade_gelb_state_04.png" id="4_ced6m"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lcidt"]
+shader = ExtResource("1_marj0")
+shader_parameter/color = Color(0.764706, 0.627451, 0.168627, 1)
+shader_parameter/replace_color = Color(0.764706, 0.627451, 0.168627, 1)
+shader_parameter/color_threshold = 0.1
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xn4xx"]
 animations = [{
@@ -28,6 +35,7 @@ animations = [{
 [node name="Belt" type="Node2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_lcidt")
 sprite_frames = SubResource("SpriteFrames_xn4xx")
 autoplay = "default"
 frame_progress = 0.987683
