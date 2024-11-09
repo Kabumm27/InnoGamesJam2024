@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://0xpy6rnrpvqp"
-path="res://.godot/imported/laufband_gerade_gelb_state_03.png-b50a7e92351398ba4ba10381b9937dd8.ctex"
+uid="uid://drjmxo4dwbnri"
+path="res://.godot/imported/laufband_gerade_gelb_state_01.png-a433feebac58d3e275c07f0554a86cd5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/laufband_gerade_gelb_state_03.png"
-dest_files=["res://.godot/imported/laufband_gerade_gelb_state_03.png-b50a7e92351398ba4ba10381b9937dd8.ctex"]
+source_file="res://assets/sprites/Raw/laufband_gerade_gelb_state_01.png"
+dest_files=["res://.godot/imported/laufband_gerade_gelb_state_01.png-a433feebac58d3e275c07f0554a86cd5.ctex"]
 
 [params]
 

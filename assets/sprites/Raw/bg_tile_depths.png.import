@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bkyt7njj64sjv"
-path="res://.godot/imported/bg_tile_01.png-1227ee570231d7c0cae68ed162bb718e.ctex"
+uid="uid://g80d1n5s7a15"
+path="res://.godot/imported/bg_tile_depths.png-a49080952cfcbef6344146773115a4e6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/bg_tile_01.png"
-dest_files=["res://.godot/imported/bg_tile_01.png-1227ee570231d7c0cae68ed162bb718e.ctex"]
+source_file="res://assets/sprites/Raw/bg_tile_depths.png"
+dest_files=["res://.godot/imported/bg_tile_depths.png-a49080952cfcbef6344146773115a4e6.ctex"]
 
 [params]
 

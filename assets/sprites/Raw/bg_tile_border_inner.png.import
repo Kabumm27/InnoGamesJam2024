@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5cshi4db11a7"
-path="res://.godot/imported/bg_pipe.png-f4a96691b169a567aba7d8c4fd9d140c.ctex"
+uid="uid://gqb8kfw0al35"
+path="res://.godot/imported/bg_tile_border_inner.png-cf7d173d033dfa3ae0cc17bf139dd61f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/bg_pipe.png"
-dest_files=["res://.godot/imported/bg_pipe.png-f4a96691b169a567aba7d8c4fd9d140c.ctex"]
+source_file="res://assets/sprites/Raw/bg_tile_border_inner.png"
+dest_files=["res://.godot/imported/bg_tile_border_inner.png-cf7d173d033dfa3ae0cc17bf139dd61f.ctex"]
 
 [params]
 

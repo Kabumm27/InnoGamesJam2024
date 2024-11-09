@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dv03yk1mjgcdw"]
+
+[ext_resource type="Script" path="res://scripts/belt_pickup_zone.gd" id="1_fdc5d"]
+[ext_resource type="Texture2D" uid="uid://1cvtn2nl1uw7" path="res://icon.svg" id="1_xp84o"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a527q"]
+radius = 64.0
+
+[node name="BeltPickupZone" type="Area2D"]
+collision_layer = 4
+collision_mask = 17
+script = ExtResource("1_fdc5d")
+
+[node name="BeltPickupZoneCollisionShape" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_a527q")
+
+[node name="Test" type="Sprite2D" parent="BeltPickupZoneCollisionShape"]
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_xp84o")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

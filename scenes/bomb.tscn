@@ -34,6 +34,7 @@ region = Rect2(256, 0, 128, 128)
 
 [node name="Bomb" type="CharacterBody2D"]
 collision_layer = 17
+collision_mask = 17
 script = ExtResource("1_tv2jc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
