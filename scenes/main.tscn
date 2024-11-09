@@ -114,100 +114,61 @@ shape = SubResource("RectangleShape2D_xt1ex")
 
 [node name="Belt1" type="Node2D" parent="Map/Belts"]
 
-[node name="BeltBlock" parent="Map/Belts/Belt1" instance=ExtResource("5_d42kx")]
-position = Vector2(-896, -320)
-
-[node name="BeltBlock2" parent="Map/Belts/Belt1" instance=ExtResource("5_d42kx")]
-position = Vector2(-768, -320)
-
-[node name="BeltBlock3" parent="Map/Belts/Belt1" instance=ExtResource("5_d42kx")]
-position = Vector2(-640, -320)
-
-[node name="BeltBlock4" parent="Map/Belts/Belt1" instance=ExtResource("5_d42kx")]
-position = Vector2(-512, -320)
-
-[node name="BeltBlock5" parent="Map/Belts/Belt1" instance=ExtResource("5_d42kx")]
-position = Vector2(-384, -320)
-
-[node name="BeltBlock6" parent="Map/Belts/Belt1" instance=ExtResource("5_d42kx")]
-position = Vector2(-128, -192)
-
-[node name="BeltBlock7" parent="Map/Belts/Belt1" instance=ExtResource("5_d42kx")]
-position = Vector2(0, -192)
-
-[node name="BeltBlock8" parent="Map/Belts/Belt1" instance=ExtResource("5_d42kx")]
-position = Vector2(128, -192)
-
-[node name="BeltBlock9" parent="Map/Belts/Belt1" instance=ExtResource("5_d42kx")]
-position = Vector2(256, -192)
-
-[node name="BeltBlock10" parent="Map/Belts/Belt1" instance=ExtResource("5_d42kx")]
-position = Vector2(384, -192)
-
-[node name="BeltBlock11" parent="Map/Belts/Belt1" instance=ExtResource("5_d42kx")]
-position = Vector2(512, -192)
-
-[node name="BeltBlock12" parent="Map/Belts/Belt1" instance=ExtResource("5_d42kx")]
-position = Vector2(640, -192)
-
-[node name="BeltBlock13" parent="Map/Belts/Belt1" instance=ExtResource("5_d42kx")]
-position = Vector2(768, -192)
-
-[node name="BeltBlock14" parent="Map/Belts/Belt1" instance=ExtResource("5_d42kx")]
-position = Vector2(896, -192)
-
 [node name="BeltPath" type="Path2D" parent="Map/Belts/Belt1"]
 curve = SubResource("Curve2D_v56ia")
 
 [node name="BeltPickupZone" parent="Map/Belts/Belt1" instance=ExtResource("6_hrx5p")]
 position = Vector2(-896, -576)
 
-[node name="Belt2" type="Node2D" parent="Map/Belts"]
-
-[node name="BeltBlock6" parent="Map/Belts/Belt2" instance=ExtResource("5_d42kx")]
+[node name="Belt" parent="Map/Belts/Belt1" instance=ExtResource("5_d42kx")]
 position = Vector2(-896, -576)
 
-[node name="BeltBlock7" parent="Map/Belts/Belt2" instance=ExtResource("5_d42kx")]
+[node name="Belt2" parent="Map/Belts/Belt1" instance=ExtResource("5_d42kx")]
 position = Vector2(-768, -576)
 
-[node name="BeltBlock8" parent="Map/Belts/Belt2" instance=ExtResource("5_d42kx")]
+[node name="Belt3" parent="Map/Belts/Belt1" instance=ExtResource("5_d42kx")]
 position = Vector2(-640, -576)
 
-[node name="BeltBlock9" parent="Map/Belts/Belt2" instance=ExtResource("5_d42kx")]
+[node name="Belt4" parent="Map/Belts/Belt1" instance=ExtResource("5_d42kx")]
 position = Vector2(-512, -576)
 
-[node name="BeltBlock10" parent="Map/Belts/Belt2" instance=ExtResource("5_d42kx")]
+[node name="Belt5" parent="Map/Belts/Belt1" instance=ExtResource("5_d42kx")]
 position = Vector2(-384, -576)
 
-[node name="BeltBlock11" parent="Map/Belts/Belt2" instance=ExtResource("5_d42kx")]
+[node name="Belt6" parent="Map/Belts/Belt1" instance=ExtResource("5_d42kx")]
 position = Vector2(-256, -576)
 
-[node name="BeltBlock12" parent="Map/Belts/Belt2" instance=ExtResource("5_d42kx")]
+[node name="Belt7" parent="Map/Belts/Belt1" instance=ExtResource("5_d42kx")]
 position = Vector2(-128, -576)
 
-[node name="BeltBlock13" parent="Map/Belts/Belt2" instance=ExtResource("5_d42kx")]
+[node name="Belt8" parent="Map/Belts/Belt1" instance=ExtResource("5_d42kx")]
 position = Vector2(0, -576)
 
-[node name="BeltBlock14" parent="Map/Belts/Belt2" instance=ExtResource("5_d42kx")]
+[node name="Belt9" parent="Map/Belts/Belt1" instance=ExtResource("5_d42kx")]
 position = Vector2(128, -576)
 
-[node name="BeltBlock15" parent="Map/Belts/Belt2" instance=ExtResource("5_d42kx")]
+[node name="Belt10" parent="Map/Belts/Belt1" instance=ExtResource("5_d42kx")]
 position = Vector2(256, -576)
 
-[node name="BeltBlock16" parent="Map/Belts/Belt2" instance=ExtResource("5_d42kx")]
+[node name="Belt11" parent="Map/Belts/Belt1" instance=ExtResource("5_d42kx")]
 position = Vector2(384, -576)
 
-[node name="BeltBlock17" parent="Map/Belts/Belt2" instance=ExtResource("5_d42kx")]
+[node name="Belt12" parent="Map/Belts/Belt1" instance=ExtResource("5_d42kx")]
 position = Vector2(512, -576)
 
-[node name="BeltBlock18" parent="Map/Belts/Belt2" instance=ExtResource("5_d42kx")]
+[node name="Belt13" parent="Map/Belts/Belt1" instance=ExtResource("5_d42kx")]
 position = Vector2(640, -576)
 
-[node name="BeltBlock19" parent="Map/Belts/Belt2" instance=ExtResource("5_d42kx")]
+[node name="Belt14" parent="Map/Belts/Belt1" instance=ExtResource("5_d42kx")]
 position = Vector2(768, -576)
 
-[node name="BeltBlock20" parent="Map/Belts/Belt2" instance=ExtResource("5_d42kx")]
+[node name="Belt15" parent="Map/Belts/Belt1" instance=ExtResource("5_d42kx")]
 position = Vector2(896, -576)
+
+[node name="BeltEnd" parent="Map/Belts/Belt1" instance=ExtResource("10_n4pyp")]
+position = Vector2(1024, -576)
+
+[node name="Belt2" type="Node2D" parent="Map/Belts"]
 
 [node name="BeltPath" type="Path2D" parent="Map/Belts/Belt2"]
 z_index = 16
@@ -215,6 +176,57 @@ curve = SubResource("Curve2D_qs4vs")
 
 [node name="BeltPickupZone" parent="Map/Belts/Belt2" instance=ExtResource("6_hrx5p")]
 position = Vector2(-896, -320)
+
+[node name="Belt" parent="Map/Belts/Belt2" instance=ExtResource("5_d42kx")]
+position = Vector2(-896, -320)
+
+[node name="Belt4" parent="Map/Belts/Belt2" instance=ExtResource("5_d42kx")]
+position = Vector2(-768, -320)
+
+[node name="Belt5" parent="Map/Belts/Belt2" instance=ExtResource("5_d42kx")]
+position = Vector2(-640, -320)
+
+[node name="Belt6" parent="Map/Belts/Belt2" instance=ExtResource("5_d42kx")]
+position = Vector2(-512, -320)
+
+[node name="Belt7" parent="Map/Belts/Belt2" instance=ExtResource("5_d42kx")]
+position = Vector2(-384, -320)
+
+[node name="Belt8" parent="Map/Belts/Belt2" instance=ExtResource("5_d42kx")]
+position = Vector2(-128, -192)
+
+[node name="Belt9" parent="Map/Belts/Belt2" instance=ExtResource("5_d42kx")]
+position = Vector2(0, -192)
+
+[node name="Belt10" parent="Map/Belts/Belt2" instance=ExtResource("5_d42kx")]
+position = Vector2(128, -192)
+
+[node name="Belt11" parent="Map/Belts/Belt2" instance=ExtResource("5_d42kx")]
+position = Vector2(256, -192)
+
+[node name="Belt12" parent="Map/Belts/Belt2" instance=ExtResource("5_d42kx")]
+position = Vector2(384, -192)
+
+[node name="Belt13" parent="Map/Belts/Belt2" instance=ExtResource("5_d42kx")]
+position = Vector2(512, -192)
+
+[node name="Belt14" parent="Map/Belts/Belt2" instance=ExtResource("5_d42kx")]
+position = Vector2(640, -192)
+
+[node name="Belt15" parent="Map/Belts/Belt2" instance=ExtResource("5_d42kx")]
+position = Vector2(768, -192)
+
+[node name="Belt16" parent="Map/Belts/Belt2" instance=ExtResource("5_d42kx")]
+position = Vector2(896, -192)
+
+[node name="BeltEnd" parent="Map/Belts/Belt2" instance=ExtResource("10_n4pyp")]
+position = Vector2(1024, -192)
+
+[node name="BeltCurve" parent="Map/Belts/Belt2" instance=ExtResource("4_51kn7")]
+position = Vector2(-256, -320)
+
+[node name="BeltCurve2" parent="Map/Belts/Belt2" instance=ExtResource("11_5l40s")]
+position = Vector2(-256, -192)
 
 [node name="Belt3" type="Node2D" parent="Map/Belts"]
 
@@ -226,41 +238,67 @@ z_index = 10
 position = Vector2(0, 960)
 curve = SubResource("Curve2D_u1v2p")
 
-[node name="Belt" parent="Map/Belts/Belt3" instance=ExtResource("5_d42kx")]
+[node name="Belt2" parent="Map/Belts/Belt3" instance=ExtResource("5_d42kx")]
 position = Vector2(-896, 320)
 
-[node name="Belt2" parent="Map/Belts/Belt3" instance=ExtResource("5_d42kx")]
+[node name="Belt3" parent="Map/Belts/Belt3" instance=ExtResource("5_d42kx")]
 position = Vector2(-768, 320)
 
-[node name="Belt3" parent="Map/Belts/Belt3" instance=ExtResource("5_d42kx")]
+[node name="Belt17" parent="Map/Belts/Belt3" instance=ExtResource("5_d42kx")]
 position = Vector2(-640, 320)
 
-[node name="Belt12" parent="Map/Belts/Belt3" instance=ExtResource("5_d42kx")]
+[node name="Belt18" parent="Map/Belts/Belt3" instance=ExtResource("5_d42kx")]
+position = Vector2(-384, 576)
+
+[node name="Belt19" parent="Map/Belts/Belt3" instance=ExtResource("5_d42kx")]
 position = Vector2(-128, 320)
 
-[node name="Belt11" parent="Map/Belts/Belt3" instance=ExtResource("5_d42kx")]
+[node name="Belt20" parent="Map/Belts/Belt3" instance=ExtResource("5_d42kx")]
 position = Vector2(0, 320)
 
-[node name="Belt10" parent="Map/Belts/Belt3" instance=ExtResource("5_d42kx")]
+[node name="Belt21" parent="Map/Belts/Belt3" instance=ExtResource("5_d42kx")]
 position = Vector2(128, 320)
 
-[node name="Belt4" parent="Map/Belts/Belt3" instance=ExtResource("5_d42kx")]
+[node name="Belt22" parent="Map/Belts/Belt3" instance=ExtResource("5_d42kx")]
 position = Vector2(256, 320)
 
-[node name="Belt5" parent="Map/Belts/Belt3" instance=ExtResource("5_d42kx")]
+[node name="Belt23" parent="Map/Belts/Belt3" instance=ExtResource("5_d42kx")]
 position = Vector2(384, 320)
 
-[node name="Belt6" parent="Map/Belts/Belt3" instance=ExtResource("5_d42kx")]
+[node name="Belt24" parent="Map/Belts/Belt3" instance=ExtResource("5_d42kx")]
 position = Vector2(512, 320)
 
-[node name="Belt7" parent="Map/Belts/Belt3" instance=ExtResource("5_d42kx")]
+[node name="Belt25" parent="Map/Belts/Belt3" instance=ExtResource("5_d42kx")]
 position = Vector2(640, 320)
 
-[node name="Belt8" parent="Map/Belts/Belt3" instance=ExtResource("5_d42kx")]
+[node name="Belt26" parent="Map/Belts/Belt3" instance=ExtResource("5_d42kx")]
 position = Vector2(768, 320)
 
-[node name="Belt9" parent="Map/Belts/Belt3" instance=ExtResource("5_d42kx")]
+[node name="Belt27" parent="Map/Belts/Belt3" instance=ExtResource("5_d42kx")]
 position = Vector2(896, 320)
+
+[node name="Belt28" parent="Map/Belts/Belt3" instance=ExtResource("5_d42kx")]
+position = Vector2(-512, 448)
+rotation = 1.5708
+
+[node name="Belt29" parent="Map/Belts/Belt3" instance=ExtResource("5_d42kx")]
+position = Vector2(-256, 448)
+rotation = -1.5708
+
+[node name="BeltCurve3" parent="Map/Belts/Belt3" instance=ExtResource("11_5l40s")]
+position = Vector2(-512, 576)
+
+[node name="BeltCurve4" parent="Map/Belts/Belt3" instance=ExtResource("4_51kn7")]
+position = Vector2(-512, 320)
+
+[node name="BeltCurve5" parent="Map/Belts/Belt3" instance=ExtResource("5_oicp3")]
+position = Vector2(-256, 320)
+
+[node name="BeltCurve6" parent="Map/Belts/Belt3" instance=ExtResource("12_fn5l2")]
+position = Vector2(-256, 576)
+
+[node name="BeltEnd" parent="Map/Belts/Belt3" instance=ExtResource("10_n4pyp")]
+position = Vector2(1024, 320)
 
 [node name="Players" type="Node2D" parent="."]
 
@@ -274,41 +312,3 @@ gamepad_id = 1
 [node name="Items" type="Node2D" parent="."]
 
 [node name="BombSpawner" parent="." instance=ExtResource("7_p2hvq")]
-
-[node name="BeltEnd" parent="." instance=ExtResource("10_n4pyp")]
-position = Vector2(1024, -192)
-
-[node name="Belt" parent="." instance=ExtResource("5_d42kx")]
-position = Vector2(-512, 448)
-rotation = 1.5708
-
-[node name="Belt2" parent="." instance=ExtResource("5_d42kx")]
-position = Vector2(-384, 576)
-
-[node name="Belt3" parent="." instance=ExtResource("5_d42kx")]
-position = Vector2(-256, 448)
-rotation = 4.71239
-
-[node name="BeltCurve" parent="." instance=ExtResource("4_51kn7")]
-position = Vector2(-512, 320)
-
-[node name="BeltCurve4" parent="." instance=ExtResource("11_5l40s")]
-position = Vector2(-512, 576)
-
-[node name="BeltCurve5" parent="." instance=ExtResource("12_fn5l2")]
-position = Vector2(-256, 576)
-
-[node name="BeltCurve6" parent="." instance=ExtResource("5_oicp3")]
-position = Vector2(-256, 320)
-
-[node name="BeltCurve2" parent="." instance=ExtResource("4_51kn7")]
-position = Vector2(-256, -320)
-
-[node name="BeltCurve3" parent="." instance=ExtResource("11_5l40s")]
-position = Vector2(-256, -192)
-
-[node name="BeltEnd2" parent="." instance=ExtResource("10_n4pyp")]
-position = Vector2(1024, 320)
-
-[node name="BeltEnd3" parent="." instance=ExtResource("10_n4pyp")]
-position = Vector2(1024, -576)
