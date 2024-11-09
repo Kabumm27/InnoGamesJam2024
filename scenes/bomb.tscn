@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://tmgj130g0t8g"]
+[gd_scene load_steps=14 format=3 uid="uid://tmgj130g0t8g"]
 
 [ext_resource type="Script" path="res://scripts/bomb.gd" id="1_tv2jc"]
 [ext_resource type="Texture2D" uid="uid://dtw6mjwskia8j" path="res://assets/sprites/bomben_128x128.png" id="2_e08hp"]
@@ -28,6 +28,56 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_vdg5x"]
+atlas = ExtResource("2_e08hp")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ywxf7"]
+atlas = ExtResource("2_e08hp")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bqd2x"]
+atlas = ExtResource("2_e08hp")
+region = Rect2(256, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ylg7r"]
+atlas = ExtResource("2_e08hp")
+region = Rect2(384, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dm588"]
+atlas = ExtResource("2_e08hp")
+region = Rect2(512, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eummi"]
+atlas = ExtResource("2_e08hp")
+region = Rect2(640, 128, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yfojm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vdg5x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ywxf7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bqd2x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ylg7r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dm588")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eummi")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Bomb" type="CharacterBody2D"]
 collision_layer = 17
 script = ExtResource("1_tv2jc")
@@ -44,5 +94,10 @@ one_shot = true
 [node name="activated_animation" type="AnimatedSprite2D" parent="animations"]
 sprite_frames = SubResource("SpriteFrames_kyjba")
 frame_progress = 0.837586
+
+[node name="explosion" type="AnimatedSprite2D" parent="animations"]
+sprite_frames = SubResource("SpriteFrames_yfojm")
+frame = 5
+frame_progress = 1.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

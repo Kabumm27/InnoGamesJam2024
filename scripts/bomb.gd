@@ -4,7 +4,8 @@ extends CharacterBody2D
 @onready var timer: Timer = $Timer
 
 # animations
-@onready var activated_animation: AnimatedSprite2D = $activated_animation
+@onready var activated_animation: AnimatedSprite2D = $animations/activated_animation
+@onready var explosion: AnimatedSprite2D = $animations/explosion
 
 func toggle_collision(state: bool):
 	collision_shape.disabled = !state
@@ -13,3 +14,5 @@ func toggle_collision(state: bool):
 
 func _on_timer_timeout():
 	activated_animation.stop()
+	explosion.play()
+	print('timeout')
