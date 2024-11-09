@@ -2,7 +2,7 @@ extends Node2D
 class_name Map
 
 @onready var bg: TileMapLayer = get_node("BackgroundTileMapLayer")
-@onready var fg: TileMapLayer = get_node("ForegroundTileMapLayer")
+@onready var fg: TileMapLayer = get_node("PlayAreaTileMapLayer")
 
 
 func tilemap_to_global(tilemap_pos: Vector2i):
