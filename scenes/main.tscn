@@ -1,10 +1,9 @@
-[gd_scene load_steps=12 format=4 uid="uid://dnxh1bnwsohr"]
+[gd_scene load_steps=11 format=4 uid="uid://dnxh1bnwsohr"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_6hbi4"]
-[ext_resource type="PackedScene" uid="uid://4mdobb5mgxew" path="res://scenes/dummy.tscn" id="2_8s7y0"]
-[ext_resource type="Script" path="res://scenes/dummy.gd" id="3_dsjw6"]
+[ext_resource type="PackedScene" uid="uid://cyh7nkyycri05" path="res://scenes/player.tscn" id="2_w8s8l"]
 [ext_resource type="Shader" path="res://scenes/shader/main.gdshader" id="4_lu6gf"]
-[ext_resource type="TileSet" uid="uid://bpyr6fl7cg3sf" path="res://assets/sprites/background.tres" id="4_wy3k2"]
+[ext_resource type="TileSet" uid="uid://cvlrd54vclrv1" path="res://assets/sprites/background.tres" id="4_wy3k2"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lbhqj"]
 distance = -773.0
@@ -32,12 +31,6 @@ size = Vector2(128, 1536)
 
 [node name="GameManager" type="Node" parent="."]
 script = ExtResource("1_6hbi4")
-
-[node name="Dummy" parent="." instance=ExtResource("2_8s7y0")]
-z_index = 4
-position = Vector2(-1216, -448)
-scale = Vector2(8, 8)
-script = ExtResource("3_dsjw6")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 z_index = 10
@@ -90,3 +83,6 @@ shape = SubResource("RectangleShape2D_xt1ex")
 [node name="LeftBoundsPlayArea2" type="CollisionShape2D" parent="PlayAreaStaticBody"]
 position = Vector2(921, 5)
 shape = SubResource("RectangleShape2D_xt1ex")
+
+[node name="Player" parent="." instance=ExtResource("2_w8s8l")]
+position = Vector2(-983, -58)
