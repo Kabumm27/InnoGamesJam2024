@@ -10,6 +10,7 @@ func _on_body_entered(body: Node2D):
 		if bomb:
 			if bomb.name == "Bomb":
 				var beltPathFollowInstance = BELT_PATH_FOLLOW.instantiate()
+				bomb.get_parent().remove_child(bomb)
 				beltPathFollowInstance.add_child(bomb)
 				belt_path.add_child(beltPathFollowInstance) 
 				print("Bomb")
