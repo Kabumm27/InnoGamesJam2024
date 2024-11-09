@@ -8,24 +8,28 @@ extends CharacterBody2D
 @onready var activated_animation: AnimatedSprite2D = $animations/activated_animation
 @onready var explosion: AnimatedSprite2D = $animations/explosion
 
-var DAMAGE = 40
-var player: Player = null
+const DAMAGE = 40
+const EXPLOSION = preload("res://scenes/explosion.tscn")
 
-func toggle_collision(state: bool, local_player: Player):
+func toggle_collision(state: bool):
 	collision_shape.disabled = !state
 	activated_animation.visible = true
 	activated_animation.play() #start timer on first "collision" (pick up)
 	timer.start()
-	player = local_player
 
 func _on_timer_timeout():
 	activated_animation.stop()
 	activated_animation.hide()
 	bomb.hide()
-	explosion.visible = true
-	explosion.play()
-	player.reduce_health(DAMAGE)
-	print('timeout')
+	var expl = EXPLOSION.instantiate()
+	self.add_child(expl)
+	
+	await expl.animation_finished()
 
-func _on_explosion_animation_finished() -> void:
+	#todo add explosion
+	#explosion.visible = true
+	#explosion.play()
+	#await explosion.animation_finished
+	print('timeout')
 	queue_free()
+	

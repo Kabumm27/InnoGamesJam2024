@@ -17,7 +17,7 @@ var carry_object: Node2D = null
 
 func pick_up(object: Node2D):
 	if object.has_method("toggle_collision"):
-		object.toggle_collision(false, self)
+		object.toggle_collision(false)
 	object.get_parent().remove_child(object)
 	object.global_position = Vector2.ZERO
 	carry_location.add_child(object)

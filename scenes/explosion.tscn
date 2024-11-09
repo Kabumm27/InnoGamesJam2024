@@ -1,0 +1,68 @@
+[gd_scene load_steps=11 format=3 uid="uid://b5lkmmaqhlyrl"]
+
+[ext_resource type="Texture2D" uid="uid://dtw6mjwskia8j" path="res://assets/sprites/bomben_128x128.png" id="1_pvw1p"]
+[ext_resource type="Script" path="res://scenes/explosion.gd" id="1_vybj0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m0w6t"]
+atlas = ExtResource("1_pvw1p")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fm3gi"]
+atlas = ExtResource("1_pvw1p")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o7snd"]
+atlas = ExtResource("1_pvw1p")
+region = Rect2(256, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8unsv"]
+atlas = ExtResource("1_pvw1p")
+region = Rect2(384, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yweaw"]
+atlas = ExtResource("1_pvw1p")
+region = Rect2(512, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u7ufl"]
+atlas = ExtResource("1_pvw1p")
+region = Rect2(640, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_he5m5"]
+atlas = ExtResource("1_pvw1p")
+region = Rect2(768, 128, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o83t3"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m0w6t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fm3gi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o7snd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8unsv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yweaw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u7ufl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_he5m5")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="explosion" type="Node2D"]
+script = ExtResource("1_vybj0")
+
+[node name="explosion" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_o83t3")
