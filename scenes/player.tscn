@@ -1,9 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://b18iwfskgx8ub"]
+[gd_scene load_steps=14 format=3 uid="uid://b18iwfskgx8ub"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_7p7au"]
 [ext_resource type="Texture2D" uid="uid://diqrpxmy0wdc1" path="res://assets/sprites/knight.png" id="2_0w22u"]
 [ext_resource type="Texture2D" uid="uid://7frnmtx0jr37" path="res://assets/sprites/character01_state_01.png" id="3_lxise"]
 [ext_resource type="Texture2D" uid="uid://bjil8bu42ykk0" path="res://assets/sprites/character01_state_02.png" id="4_anwi2"]
+[ext_resource type="Script" path="res://scripts/health_bar.gd" id="5_msrjk"]
+[ext_resource type="Texture2D" uid="uid://ciysmvqbxow4l" path="res://assets/ui/player_heart_full.png" id="5_p5u3n"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7sucb"]
 radius = 64.0312
@@ -92,6 +94,29 @@ color = Color(1, 0, 0, 1)
 
 [node name="CarryLocation" type="Node2D" parent="."]
 position = Vector2(32, -32)
+
+[node name="health_bar" type="HBoxContainer" parent="."]
+offset_left = -80.0
+offset_top = -150.0
+offset_right = 314.0
+offset_bottom = -22.0
+scale = Vector2(0.4, 0.4)
+theme_override_constants/separation = 5
+script = ExtResource("5_msrjk")
+
+[node name="heart_1" type="TextureRect" parent="health_bar"]
+layout_mode = 2
+texture = ExtResource("5_p5u3n")
+
+[node name="heart_2" type="TextureRect" parent="health_bar"]
+layout_mode = 2
+texture = ExtResource("5_p5u3n")
+stretch_mode = 2
+
+[node name="heart_3" type="TextureRect" parent="health_bar"]
+layout_mode = 2
+texture = ExtResource("5_p5u3n")
+stretch_mode = 2
 
 [connection signal="body_entered" from="RotationNode/HandleArea" to="." method="_on_handle_area_body_entered"]
 [connection signal="body_exited" from="RotationNode/HandleArea" to="." method="_on_handle_area_body_exited"]

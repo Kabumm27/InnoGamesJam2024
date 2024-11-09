@@ -11,6 +11,7 @@ var health = 3
 @onready var indicator: ColorRect = $Indicator
 @onready var carry_location: Node2D = $CarryLocation
 @onready var rotation_node: Node2D = $RotationNode
+@onready var health_bar: HBoxContainer = $health_bar
 
 @onready var sprite_default: Sprite2D = $CharacterDefault
 @onready var sprite_carry: Sprite2D = $CharacterCarry
@@ -32,6 +33,7 @@ func pick_up(object: Node2D):
 func reduce_health(damage: int):
 	health -= damage
 	print('reduce health ', health)
+	health_bar.update_health(health)
 
 func drop(object: Node2D):
 	carry_object = null
