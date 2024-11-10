@@ -1,0 +1,93 @@
+[gd_scene load_steps=9 format=3 uid="uid://bd8xkxso7bcbp"]
+
+[ext_resource type="Texture2D" uid="uid://dkck7on1tqoi6" path="res://assets/sprites/startbild.png" id="1_l2yf0"]
+[ext_resource type="Texture2D" uid="uid://cdto0mniuwhp6" path="res://assets/sprites/play_button.png" id="2_pkq61"]
+[ext_resource type="Texture2D" uid="uid://dk7bgd2kcdmdb" path="res://assets/sprites/credits_button.png" id="3_6lgke"]
+[ext_resource type="Script" path="res://scripts/button_play.gd" id="3_dng78"]
+[ext_resource type="Texture2D" uid="uid://eg8ijcocujrg" path="res://assets/sprites/exit_button.png" id="4_06ckf"]
+[ext_resource type="Script" path="res://scripts/button_credits.gd" id="5_mk4f8"]
+[ext_resource type="Script" path="res://scripts/button_exit.gd" id="7_lmlov"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iuwdi"]
+
+[node name="MainMenu" type="Node"]
+
+[node name="Background" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_l2yf0")
+expand_mode = 2
+stretch_mode = 3
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Control"]
+offset_left = 453.0
+offset_top = 501.0
+offset_right = 1086.0
+offset_bottom = 947.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_iuwdi")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_right = 120
+
+[node name="ButtonPlay" type="Button" parent="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+icon = ExtResource("2_pkq61")
+flat = true
+icon_alignment = 1
+script = ExtResource("3_dng78")
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_right = 70
+
+[node name="ButtonCredits" type="Button" parent="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+icon = ExtResource("3_6lgke")
+flat = true
+icon_alignment = 1
+script = ExtResource("5_mk4f8")
+
+[node name="MarginContainer3" type="MarginContainer" parent="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 225
+
+[node name="ButtonExit" type="Button" parent="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer/MarginContainer3"]
+layout_mode = 2
+icon = ExtResource("4_06ckf")
+flat = true
+icon_alignment = 1
+script = ExtResource("7_lmlov")
+
+[connection signal="mouse_entered" from="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/ButtonPlay" to="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/ButtonPlay" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/ButtonPlay" to="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/ButtonPlay" method="_on_button_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/ButtonPlay" to="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/ButtonPlay" method="_on_button_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer/MarginContainer2/ButtonCredits" to="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer/MarginContainer2/ButtonCredits" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer/MarginContainer2/ButtonCredits" to="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer/MarginContainer2/ButtonCredits" method="_on_button_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer/MarginContainer2/ButtonCredits" to="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer/MarginContainer2/ButtonCredits" method="_on_button_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer/MarginContainer3/ButtonExit" to="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer/MarginContainer3/ButtonExit" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer/MarginContainer3/ButtonExit" to="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer/MarginContainer3/ButtonExit" method="_on_button_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer/MarginContainer3/ButtonExit" to="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer/MarginContainer3/ButtonExit" method="_on_button_pressed"]
