@@ -106,7 +106,7 @@ script = ExtResource("1_6hbi4")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 z_index = 10
-zoom = Vector2(0.5, 0.5)
+zoom = Vector2(0.6, 0.6)
 
 [node name="Map" type="Node2D" parent="."]
 unique_name_in_owner = true
