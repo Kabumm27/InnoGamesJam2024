@@ -135,7 +135,10 @@ func _process(_delta):
 	if (health <= 0 && alive):
 		alive = false
 		died.play()
-		var gs = GRAVESTONE.instantiate()
+		
+		var gs =  GRAVESTONE.instantiate()
+		gs.player = gamepad_id
+		
 		var tile = map.global_to_tilemap(global_position)
 		gs.global_position = map.tilemap_to_global(tile)
 		map.add_child(gs)
