@@ -33,6 +33,9 @@
 [ext_resource type="AudioStream" uid="uid://cto4wbd7ctgcy" path="res://assets/sounds/8-bit-music-on-245249.mp3" id="31_dmv2q"]
 [ext_resource type="Texture2D" uid="uid://mhnpx2ysqsg1" path="res://assets/ui/team_yellow.png" id="32_exv7q"]
 [ext_resource type="Texture2D" uid="uid://cklwcpwmxy0eg" path="res://assets/ui/team_blue.png" id="33_b63qt"]
+[ext_resource type="Texture2D" uid="uid://tppc28kkvf6" path="res://assets/ui/endbild_blue_wins.png" id="34_3e8a6"]
+[ext_resource type="Script" path="res://scripts/game_menu.gd" id="34_qhkba"]
+[ext_resource type="Texture2D" uid="uid://bsvr6n4thocqf" path="res://assets/ui/endbild_yellow_wins.png" id="36_cpodk"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lbhqj"]
 distance = -773.0
@@ -1008,3 +1011,25 @@ autoplay = true
 parameters/looping = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="FakeUi" type="Node2D" parent="."]
+unique_name_in_owner = true
+z_index = 200
+script = ExtResource("34_qhkba")
+
+[node name="EndbildBlueWins" type="Sprite2D" parent="FakeUi"]
+visible = false
+scale = Vector2(1.7, 1.7)
+texture = ExtResource("34_3e8a6")
+
+[node name="EndbildYellowWins" type="Sprite2D" parent="FakeUi"]
+visible = false
+scale = Vector2(1.7, 1.7)
+texture = ExtResource("36_cpodk")

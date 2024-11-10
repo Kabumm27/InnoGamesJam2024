@@ -1,6 +1,8 @@
 extends Node
 class_name GameManager
 
+@onready var ui: GameMenu = $%FakeUi
+
 var players: Array[Player] = []
 var team_yellow: Array[Player] = []
 var team_blue: Array[Player] = []
@@ -21,9 +23,11 @@ func _process(_delta):
 
 	if team_yellow_dead:
 		print("Team Blue won!")
+		ui.show_winning_screen(Enums.Team.Blue)
 		pause_game()
 	elif team_blue_dead:
 		print("Team Yellow won!")
+		ui.show_winning_screen(Enums.Team.Yellow)
 		pause_game()
 
 
