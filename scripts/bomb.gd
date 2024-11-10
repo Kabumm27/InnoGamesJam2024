@@ -7,6 +7,7 @@ extends BaseBomb
 
 # animations
 @onready var bomb: Sprite2D = $animations/bomb
+@onready var bomb_electrical: Sprite2D = $animations/bomb_electrical
 @onready var activated_animation: AnimatedSprite2D = $animations/activated_animation
 @onready var type_label: Label = $TypeLabel
 
@@ -14,7 +15,10 @@ extends BaseBomb
 
 const EXPLOSION = preload("res://scenes/explosion.tscn")
 enum PATTERNS {CIRCLE = 0, CROSS = 1, PLUS = 2, VERTICAL = 3}
-
+enum TYPE {NORMAL = 0, ELECTRICAL = 1}
+var type: Sprite2D = null
+var animation_name = 'normal'
+var selected_type: int
 
 func _ready():
 	z_index = 25
@@ -28,6 +32,20 @@ func _ready():
 		type_label.text = '+'
 	elif explosion_type == PATTERNS.VERTICAL:
 		type_label.text = 'I'
+		
+	selected_type = TYPE.values()[range(2).pick_random()]
+	if selected_type == TYPE.NORMAL:
+		type = bomb
+		animation_name = 'normal'
+	elif selected_type == TYPE.ELECTRICAL:
+		type = bomb_electrical
+		animation_name = 'electric'
+	else:
+		type = bomb
+		animation_name = 'normal'
+		
+	print(type, ', ', selected_type)
+	type.visible = true
 
 
 func _process(_delta):
@@ -37,9 +55,10 @@ func _process(_delta):
 
 func toggle_collision_deffered(state: bool):
 	collision_shape.disabled = !state
-	bomb.hide()
+	type.hide()
 	activated_animation.visible = true
-	activated_animation.play() # start timer on first "collision" (pick up)
+	
+	activated_animation.play(animation_name) # start timer on first "collision" (pick up)
 	timer.start()
 
 
@@ -59,6 +78,7 @@ func _on_timer_timeout():
 	var explosions = []
 	for tile in tiles:
 		var expl = EXPLOSION.instantiate()
+		expl.type = selected_type
 		explosions.append(expl)
 		self.add_child(expl)
 		expl.global_position = map.tilemap_to_global(tile)
