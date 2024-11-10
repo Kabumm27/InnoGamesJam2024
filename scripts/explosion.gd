@@ -3,6 +3,7 @@ extends Node2D
 @onready var explosion: AnimatedSprite2D = $explosion
 @onready var explosion_bubble: AudioStreamPlayer2D = $sounds/explosion_bubble
 @onready var explosion_normal: AudioStreamPlayer2D = $sounds/explosion_normal
+@onready var explosion_electric: AudioStreamPlayer2D = $sounds/explosion_electric
 
 enum TYPE {NORMAL = 0, ELECTRICAL = 1, BUBBLE = 2}
 
@@ -15,10 +16,11 @@ func _ready() -> void:
 		explosion.play('normal')
 		explosion_normal.play()
 	elif type == TYPE.ELECTRICAL:
-		explosion.play('bubble')
-		explosion_bubble.play()
+		explosion.play('electric')
+		explosion_electric.play()
 	elif type == TYPE.BUBBLE:
 		explosion.play('bubble')
+		explosion_bubble.play()
 
 func animation_finished() -> void:
 	await explosion.animation_finished

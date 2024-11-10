@@ -17,7 +17,7 @@ region = Rect2(256, 758, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7e31a"]
 atlas = ExtResource("2_m35u1")
-region = Rect2(128, 512, 128, 128)
+region = Rect2(256, 512, 128, 128)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q1gwy"]
 shader = ExtResource("3_5ipgs")
@@ -127,7 +127,7 @@ material = SubResource("ShaderMaterial_q1gwy")
 position = Vector2(16, -16)
 scale = Vector2(1.2, 1.2)
 sprite_frames = SubResource("SpriteFrames_37les")
-animation = &"electric"
+animation = &"normal"
 
 [node name="TypeLabel" type="Label" parent="."]
 anchors_preset = 8

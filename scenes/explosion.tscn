@@ -1,9 +1,10 @@
-[gd_scene load_steps=23 format=3 uid="uid://b5lkmmaqhlyrl"]
+[gd_scene load_steps=24 format=3 uid="uid://b5lkmmaqhlyrl"]
 
 [ext_resource type="Texture2D" uid="uid://dtw6mjwskia8j" path="res://assets/sprites/bomben_128x128.png" id="1_pvw1p"]
 [ext_resource type="Script" path="res://scripts/explosion.gd" id="1_vybj0"]
 [ext_resource type="AudioStream" uid="uid://cv70obmf2ryq0" path="res://assets/sounds/explosion_short.wav" id="3_xcxva"]
 [ext_resource type="AudioStream" uid="uid://cciqts4lor3kb" path="res://assets/sounds/bubble-254777.mp3" id="4_7l77j"]
+[ext_resource type="AudioStream" uid="uid://rmuwm42gbwoy" path="res://assets/sounds/electric.mp3" id="5_p4ac4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e6tum"]
 atlas = ExtResource("1_pvw1p")
@@ -161,5 +162,8 @@ volume_db = -5.0
 
 [node name="explosion_bubble" type="AudioStreamPlayer2D" parent="sounds"]
 stream = ExtResource("4_7l77j")
+
+[node name="explosion_electric" type="AudioStreamPlayer2D" parent="sounds"]
+stream = ExtResource("5_p4ac4")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

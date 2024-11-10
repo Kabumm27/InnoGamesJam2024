@@ -8,6 +8,8 @@ extends BaseBomb
 # animations
 @onready var bomb: Sprite2D = $animations/bomb
 @onready var bomb_electrical: Sprite2D = $animations/bomb_electrical
+@onready var bomb_bubble: Sprite2D = $animations/bomb_bubble
+
 @onready var activated_animation: AnimatedSprite2D = $animations/activated_animation
 @onready var type_label: Label = $TypeLabel
 
@@ -33,18 +35,17 @@ func _ready():
 	elif explosion_type == PATTERNS.VERTICAL:
 		type_label.text = 'I'
 		
-	selected_type = TYPE.values()[range(2).pick_random()]
+	selected_type = TYPE.values()[range(3).pick_random()]
 	if selected_type == TYPE.NORMAL:
 		type = bomb
 		animation_name = 'normal'
 	elif selected_type == TYPE.ELECTRICAL:
 		type = bomb_electrical
 		animation_name = 'electric'
-	else:
-		type = bomb
-		animation_name = 'normal'
+	elif selected_type == TYPE.BUBBLE:
+		type = bomb_bubble
+		animation_name = 'bubble'
 		
-	print(type, ', ', selected_type)
 	type.visible = true
 
 

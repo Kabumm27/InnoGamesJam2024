@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://brnyuflantn1f"]
+[gd_scene load_steps=17 format=3 uid="uid://brnyuflantn1f"]
 
 [ext_resource type="Script" path="res://scripts/bomb.gd" id="1_tkypb"]
 [ext_resource type="Texture2D" uid="uid://dtw6mjwskia8j" path="res://assets/sprites/bomben_128x128.png" id="2_2sd61"]
@@ -7,15 +7,19 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_sre7l"]
 radius = 56.0089
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_y40d4"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_jefft"]
 atlas = ExtResource("2_2sd61")
 region = Rect2(256, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7a4yq"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_dva70"]
 atlas = ExtResource("2_2sd61")
 region = Rect2(256, 758, 128, 128)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8rc7e"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_wvqco"]
+atlas = ExtResource("2_2sd61")
+region = Rect2(256, 512, 128, 128)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0n3vt"]
 shader = ExtResource("3_eou3y")
 shader_parameter/end_time = 3.0
 shader_parameter/start_freq = 1.0
@@ -32,6 +36,14 @@ region = Rect2(128, 768, 128, 128)
 atlas = ExtResource("2_2sd61")
 region = Rect2(256, 768, 128, 128)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_le13f"]
+atlas = ExtResource("2_2sd61")
+region = Rect2(0, 512, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_owx4t"]
+atlas = ExtResource("2_2sd61")
+region = Rect2(128, 512, 128, 128)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_2hnni"]
 atlas = ExtResource("2_2sd61")
 region = Rect2(0, 0, 128, 128)
@@ -40,7 +52,7 @@ region = Rect2(0, 0, 128, 128)
 atlas = ExtResource("2_2sd61")
 region = Rect2(128, 0, 128, 128)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_udjn5"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_jmiu8"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -48,6 +60,17 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fem2y")
+}],
+"loop": true,
+"name": &"bubble",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_le13f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_owx4t")
 }],
 "loop": true,
 "name": &"electric",
@@ -88,19 +111,23 @@ one_shot = true
 visible = false
 position = Vector2(16, -16)
 scale = Vector2(1.2, 1.2)
-texture = SubResource("AtlasTexture_y40d4")
+texture = SubResource("AtlasTexture_jefft")
+
+[node name="bomb_bubble" type="Sprite2D" parent="animations"]
+visible = false
+texture = SubResource("AtlasTexture_dva70")
 
 [node name="bomb_electrical" type="Sprite2D" parent="animations"]
 visible = false
-texture = SubResource("AtlasTexture_7a4yq")
+texture = SubResource("AtlasTexture_wvqco")
 
 [node name="activated_animation" type="AnimatedSprite2D" parent="animations"]
 visible = false
-material = SubResource("ShaderMaterial_8rc7e")
+material = SubResource("ShaderMaterial_0n3vt")
 position = Vector2(16, -16)
 scale = Vector2(1.2, 1.2)
-sprite_frames = SubResource("SpriteFrames_udjn5")
-animation = &"electric"
+sprite_frames = SubResource("SpriteFrames_jmiu8")
+animation = &"normal"
 
 [node name="TypeLabel" type="Label" parent="."]
 anchors_preset = 8
