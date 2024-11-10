@@ -18,6 +18,8 @@ var health = 3
 @onready var died: AudioStreamPlayer2D = $sounds/died
 @onready var hit: AudioStreamPlayer2D = $sounds/hit
 
+var invincible = false
+
 const GRAVESTONE = preload("res://scenes/gravestone.tscn")
 
 var animated_sprite: AnimatedSprite2D
@@ -82,11 +84,14 @@ func drop(object: Node2D):
 	if object.has_method("toggle_collision"):
 		object.toggle_collision(true)
 
-
 func reduce_health(damage: int):
-	health -= damage
-	hit.play()
-	health_bar.update_health(health)
+	if !invincible:
+		health -= damage
+		hit.play()
+		health_bar.update_health(health)
+		invincible = true
+		await get_tree().create_timer(2.0).timeout
+		invincible = false
 
 
 func set_sprite_state():
