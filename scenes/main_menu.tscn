@@ -28,6 +28,7 @@ expand_mode = 2
 stretch_mode = 3
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
 
 [node name="Control" type="Control" parent="CanvasLayer"]
 layout_mode = 3
