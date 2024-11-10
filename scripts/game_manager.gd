@@ -25,19 +25,20 @@ func _process(_delta):
 		var team_blue_dead = team_blue.all(player_is_dead)
 
 		if team_yellow_dead:
-			ui.show_winning_screen(Enums.Team.Blue)
-			game_over = true
-			pause_game()
+			end_game(Enums.Team.Blue)
 		elif team_blue_dead:
-			ui.show_winning_screen(Enums.Team.Yellow)
-			game_over = true
-			pause_game()
+			end_game(Enums.Team.Yellow)
 
 
 func player_is_dead(player):
 	return !player.visible || player.health <= 0
 
 
-func pause_game():
+func end_game(team: Enums.Team):
 	await get_tree().create_timer(3.0).timeout
+	ui.show_winning_screen(team)
+	game_over = true
+	pause_game()
+
+func pause_game():
 	get_tree().paused = true
