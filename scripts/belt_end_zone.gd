@@ -2,6 +2,8 @@ extends Area2D
 
 @onready var map: Map = $%Map
 
+@export var push = 1
+
 var bomb_placed = false
 
 func _on_body_entered(body: Node2D) -> void:
@@ -10,7 +12,7 @@ func _on_body_entered(body: Node2D) -> void:
 		var tilemap_pos = map.global_to_tilemap(global_position)
 		
 		var e = tilemap_pos
-		e.x -= 1
+		e.x += push
 		
 		body.global_position = map.tilemap_to_global(e)
 	else:
