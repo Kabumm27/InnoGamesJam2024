@@ -878,3 +878,4 @@ position = Vector2(1408, 704)
 stream = ExtResource("31_dmv2q")
 volume_db = -20.0
 autoplay = true
+parameters/looping = true
