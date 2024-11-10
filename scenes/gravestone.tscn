@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cm0xnh2mk17cn"]
+
+[ext_resource type="Texture2D" uid="uid://bjaunth6jmdrg" path="res://assets/sprites/bg_gravestone.png" id="1_jrjpg"]
+
+[node name="gravestone" type="Node2D"]
+
+[node name="gravestone" type="Sprite2D" parent="."]
+texture = ExtResource("1_jrjpg")

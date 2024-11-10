@@ -18,6 +18,8 @@ var health = 3
 @onready var died: AudioStreamPlayer2D = $sounds/died
 @onready var hit: AudioStreamPlayer2D = $sounds/hit
 
+const GRAVESTONE = preload("res://scenes/gravestone.tscn")
+
 var animated_sprite: AnimatedSprite2D
 
 var handle_object: Node2D = null
@@ -128,6 +130,11 @@ func _process(_delta):
 	if (health <= 0 && alive):
 		alive = false
 		died.play()
+		var gs = GRAVESTONE.instantiate()
+		var tile = map.global_to_tilemap(global_position)
+		gs.global_position = map.tilemap_to_global(tile)
+		map.add_child(gs)
+		disable_player()
 	
 	if (!is_instance_valid(carry_object)):
 		carry_object = null

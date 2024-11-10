@@ -32,4 +32,5 @@ func player_is_dead(player):
 
 
 func pause_game():
+	await get_tree().create_timer(3.0).timeout
 	get_tree().paused = true
