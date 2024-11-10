@@ -13,13 +13,18 @@ var health = 3
 @onready var rotation_node: Node2D = $RotationNode
 @onready var health_bar: HBoxContainer = $health_bar
 
+@onready var pick_up_sound: AudioStreamPlayer2D = $sounds/pick_up
+@onready var put_down_sound: AudioStreamPlayer2D = $sounds/put_down
+@onready var died: AudioStreamPlayer2D = $sounds/died
+@onready var hit: AudioStreamPlayer2D = $sounds/hit
+
 var animated_sprite: AnimatedSprite2D
 
 var handle_object: Node2D = null
 var carry_object: Node2D = null
 
 var last_move_dir: Vector2 = Vector2.RIGHT
-
+var alive = true
 
 func _ready():
 	for skin in get_node("Skins").get_children():
@@ -35,6 +40,7 @@ func pick_up(object: Node2D):
 	object.global_position = Vector2.ZERO
 	carry_location.add_child(object)
 	carry_object = handle_object
+	pick_up_sound.play()
 
 
 func drop(object: Node2D):
@@ -45,6 +51,8 @@ func drop(object: Node2D):
 	var direction = Vector2i(Vector2.RIGHT.rotated(rotation_node.global_rotation).round())
 	var tilemap_pos = map.global_to_tilemap(global_position)
 	object.global_position = map.tilemap_to_global(tilemap_pos + direction)
+	
+	put_down_sound.play()
 
 	await get_tree().create_timer(0.03).timeout
 
@@ -54,7 +62,7 @@ func drop(object: Node2D):
 
 func reduce_health(damage: int):
 	health -= damage
-	print('reduce health ', health)
+	hit.play()
 	health_bar.update_health(health)
 
 
@@ -96,8 +104,9 @@ func _process(_delta):
 		elif carry_object:
 			drop(carry_object)
 
-	if (health <= 0):
-		print('player died')
+	if (health <= 0 && alive):
+		alive = false
+		died.play()
 	
 	if (!is_instance_valid(carry_object)):
 		carry_object = null

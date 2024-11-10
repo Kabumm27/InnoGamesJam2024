@@ -38,7 +38,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_fe3fn")
 }],
 "loop": true,
-"name": &"default",
+"name": &"normal",
 "speed": 5.0
 }]
 
@@ -71,7 +71,7 @@ material = SubResource("ShaderMaterial_88dmb")
 position = Vector2(16, -16)
 scale = Vector2(1.2, 1.2)
 sprite_frames = SubResource("SpriteFrames_kyjba")
-frame_progress = 0.837586
+animation = &"normal"
 
 [node name="TypeLabel" type="Label" parent="."]
 anchors_preset = 8
