@@ -14,6 +14,9 @@ const EXPLOSION = preload("res://scenes/explosion.tscn")
 enum PATTERNS {CIRCLE = 0, CROSS = 1, PLUS = 2, VERTICAL = 3}
 
 func toggle_collision(state: bool):
+	call_deferred("toggle_collision_deffered", state)
+	
+func toggle_collision_deffered(state: bool):
 	collision_shape.disabled = !state
 	bomb.hide()
 	activated_animation.visible = true
@@ -40,7 +43,7 @@ func _on_timer_timeout():
 		expl.global_position = map.tilemap_to_global(tile)	
 	await explosions[0].animation_finished()
 
-	queue_free()
+	call_deferred("free")
 	
 func get_shape(pattern: PATTERNS, tile_pos: Vector2i):
 	match(pattern):

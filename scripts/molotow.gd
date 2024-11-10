@@ -9,12 +9,18 @@ extends CharacterBody2D
 const FIRE = preload("res://scenes/fire.tscn")
 
 func toggle_collision(state: bool):
+	call_deferred("toggle_collision_deferred", state)
+
+func toggle_collision_deferred(state: bool):
 	collision_shape.disabled = !state
 	molotow.hide()
 	molotow_activated.visible = true
 	molotow_activated.play()
 
 func light_up():
+	call_deferred("light_up_deferred")
+
+func light_up_deferred():
 	var tilemap_pos = map.global_to_tilemap(global_position)
 	molotow_activated.hide()
 	var flames = []
@@ -28,4 +34,4 @@ func light_up():
 		tile.y += i
 		fire.global_position = map.tilemap_to_global(tile)
 	await flames[flames.size() - 1].fire_out();
-	queue_free()
+	call_deferred("free")
