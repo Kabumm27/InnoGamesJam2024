@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://eg8ijcocujrg" path="res://assets/sprites/exit_button.png" id="4_06ckf"]
 [ext_resource type="Script" path="res://scripts/button_credits.gd" id="5_mk4f8"]
 [ext_resource type="Script" path="res://scripts/button_exit.gd" id="7_lmlov"]
-[ext_resource type="AudioStream" uid="uid://mcaupqhfhxsr" path="res://assets/music/time_for_adventure.mp3" id="8_r52b8"]
+[ext_resource type="AudioStream" uid="uid://53d6kvg3t2u3" path="res://assets/sounds/2021-08-16_-_8_Bit_Adventure_-_www.FesliyanStudios.com.mp3" id="8_irwp4"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iuwdi"]
 
@@ -87,7 +87,7 @@ script = ExtResource("7_lmlov")
 [node name="Music" type="Node" parent="."]
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Music"]
-stream = ExtResource("8_r52b8")
+stream = ExtResource("8_irwp4")
 autoplay = true
 parameters/looping = true
 
