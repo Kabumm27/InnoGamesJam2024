@@ -15,7 +15,7 @@ extends BaseBomb
 
 const EXPLOSION = preload("res://scenes/explosion.tscn")
 enum PATTERNS {CIRCLE = 0, CROSS = 1, PLUS = 2, VERTICAL = 3}
-enum TYPE {NORMAL = 0, ELECTRICAL = 1}
+enum TYPE {NORMAL = 0, ELECTRICAL = 1, BUBBLE = 2}
 var type: Sprite2D = null
 var animation_name = 'normal'
 var selected_type: int

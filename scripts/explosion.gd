@@ -4,7 +4,7 @@ extends Node2D
 @onready var explosion_bubble: AudioStreamPlayer2D = $sounds/explosion_bubble
 @onready var explosion_normal: AudioStreamPlayer2D = $sounds/explosion_normal
 
-enum TYPE {NORMAL = 0, ELECTRICAL = 1}
+enum TYPE {NORMAL = 0, ELECTRICAL = 1, BUBBLE = 2}
 
 @export var type: TYPE
 
@@ -17,6 +17,8 @@ func _ready() -> void:
 	elif type == TYPE.ELECTRICAL:
 		explosion.play('bubble')
 		explosion_bubble.play()
+	elif type == TYPE.BUBBLE:
+		explosion.play('bubble')
 
 func animation_finished() -> void:
 	await explosion.animation_finished

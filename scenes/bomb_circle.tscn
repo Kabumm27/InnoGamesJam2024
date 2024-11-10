@@ -68,7 +68,7 @@ animations = [{
 [sub_resource type="LabelSettings" id="LabelSettings_bf1mr"]
 font_size = 64
 
-[node name="Bomb" type="CharacterBody2D"]
+[node name="Bomb2" type="CharacterBody2D"]
 z_index = 15
 collision_layer = 17
 collision_mask = 17
