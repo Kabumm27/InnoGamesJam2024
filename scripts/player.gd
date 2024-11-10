@@ -5,10 +5,10 @@ class_name Player
 var speed = 400
 var health = 3
 
-@export var gamepad_id = 0
+@export var gamepad_id: int = 0
+@export var team: Enums.Team = Enums.Team.None
 
 @onready var map: Map = $%Map
-@onready var indicator: ColorRect = $Indicator
 @onready var carry_location: Node2D = $CarryLocation
 @onready var rotation_node: Node2D = $RotationNode
 @onready var health_bar: HBoxContainer = $health_bar
@@ -143,9 +143,7 @@ func _physics_process(_delta):
 
 func _on_handle_area_body_entered(body: Node2D):
 	handle_object = body
-	indicator.visible = true
 
 
 func _on_handle_area_body_exited(_body: Node2D):
 	handle_object = null
-	indicator.visible = false

@@ -288,19 +288,11 @@ shape = SubResource("CircleShape2D_7sucb")
 
 [node name="HandleArea" type="Area2D" parent="RotationNode"]
 position = Vector2(80, 0)
-collision_layer = 512
-collision_mask = 528
+collision_layer = 0
+collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RotationNode/HandleArea"]
 shape = SubResource("RectangleShape2D_ms7m1")
-
-[node name="Indicator" type="ColorRect" parent="."]
-visible = false
-offset_left = 13.0
-offset_top = 14.0
-offset_right = 53.0
-offset_bottom = 54.0
-color = Color(1, 0, 0, 1)
 
 [node name="CarryLocation" type="Node2D" parent="."]
 position = Vector2(32, -32)

@@ -922,7 +922,6 @@ position = Vector2(896, 320)
 
 [node name="Player" parent="Players" instance=ExtResource("2_w8s8l")]
 position = Vector2(-1286, -576)
-gamepad_id = 0
 team = 1
 
 [node name="Player2" parent="Players" instance=ExtResource("2_w8s8l")]

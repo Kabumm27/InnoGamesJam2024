@@ -54,18 +54,20 @@ func _process(_delta):
 		activated_animation.material.set_shader_parameter("time", timer.time_left)
 
 
-func toggle_collision_deffered(state: bool):
+func toggle_collision_deferred(state: bool):
 	collision_shape.disabled = !state
 	type.hide()
 	activated_animation.visible = true
-	
 	activated_animation.play(animation_name) # start timer on first "collision" (pick up)
-	timer.start()
+	
+	if timer.is_stopped():
+		timer.start()
 
 
 func pause_timer(pause: bool):
-	print(pause, timer.time_left)
 	timer.paused = pause
+	if activated_animation.visible && activated_animation.material:
+		activated_animation.material.set_shader_parameter("time", 0)
 
 
 func _on_timer_timeout():
