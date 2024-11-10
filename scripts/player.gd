@@ -32,8 +32,9 @@ func _ready():
 	animated_sprite = get_node("Skins/Skin" + str(gamepad_id + 1))
 	animated_sprite.visible = true
 
-	disable_player()
-	Input.joy_connection_changed.connect(_joy_connection_changed)
+	if gamepad_id >= 2:
+		disable_player()
+		Input.joy_connection_changed.connect(_joy_connection_changed)
 
 
 func _joy_connection_changed(id, connected):
