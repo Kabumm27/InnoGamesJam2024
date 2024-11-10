@@ -1,7 +1,8 @@
-[gd_scene load_steps=28 format=3 uid="uid://b18iwfskgx8ub"]
+[gd_scene load_steps=36 format=3 uid="uid://b18iwfskgx8ub"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_7p7au"]
 [ext_resource type="Texture2D" uid="uid://de1kxtlli6y8m" path="res://assets/sprites/character_128x128.png" id="2_wmj6r"]
+[ext_resource type="Texture2D" uid="uid://14qqdrgbd1t0" path="res://assets/sprites/character_128x128_v2.png" id="5_h1gji"]
 [ext_resource type="Script" path="res://scripts/health_bar.gd" id="5_msrjk"]
 [ext_resource type="Texture2D" uid="uid://ciysmvqbxow4l" path="res://assets/ui/player_heart_full.png" id="5_p5u3n"]
 
@@ -206,6 +207,71 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_fwv15"]
+atlas = ExtResource("5_h1gji")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rlhnm"]
+atlas = ExtResource("5_h1gji")
+region = Rect2(896, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_60g8c"]
+atlas = ExtResource("5_h1gji")
+region = Rect2(768, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_okdew"]
+atlas = ExtResource("5_h1gji")
+region = Rect2(896, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g0rq1"]
+atlas = ExtResource("5_h1gji")
+region = Rect2(768, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_va3tt"]
+atlas = ExtResource("5_h1gji")
+region = Rect2(896, 256, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_shaun"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fwv15")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rlhnm")
+}],
+"loop": true,
+"name": &"idle_carry",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_60g8c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_okdew")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g0rq1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_va3tt")
+}],
+"loop": true,
+"name": &"move_carry",
+"speed": 5.0
+}]
+
 [node name="Player" type="CharacterBody2D"]
 z_index = 100
 collision_layer = 513
@@ -263,7 +329,7 @@ scale = Vector2(1.3, 1.3)
 
 [node name="Skin1" type="AnimatedSprite2D" parent="Skins"]
 sprite_frames = SubResource("SpriteFrames_yel57")
-animation = &"idle_carry"
+animation = &"idle"
 
 [node name="Skin2" type="AnimatedSprite2D" parent="Skins"]
 visible = false
@@ -273,7 +339,12 @@ animation = &"move_carry"
 [node name="Skin3" type="AnimatedSprite2D" parent="Skins"]
 visible = false
 sprite_frames = SubResource("SpriteFrames_dii7k")
-animation = &"move_carry"
+animation = &"move"
+
+[node name="Skin4" type="AnimatedSprite2D" parent="Skins"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_shaun")
+animation = &"move"
 
 [connection signal="body_entered" from="RotationNode/HandleArea" to="." method="_on_handle_area_body_entered"]
 [connection signal="body_exited" from="RotationNode/HandleArea" to="." method="_on_handle_area_body_exited"]
