@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bd8xkxso7bcbp"]
+[gd_scene load_steps=12 format=3 uid="uid://bd8xkxso7bcbp"]
 
 [ext_resource type="Texture2D" uid="uid://dkck7on1tqoi6" path="res://assets/sprites/startbild.png" id="1_l2yf0"]
 [ext_resource type="Texture2D" uid="uid://cdto0mniuwhp6" path="res://assets/sprites/play_button.png" id="2_pkq61"]
@@ -10,6 +10,10 @@
 [ext_resource type="AudioStream" uid="uid://53d6kvg3t2u3" path="res://assets/sounds/2021-08-16_-_8_Bit_Adventure_-_www.FesliyanStudios.com.mp3" id="8_irwp4"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iuwdi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jr6dr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wofno"]
 
 [node name="MainMenu" type="Node"]
 
@@ -57,6 +61,7 @@ theme_override_constants/margin_right = 120
 
 [node name="ButtonPlay" type="Button" parent="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jr6dr")
 icon = ExtResource("2_pkq61")
 flat = true
 icon_alignment = 1
@@ -68,6 +73,7 @@ theme_override_constants/margin_right = 70
 
 [node name="ButtonCredits" type="Button" parent="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer/MarginContainer2"]
 layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jr6dr")
 icon = ExtResource("3_6lgke")
 flat = true
 icon_alignment = 1
@@ -79,6 +85,7 @@ theme_override_constants/margin_left = 225
 
 [node name="ButtonExit" type="Button" parent="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer/MarginContainer3"]
 layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wofno")
 icon = ExtResource("4_06ckf")
 flat = true
 icon_alignment = 1

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cbe6i4c23otdn"]
+[gd_scene load_steps=10 format=3 uid="uid://cbe6i4c23otdn"]
 
 [ext_resource type="Texture2D" uid="uid://c16aqcqf2lnob" path="res://assets/ui/credits.png" id="1_t8lpd"]
 [ext_resource type="FontFile" uid="uid://qusv053np531" path="res://assets/fonts/OriginTech personal use.ttf" id="2_uyal0"]
@@ -11,6 +11,8 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ky0mf"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8ep64"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7e4kk"]
 
 [node name="Credits" type="Node"]
 
@@ -224,6 +226,7 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_8ep64")
 
 [node name="ButtonBack" type="Button" parent="CanvasLayer/CenterContainer2/MarginContainer/PanelContainer"]
 layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_7e4kk")
 icon = ExtResource("3_7ef0y")
 flat = true
 icon_alignment = 1
