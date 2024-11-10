@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bd8xkxso7bcbp"]
+[gd_scene load_steps=10 format=3 uid="uid://bd8xkxso7bcbp"]
 
 [ext_resource type="Texture2D" uid="uid://dkck7on1tqoi6" path="res://assets/sprites/startbild.png" id="1_l2yf0"]
 [ext_resource type="Texture2D" uid="uid://cdto0mniuwhp6" path="res://assets/sprites/play_button.png" id="2_pkq61"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://eg8ijcocujrg" path="res://assets/sprites/exit_button.png" id="4_06ckf"]
 [ext_resource type="Script" path="res://scripts/button_credits.gd" id="5_mk4f8"]
 [ext_resource type="Script" path="res://scripts/button_exit.gd" id="7_lmlov"]
+[ext_resource type="AudioStream" uid="uid://mcaupqhfhxsr" path="res://assets/music/time_for_adventure.mp3" id="8_r52b8"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iuwdi"]
 
@@ -82,6 +83,13 @@ icon = ExtResource("4_06ckf")
 flat = true
 icon_alignment = 1
 script = ExtResource("7_lmlov")
+
+[node name="Music" type="Node" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Music"]
+stream = ExtResource("8_r52b8")
+autoplay = true
+parameters/looping = true
 
 [connection signal="mouse_entered" from="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/ButtonPlay" to="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/ButtonPlay" method="_on_button_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/ButtonPlay" to="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/ButtonPlay" method="_on_button_mouse_exited"]
