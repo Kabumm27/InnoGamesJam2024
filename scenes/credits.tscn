@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://c16aqcqf2lnob" path="res://assets/ui/credits.png" id="1_t8lpd"]
 [ext_resource type="FontFile" uid="uid://qusv053np531" path="res://assets/fonts/OriginTech personal use.ttf" id="2_uyal0"]
 [ext_resource type="Texture2D" uid="uid://eg8ijcocujrg" path="res://assets/sprites/exit_button.png" id="3_akkn4"]
-[ext_resource type="Script" path="res://scripts/button_exit.gd" id="4_v0knq"]
+[ext_resource type="Script" path="res://scripts/button_exitCredits.gd" id="4_dq8ad"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rsukv"]
 
@@ -226,7 +226,7 @@ layout_mode = 2
 icon = ExtResource("3_akkn4")
 flat = true
 icon_alignment = 1
-script = ExtResource("4_v0knq")
+script = ExtResource("4_dq8ad")
 
 [connection signal="mouse_entered" from="CanvasLayer/CenterContainer2/MarginContainer/PanelContainer/ButtonExit" to="CanvasLayer/CenterContainer2/MarginContainer/PanelContainer/ButtonExit" method="_on_button_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/CenterContainer2/MarginContainer/PanelContainer/ButtonExit" to="CanvasLayer/CenterContainer2/MarginContainer/PanelContainer/ButtonExit" method="_on_button_mouse_exited"]
