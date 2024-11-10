@@ -808,10 +808,23 @@ position = Vector2(896, 448)
 
 [node name="Player" parent="Players" instance=ExtResource("2_w8s8l")]
 position = Vector2(-1286, -576)
+gamepad_id = 0
+team = 1
 
 [node name="Player2" parent="Players" instance=ExtResource("2_w8s8l")]
-position = Vector2(1216, -465)
+position = Vector2(1283, -586)
 gamepad_id = 1
+team = 2
+
+[node name="Player3" parent="Players" instance=ExtResource("2_w8s8l")]
+position = Vector2(-1290, 578)
+gamepad_id = 2
+team = 1
+
+[node name="Player4" parent="Players" instance=ExtResource("2_w8s8l")]
+position = Vector2(1257, 559)
+gamepad_id = 3
+team = 2
 
 [node name="Items" type="Node2D" parent="."]
 

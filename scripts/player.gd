@@ -32,6 +32,26 @@ func _ready():
 	animated_sprite = get_node("Skins/Skin" + str(gamepad_id + 1))
 	animated_sprite.visible = true
 
+	disable_player()
+	Input.joy_connection_changed.connect(_joy_connection_changed)
+
+
+func _joy_connection_changed(id, connected):
+	if id == gamepad_id:
+		if connected:
+			enable_player()
+		else:
+			disable_player()
+
+
+func enable_player():
+	visible = true
+	$CollisionShape2D.disabled = false
+
+func disable_player():
+	visible = false
+	$CollisionShape2D.disabled = true
+
 
 func pick_up(object: Node2D):
 	if object.has_method("toggle_collision"):
