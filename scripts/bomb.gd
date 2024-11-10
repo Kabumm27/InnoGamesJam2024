@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends BaseBomb
 
 @export var map: Map
 
@@ -8,67 +8,88 @@ extends CharacterBody2D
 # animations
 @onready var bomb: Sprite2D = $animations/bomb
 @onready var activated_animation: AnimatedSprite2D = $animations/activated_animation
+@onready var type_label: Label = $TypeLabel
 
-const DAMAGE = 40
+@export var explosion_type: PATTERNS
+
 const EXPLOSION = preload("res://scenes/explosion.tscn")
 enum PATTERNS {CIRCLE = 0, CROSS = 1, PLUS = 2, VERTICAL = 3}
 
-func _ready() -> void:
+
+func _ready():
 	z_index = 25
 
-func toggle_collision(state: bool):
-	call_deferred("toggle_collision_deffered", state)
-	
+	timer.wait_time = fuse_time
+	if explosion_type == PATTERNS.CIRCLE:
+		type_label.text = 'O'
+	elif explosion_type == PATTERNS.CROSS:
+		type_label.text = 'X'
+	elif explosion_type == PATTERNS.PLUS:
+		type_label.text = '+'
+	elif explosion_type == PATTERNS.VERTICAL:
+		type_label.text = 'I'
+
+
+func _process(_delta):
+	if activated_animation.visible && activated_animation.material:
+		activated_animation.material.set_shader_parameter("time", timer.time_left)
+
+
 func toggle_collision_deffered(state: bool):
 	collision_shape.disabled = !state
 	bomb.hide()
 	activated_animation.visible = true
 	activated_animation.play() # start timer on first "collision" (pick up)
 	timer.start()
-	
+
+
 func pause_timer(pause: bool):
 	print(pause, timer.time_left)
 	timer.paused = pause
 
+
 func _on_timer_timeout():
-	# var direction = Vector2i(Vector2.RIGHT.rotated(global_rotation).round())
 	var tilemap_pos = map.global_to_tilemap(global_position)
 
 	activated_animation.stop()
 	activated_animation.hide()
-	var tiles = get_shape(PATTERNS.VERTICAL, tilemap_pos) #map.get_cells(tilemap_pos)
-	tiles.append(tilemap_pos)
+	type_label.hide()
+	var tiles = get_shape(explosion_type, tilemap_pos) # map.get_cells(tilemap_pos)
+	# tiles.append(tilemap_pos)
 	var explosions = []
 	for tile in tiles:
 		var expl = EXPLOSION.instantiate()
 		explosions.append(expl)
 		self.add_child(expl)
-		expl.global_position = map.tilemap_to_global(tile)	
+		expl.global_position = map.tilemap_to_global(tile)
 	await explosions[0].animation_finished()
 
 	call_deferred("free")
-	
+
+
 func get_shape(pattern: PATTERNS, tile_pos: Vector2i):
-	match(pattern):
+	match (pattern):
 		PATTERNS.CROSS:
 			var cross = [tile_pos]
-			for i in [[-1,-1], [-1,1], [1, -1], [1, 1]]:
-				var e = tile_pos
-				e.x += i[0]
-				e.y += i[1]
-				cross.append(e)
+			for i in [[-1, -1], [-1, 1], [1, -1], [1, 1]]:
+				for j in range(1, explosion_size):
+					var e = tile_pos
+					e.x += i[0] * j
+					e.y += i[1] * j
+					cross.append(e)
 			return cross
 		PATTERNS.CIRCLE:
-			var circle = [tile_pos]
-			for i in [[-1,0], [0,-1], [0, 1], [1,0]]:
-				var e = tile_pos
-				e.x += i[0]
-				e.y += i[1]
-				circle.append(e)
+			var circle = []
+			var explosion_size_squared = explosion_size * explosion_size
+			for y in range(1 - explosion_size, explosion_size):
+				for x in range(1 - explosion_size, explosion_size):
+					var vec = Vector2i(tile_pos.x + x, tile_pos.y + y)
+					if vec.distance_squared_to(tile_pos) < explosion_size_squared:
+						circle.append(vec)
 			return circle
 		PATTERNS.PLUS:
 			var plus = []
-			for i in range(-2, 3):
+			for i in range(1 - explosion_size, explosion_size):
 				var e = tile_pos
 				e.x += i
 				plus.append(e)
@@ -78,7 +99,7 @@ func get_shape(pattern: PATTERNS, tile_pos: Vector2i):
 			return plus
 		PATTERNS.VERTICAL:
 			var vertical = []
-			for i in range(-5, 6):
+			for i in range(1 - explosion_size, explosion_size):
 				var e = tile_pos
 				e.y += i
 				vertical.append(e)

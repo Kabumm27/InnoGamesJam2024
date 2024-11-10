@@ -1,0 +1,92 @@
+[gd_scene load_steps=11 format=3 uid="uid://dyuu5l5bp5oof"]
+
+[ext_resource type="Script" path="res://scripts/bomb.gd" id="1_gji1q"]
+[ext_resource type="Texture2D" uid="uid://dtw6mjwskia8j" path="res://assets/sprites/bomben_128x128.png" id="2_lgspp"]
+[ext_resource type="Shader" path="res://scenes/shader/bomb_countdown.gdshader" id="3_6lyjk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sre7l"]
+radius = 56.0089
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y40d4"]
+atlas = ExtResource("2_lgspp")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xerov"]
+shader = ExtResource("3_6lyjk")
+shader_parameter/end_time = 3.0
+shader_parameter/start_freq = 1.0
+shader_parameter/end_freq = 10.0
+shader_parameter/time = null
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/blink_length = 0.5
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2hnni"]
+atlas = ExtResource("2_lgspp")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fe3fn"]
+atlas = ExtResource("2_lgspp")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kyjba"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2hnni")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fe3fn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7a7y0"]
+font_size = 64
+
+[node name="Bomb" type="CharacterBody2D"]
+z_index = 15
+collision_layer = 17
+collision_mask = 17
+script = ExtResource("1_gji1q")
+explosion_type = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_sre7l")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="animations" type="Node2D" parent="."]
+
+[node name="bomb" type="Sprite2D" parent="animations"]
+position = Vector2(16, -16)
+scale = Vector2(1.2, 1.2)
+texture = SubResource("AtlasTexture_y40d4")
+
+[node name="activated_animation" type="AnimatedSprite2D" parent="animations"]
+visible = false
+material = SubResource("ShaderMaterial_xerov")
+position = Vector2(16, -16)
+scale = Vector2(1.2, 1.2)
+sprite_frames = SubResource("SpriteFrames_kyjba")
+frame_progress = 0.837586
+
+[node name="TypeLabel" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -7.5
+offset_top = -11.5
+offset_right = 7.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "X"
+label_settings = SubResource("LabelSettings_7a7y0")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -12,7 +12,7 @@ var bombs: Array[PackedScene] = []
 
 func spawn_bomb():
 	if bombs.size() > 0:
-		var bomb = bombs.pick_random().instantiate()
+		var bomb = bombs.pick_random().instantiate() as BaseBomb
 		bomb.map = map
 		# bomb.global_position = global_position
 		add_child(bomb)

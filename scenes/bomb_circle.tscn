@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://tmgj130g0t8g"]
+[gd_scene load_steps=11 format=3 uid="uid://tmgj130g0t8g"]
 
 [ext_resource type="Script" path="res://scripts/bomb.gd" id="1_tv2jc"]
 [ext_resource type="Texture2D" uid="uid://dtw6mjwskia8j" path="res://assets/sprites/bomben_128x128.png" id="2_e08hp"]
+[ext_resource type="Shader" path="res://scenes/shader/bomb_countdown.gdshader" id="3_siiwd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sre7l"]
 radius = 56.0089
@@ -9,6 +10,15 @@ radius = 56.0089
 [sub_resource type="AtlasTexture" id="AtlasTexture_y40d4"]
 atlas = ExtResource("2_e08hp")
 region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_88dmb"]
+shader = ExtResource("3_siiwd")
+shader_parameter/end_time = 3.0
+shader_parameter/start_freq = 1.0
+shader_parameter/end_freq = 10.0
+shader_parameter/time = null
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/blink_length = 0.5
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2hnni"]
 atlas = ExtResource("2_e08hp")
@@ -32,6 +42,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="LabelSettings" id="LabelSettings_bf1mr"]
+font_size = 64
+
 [node name="Bomb" type="CharacterBody2D"]
 z_index = 15
 collision_layer = 17
@@ -48,11 +61,31 @@ one_shot = true
 [node name="animations" type="Node2D" parent="."]
 
 [node name="bomb" type="Sprite2D" parent="animations"]
+position = Vector2(16, -16)
+scale = Vector2(1.2, 1.2)
 texture = SubResource("AtlasTexture_y40d4")
 
 [node name="activated_animation" type="AnimatedSprite2D" parent="animations"]
 visible = false
+material = SubResource("ShaderMaterial_88dmb")
+position = Vector2(16, -16)
+scale = Vector2(1.2, 1.2)
 sprite_frames = SubResource("SpriteFrames_kyjba")
 frame_progress = 0.837586
+
+[node name="TypeLabel" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -7.5
+offset_top = -11.5
+offset_right = 7.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "X"
+label_settings = SubResource("LabelSettings_bf1mr")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

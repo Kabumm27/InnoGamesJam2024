@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends BaseBomb
 
 @export var map: Map
 

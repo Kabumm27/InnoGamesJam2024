@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=4 uid="uid://dnxh1bnwsohr"]
+[gd_scene load_steps=44 format=4 uid="uid://dnxh1bnwsohr"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_6hbi4"]
 [ext_resource type="Script" path="res://scripts/map.gd" id="2_t8deg"]
@@ -15,7 +15,7 @@
 [ext_resource type="Script" path="res://scripts/bomb_spawner_manager.gd" id="12_c5iff"]
 [ext_resource type="PackedScene" uid="uid://cjlj6rfcp3m4d" path="res://scenes/Belt_Curve_Right_Up.tscn" id="12_fn5l2"]
 [ext_resource type="PackedScene" path="res://scenes/belt_left.tscn" id="13_2k6al"]
-[ext_resource type="PackedScene" uid="uid://tmgj130g0t8g" path="res://scenes/bomb.tscn" id="13_h7ax1"]
+[ext_resource type="PackedScene" uid="uid://tmgj130g0t8g" path="res://scenes/bomb_circle.tscn" id="13_h7ax1"]
 [ext_resource type="PackedScene" path="res://scenes/Belt_Curve_Left_Down.tscn" id="14_2bcno"]
 [ext_resource type="PackedScene" uid="uid://cx1hqhorn20kj" path="res://scenes/molotow.tscn" id="14_sxl7d"]
 [ext_resource type="PackedScene" path="res://scenes/belt_down.tscn" id="15_1fjqu"]
@@ -27,6 +27,9 @@
 [ext_resource type="Shader" path="res://scenes/shader/recolor_belt.gdshader" id="19_22n0l"]
 [ext_resource type="PackedScene" uid="uid://cjfvh2j8xy4g7" path="res://scenes/BeltEndLeft.tscn" id="22_o8y2g"]
 [ext_resource type="PackedScene" path="res://scenes/BeltStartLeft.tscn" id="23_trckv"]
+[ext_resource type="PackedScene" uid="uid://bv17deblktc8m" path="res://scenes/bomb_plus.tscn" id="25_oqbdx"]
+[ext_resource type="PackedScene" uid="uid://dyuu5l5bp5oof" path="res://scenes/bomb_cross.tscn" id="26_vv4as"]
+[ext_resource type="PackedScene" uid="uid://brnyuflantn1f" path="res://scenes/bomb_vertical.tscn" id="28_mped2"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lbhqj"]
 distance = -773.0
@@ -389,12 +392,10 @@ position = Vector2(-512, 576)
 
 [node name="BeltCurve4" parent="Map/Belts/Belt_Right3" instance=ExtResource("4_51kn7")]
 z_index = 20
-z_as_relative = false
 position = Vector2(-512, 320)
 
 [node name="BeltCurve5" parent="Map/Belts/Belt_Right3" instance=ExtResource("5_oicp3")]
 z_index = 20
-z_as_relative = false
 position = Vector2(-256, 320)
 
 [node name="BeltCurve6" parent="Map/Belts/Belt_Right3" instance=ExtResource("12_fn5l2")]
@@ -509,7 +510,6 @@ position = Vector2(-384, -448)
 
 [node name="BeltCurve" parent="Map/Belts/Belt_Left1" instance=ExtResource("14_2bcno")]
 z_index = 20
-z_as_relative = false
 use_parent_material = true
 position = Vector2(-512, -448)
 
@@ -817,7 +817,7 @@ gamepad_id = 1
 [node name="BombSpawnerManager" type="Node2D" parent="."]
 scale = Vector2(1, 0.987352)
 script = ExtResource("12_c5iff")
-bombs = Array[PackedScene]([ExtResource("13_h7ax1"), ExtResource("14_sxl7d")])
+bombs = Array[PackedScene]([ExtResource("13_h7ax1"), ExtResource("26_vv4as"), ExtResource("25_oqbdx"), ExtResource("28_mped2"), ExtResource("14_sxl7d")])
 
 [node name="Left" type="Node2D" parent="BombSpawnerManager"]
 
