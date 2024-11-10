@@ -1,0 +1,42 @@
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://bynijpsyhodcc"]
+
+[ext_resource type="FontFile" uid="uid://cvxq6ggb83nsd" path="res://assets/fonts/AniMe Matrix Font.otf" id="1_okeap"]
+[ext_resource type="Texture2D" uid="uid://dp4fflt6ppqy6" path="res://assets/ui/button_highlighted.png" id="2_0m20e"]
+[ext_resource type="Texture2D" uid="uid://dmf6n7bxk8loc" path="res://assets/ui/button_unpressed.png" id="3_m7nvi"]
+[ext_resource type="Texture2D" uid="uid://bg1atkcomxhh3" path="res://assets/ui/button_pressed.png" id="4_7ek4u"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_icomy"]
+content_margin_top = 20.0
+texture = ExtResource("2_0m20e")
+texture_margin_left = 50.0
+texture_margin_top = 50.0
+texture_margin_right = 50.0
+texture_margin_bottom = 50.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vabxd"]
+content_margin_top = 20.0
+texture = ExtResource("3_m7nvi")
+texture_margin_left = 50.0
+texture_margin_top = 50.0
+texture_margin_right = 50.0
+texture_margin_bottom = 50.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q3hnc"]
+content_margin_top = 20.0
+texture = ExtResource("4_7ek4u")
+texture_margin_left = 50.0
+texture_margin_top = 50.0
+texture_margin_right = 50.0
+texture_margin_bottom = 50.0
+
+[resource]
+Button/colors/font_color = Color(0.168627, 0.180392, 0.278431, 1)
+Button/colors/font_focus_color = Color(0.168627, 0.180392, 0.278431, 1)
+Button/colors/font_hover_color = Color(0.168627, 0.180392, 0.278431, 1)
+Button/colors/font_hover_pressed_color = Color(0.168627, 0.180392, 0.278431, 1)
+Button/colors/font_pressed_color = Color(0.168627, 0.180392, 0.278431, 1)
+Button/font_sizes/font_size = 60
+Button/fonts/font = ExtResource("1_okeap")
+Button/styles/hover = SubResource("StyleBoxTexture_icomy")
+Button/styles/normal = SubResource("StyleBoxTexture_vabxd")
+Button/styles/pressed = SubResource("StyleBoxTexture_q3hnc")

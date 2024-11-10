@@ -1,11 +1,13 @@
 extends Node
 class_name GameManager
 
-@onready var ui: GameMenu = $%FakeUi
+@onready var ui: GameMenu = $%CanvasLayer
 
 var players: Array[Player] = []
 var team_yellow: Array[Player] = []
 var team_blue: Array[Player] = []
+
+var game_over = false
 
 func _ready():
 	for node in get_node("../Players").get_children():
@@ -18,17 +20,18 @@ func _ready():
 
 
 func _process(_delta):
-	var team_yellow_dead = team_yellow.all(player_is_dead)
-	var team_blue_dead = team_blue.all(player_is_dead)
+	if !game_over:
+		var team_yellow_dead = team_yellow.all(player_is_dead)
+		var team_blue_dead = team_blue.all(player_is_dead)
 
-	if team_yellow_dead:
-		print("Team Blue won!")
-		ui.show_winning_screen(Enums.Team.Blue)
-		pause_game()
-	elif team_blue_dead:
-		print("Team Yellow won!")
-		ui.show_winning_screen(Enums.Team.Yellow)
-		pause_game()
+		if team_yellow_dead:
+			ui.show_winning_screen(Enums.Team.Blue)
+			game_over = true
+			pause_game()
+		elif team_blue_dead:
+			ui.show_winning_screen(Enums.Team.Yellow)
+			game_over = true
+			pause_game()
 
 
 func player_is_dead(player):

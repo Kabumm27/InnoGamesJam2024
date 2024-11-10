@@ -1011,25 +1011,59 @@ autoplay = true
 parameters/looping = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-follow_viewport_enabled = true
+unique_name_in_owner = true
+script = ExtResource("34_qhkba")
 
 [node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -556.0
+offset_right = 960.0
+offset_bottom = 556.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="FakeUi" type="Node2D" parent="."]
-unique_name_in_owner = true
-z_index = 200
-script = ExtResource("34_qhkba")
-
-[node name="EndbildBlueWins" type="Sprite2D" parent="FakeUi"]
+[node name="BlueWins" type="TextureRect" parent="CanvasLayer/CenterContainer"]
 visible = false
-scale = Vector2(1.7, 1.7)
+layout_mode = 2
 texture = ExtResource("34_3e8a6")
 
-[node name="EndbildYellowWins" type="Sprite2D" parent="FakeUi"]
+[node name="YellowWins" type="TextureRect" parent="CanvasLayer/CenterContainer"]
 visible = false
-scale = Vector2(1.7, 1.7)
+layout_mode = 2
 texture = ExtResource("36_cpodk")
+
+[node name="ButtonContainer" type="HBoxContainer" parent="CanvasLayer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -561.0
+offset_top = 72.0
+offset_right = 549.0
+offset_bottom = 214.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayAgain" type="Button" parent="CanvasLayer/ButtonContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("36_5gc0v")
+text = "Play Again"
+
+[node name="BackToMenu" type="Button" parent="CanvasLayer/ButtonContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("36_5gc0v")
+text = "Back to menu"
+
+[connection signal="pressed" from="CanvasLayer/ButtonContainer/PlayAgain" to="CanvasLayer" method="_on_play_again_pressed"]
+[connection signal="pressed" from="CanvasLayer/ButtonContainer/BackToMenu" to="CanvasLayer" method="_on_back_to_menu_pressed"]
