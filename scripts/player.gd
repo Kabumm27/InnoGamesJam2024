@@ -22,7 +22,9 @@ var last_move_dir: Vector2 = Vector2.RIGHT
 
 
 func _ready():
-	animated_sprite = get_node("Skin" + str(gamepad_id + 1))
+	for skin in get_node("Skins").get_children():
+		skin.visible = false
+	animated_sprite = get_node("Skins/Skin" + str(gamepad_id + 1))
 	animated_sprite.visible = true
 
 

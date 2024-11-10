@@ -8,6 +8,9 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_7sucb"]
 radius = 64.0312
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ms7m1"]
+size = Vector2(18, 57)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_dg4ej"]
 atlas = ExtResource("2_wmj6r")
 region = Rect2(0, 0, 128, 128)
@@ -203,9 +206,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ms7m1"]
-size = Vector2(18, 57)
-
 [node name="Player" type="CharacterBody2D"]
 z_index = 100
 collision_layer = 513
@@ -213,24 +213,6 @@ script = ExtResource("1_7p7au")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_7sucb")
-
-[node name="Skin1" type="AnimatedSprite2D" parent="."]
-visible = false
-scale = Vector2(1.2, 1.2)
-sprite_frames = SubResource("SpriteFrames_yel57")
-animation = &"idle_carry"
-
-[node name="Skin2" type="AnimatedSprite2D" parent="."]
-visible = false
-scale = Vector2(1.2, 1.2)
-sprite_frames = SubResource("SpriteFrames_ec7au")
-animation = &"move_carry"
-
-[node name="Skin3" type="AnimatedSprite2D" parent="."]
-visible = false
-scale = Vector2(1.2, 1.2)
-sprite_frames = SubResource("SpriteFrames_dii7k")
-animation = &"move_carry"
 
 [node name="RotationNode" type="Node2D" parent="."]
 
@@ -275,6 +257,23 @@ stretch_mode = 2
 layout_mode = 2
 texture = ExtResource("5_p5u3n")
 stretch_mode = 2
+
+[node name="Skins" type="Node2D" parent="."]
+scale = Vector2(1.3, 1.3)
+
+[node name="Skin1" type="AnimatedSprite2D" parent="Skins"]
+sprite_frames = SubResource("SpriteFrames_yel57")
+animation = &"idle_carry"
+
+[node name="Skin2" type="AnimatedSprite2D" parent="Skins"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_ec7au")
+animation = &"move_carry"
+
+[node name="Skin3" type="AnimatedSprite2D" parent="Skins"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_dii7k")
+animation = &"move_carry"
 
 [connection signal="body_entered" from="RotationNode/HandleArea" to="." method="_on_handle_area_body_entered"]
 [connection signal="body_exited" from="RotationNode/HandleArea" to="." method="_on_handle_area_body_exited"]
