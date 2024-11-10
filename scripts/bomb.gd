@@ -14,8 +14,10 @@ extends BaseBomb
 @onready var sound_bubble: AudioStreamPlayer2D = $sounds/bubble
 @onready var sound_electric: AudioStreamPlayer2D = $sounds/electric
 
+@onready var pattern: Sprite2D = $pattern_sprites/pattern
+
 @onready var activated_animation: AnimatedSprite2D = $animations/activated_animation
-@onready var type_label: Label = $TypeLabel
+
 "res://assets/sounds/electric-sparking.mp3"
 @export var explosion_type: PATTERNS
 
@@ -31,14 +33,6 @@ func _ready():
 	z_index = 25
 
 	timer.wait_time = fuse_time
-	if explosion_type == PATTERNS.CIRCLE:
-		type_label.text = 'O'
-	elif explosion_type == PATTERNS.CROSS:
-		type_label.text = 'X'
-	elif explosion_type == PATTERNS.PLUS:
-		type_label.text = '+'
-	elif explosion_type == PATTERNS.VERTICAL:
-		type_label.text = 'I'
 		
 	selected_type = TYPE.values()[range(3).pick_random()]
 	if selected_type == TYPE.NORMAL:
@@ -82,7 +76,7 @@ func _on_timer_timeout():
 
 	activated_animation.stop()
 	activated_animation.hide()
-	type_label.hide()
+	pattern.hide()
 	var tiles = get_shape(explosion_type, tilemap_pos) # map.get_cells(tilemap_pos)
 	# tiles.append(tilemap_pos)
 	var explosions = []
