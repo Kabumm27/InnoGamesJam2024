@@ -54,9 +54,9 @@ point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_qs4vs"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -896, -320, 0, 0, 0, 0, -896, -320, -38, -10, 38, 10, -256, -320, -59.755, 0.652983, 59.755, -0.652983, -256, -192, 0, 0, 0, 0, 1024, -192)
+"points": PackedVector2Array(0, 0, 0, 0, -896, -320, -38, -10, 38, 10, -256, -320, -59.755, 0.652983, 59.755, -0.652983, -256, -192, 0, 0, 59.755, -0.652983, 1024, -192)
 }
-point_count = 5
+point_count = 4
 
 [sub_resource type="Curve2D" id="Curve2D_u1v2p"]
 _data = {
