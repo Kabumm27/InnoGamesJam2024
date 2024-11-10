@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://cx1hqhorn20kj"]
+[gd_scene load_steps=9 format=3 uid="uid://cx1hqhorn20kj"]
 
 [ext_resource type="Texture2D" uid="uid://dtw6mjwskia8j" path="res://assets/sprites/bomben_128x128.png" id="1_udfyv"]
 [ext_resource type="Script" path="res://scripts/molotow.gd" id="1_vn5jp"]
+[ext_resource type="AudioStream" uid="uid://crmde2kwgyhtc" path="res://assets/sounds/breaking-glass-82857.mp3" id="4_ypskr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mtb25"]
 radius = 56.01
@@ -50,3 +51,8 @@ texture = SubResource("AtlasTexture_802xa")
 visible = false
 sprite_frames = SubResource("SpriteFrames_cfw0o")
 frame_progress = 0.41011
+
+[node name="sounds" type="Node2D" parent="."]
+
+[node name="glass_breaking" type="AudioStreamPlayer2D" parent="sounds"]
+stream = ExtResource("4_ypskr")

@@ -10,9 +10,13 @@ extends BaseBomb
 @onready var bomb_electrical: Sprite2D = $animations/bomb_electrical
 @onready var bomb_bubble: Sprite2D = $animations/bomb_bubble
 
+@onready var sound_normal: AudioStreamPlayer2D = $sounds/normal
+@onready var sound_bubble: AudioStreamPlayer2D = $sounds/bubble
+@onready var sound_electric: AudioStreamPlayer2D = $sounds/electric
+
 @onready var activated_animation: AnimatedSprite2D = $animations/activated_animation
 @onready var type_label: Label = $TypeLabel
-
+"res://assets/sounds/electric-sparking.mp3"
 @export var explosion_type: PATTERNS
 
 const EXPLOSION = preload("res://scenes/explosion.tscn")
@@ -21,6 +25,7 @@ enum TYPE {NORMAL = 0, ELECTRICAL = 1, BUBBLE = 2}
 var type: Sprite2D = null
 var animation_name = 'normal'
 var selected_type: int
+var activated_sound: AudioStreamPlayer2D = null
 
 func _ready():
 	z_index = 25
@@ -39,16 +44,17 @@ func _ready():
 	if selected_type == TYPE.NORMAL:
 		type = bomb
 		animation_name = 'normal'
+		activated_sound = sound_normal
 	elif selected_type == TYPE.ELECTRICAL:
 		type = bomb_electrical
 		animation_name = 'electric'
+		activated_sound = sound_electric
 	elif selected_type == TYPE.BUBBLE:
 		type = bomb_bubble
 		animation_name = 'bubble'
+		activated_sound = sound_bubble
 		
 	type.visible = true
-
-
 func _process(_delta):
 	if activated_animation.visible && activated_animation.material:
 		activated_animation.material.set_shader_parameter("time", timer.time_left)
@@ -59,6 +65,7 @@ func toggle_collision_deferred(state: bool):
 	type.hide()
 	activated_animation.visible = true
 	activated_animation.play(animation_name) # start timer on first "collision" (pick up)
+	activated_sound.play()
 	
 	if timer.is_stopped():
 		timer.start()

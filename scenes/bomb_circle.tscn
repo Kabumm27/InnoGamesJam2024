@@ -1,8 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://tmgj130g0t8g"]
+[gd_scene load_steps=21 format=3 uid="uid://tmgj130g0t8g"]
 
 [ext_resource type="Script" path="res://scripts/bomb.gd" id="1_tv2jc"]
 [ext_resource type="Texture2D" uid="uid://dtw6mjwskia8j" path="res://assets/sprites/bomben_128x128.png" id="2_e08hp"]
 [ext_resource type="Shader" path="res://scenes/shader/bomb_countdown.gdshader" id="3_siiwd"]
+[ext_resource type="AudioStream" uid="uid://dp48p8wqn7btp" path="res://assets/sounds/39571915_bomb-fuse-burning-01.mp3" id="4_e61eu"]
+[ext_resource type="AudioStream" uid="uid://5gdex4w104fh" path="res://assets/sounds/bubbly_bounce.mp3" id="5_0kd7x"]
+[ext_resource type="AudioStream" uid="uid://cq3a03tg1u8aj" path="res://assets/sounds/electric-sparking.mp3" id="6_h5ahp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sre7l"]
 radius = 56.0089
@@ -149,5 +152,19 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "X"
 label_settings = SubResource("LabelSettings_bf1mr")
+
+[node name="sounds" type="Node2D" parent="."]
+
+[node name="normal" type="AudioStreamPlayer2D" parent="sounds"]
+stream = ExtResource("4_e61eu")
+parameters/looping = true
+
+[node name="bubble" type="AudioStreamPlayer2D" parent="sounds"]
+stream = ExtResource("5_0kd7x")
+parameters/looping = true
+
+[node name="electric" type="AudioStreamPlayer2D" parent="sounds"]
+stream = ExtResource("6_h5ahp")
+parameters/looping = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

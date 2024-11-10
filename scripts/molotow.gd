@@ -5,6 +5,7 @@ extends BaseBomb
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var molotow: Sprite2D = $molotow
 @onready var molotow_activated: AnimatedSprite2D = $molotow_activated
+@onready var glass_breaking: AudioStreamPlayer2D = $sounds/glass_breaking
 
 const FIRE = preload("res://scenes/fire.tscn")
 
@@ -21,6 +22,7 @@ func light_up():
 	call_deferred("light_up_deferred")
 
 func light_up_deferred():
+	glass_breaking.play()
 	var tilemap_pos = map.global_to_tilemap(global_position)
 	molotow_activated.hide()
 	var flames = []

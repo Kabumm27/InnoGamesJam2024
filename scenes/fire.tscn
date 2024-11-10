@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://dpsopoxdvkmge"]
+[gd_scene load_steps=14 format=3 uid="uid://dpsopoxdvkmge"]
 
 [ext_resource type="Script" path="res://scripts/fire.gd" id="1_8k2re"]
 [ext_resource type="Texture2D" uid="uid://dtw6mjwskia8j" path="res://assets/sprites/bomben_128x128.png" id="1_45u3q"]
+[ext_resource type="AudioStream" uid="uid://dxisk8p4jkt7l" path="res://assets/sounds/fire.mp3" id="3_7aaxh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6tged"]
 atlas = ExtResource("1_45u3q")
@@ -90,6 +91,9 @@ shape = SubResource("RectangleShape2D_y0nsy")
 [node name="burning_time" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
+
+[node name="fire_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_7aaxh")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="burning_time" to="." method="_on_burning_time_timeout"]
