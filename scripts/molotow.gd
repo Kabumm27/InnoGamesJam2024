@@ -8,6 +8,9 @@ extends CharacterBody2D
 
 const FIRE = preload("res://scenes/fire.tscn")
 
+func _ready() -> void:
+	z_index = 25
+
 func toggle_collision(state: bool):
 	call_deferred("toggle_collision_deferred", state)
 

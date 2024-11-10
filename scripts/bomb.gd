@@ -13,6 +13,9 @@ const DAMAGE = 40
 const EXPLOSION = preload("res://scenes/explosion.tscn")
 enum PATTERNS {CIRCLE = 0, CROSS = 1, PLUS = 2, VERTICAL = 3}
 
+func _ready() -> void:
+	z_index = 25
+
 func toggle_collision(state: bool):
 	call_deferred("toggle_collision_deffered", state)
 	
