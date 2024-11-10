@@ -1,0 +1,233 @@
+[gd_scene load_steps=8 format=3 uid="uid://cbe6i4c23otdn"]
+
+[ext_resource type="Texture2D" uid="uid://c16aqcqf2lnob" path="res://assets/ui/credits.png" id="1_t8lpd"]
+[ext_resource type="FontFile" uid="uid://qusv053np531" path="res://assets/fonts/OriginTech personal use.ttf" id="2_uyal0"]
+[ext_resource type="Texture2D" uid="uid://eg8ijcocujrg" path="res://assets/sprites/exit_button.png" id="3_akkn4"]
+[ext_resource type="Script" path="res://scripts/button_exit.gd" id="4_v0knq"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rsukv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ky0mf"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8ep64"]
+
+[node name="Credits" type="Node"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_t8lpd")
+stretch_mode = 5
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/CenterContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/CenterContainer/MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_rsukv")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/CenterContainer/MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 80
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/CenterContainer/MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/CenterContainer/MarginContainer/PanelContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer/MarginContainer/PanelContainer/MarginContainer/GridContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/CenterContainer/MarginContainer/PanelContainer/MarginContainer/GridContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer/MarginContainer/PanelContainer/MarginContainer/GridContainer/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/CenterContainer/MarginContainer/PanelContainer/MarginContainer/GridContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 20
+
+[node name="ProgrammingHeader" type="Label" parent="CanvasLayer/CenterContainer/MarginContainer/PanelContainer/MarginContainer/GridContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.270222, 0.270222, 0.270222, 1)
+theme_override_fonts/font = ExtResource("2_uyal0")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ky0mf")
+text = "Programming
+"
+vertical_alignment = 1
+
+[node name="ProgrammingContent" type="Label" parent="CanvasLayer/CenterContainer/MarginContainer/PanelContainer/MarginContainer/GridContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.270222, 0.270222, 0.270222, 1)
+theme_override_fonts/font = ExtResource("2_uyal0")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ky0mf")
+text = "Kim Christian Mannstedt
+Kristof Slowikowski
+Julian Gill"
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/CenterContainer/MarginContainer/PanelContainer/MarginContainer/GridContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer/MarginContainer/PanelContainer/MarginContainer/GridContainer/MarginContainer/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/CenterContainer/MarginContainer/PanelContainer/MarginContainer/GridContainer/MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 20
+
+[node name="ArtHeader" type="Label" parent="CanvasLayer/CenterContainer/MarginContainer/PanelContainer/MarginContainer/GridContainer/MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.270222, 0.270222, 0.270222, 1)
+theme_override_fonts/font = ExtResource("2_uyal0")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ky0mf")
+text = "Art
+"
+
+[node name="ArtContent" type="Label" parent="CanvasLayer/CenterContainer/MarginContainer/PanelContainer/MarginContainer/GridContainer/MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.270222, 0.270222, 0.270222, 1)
+theme_override_fonts/font = ExtResource("2_uyal0")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ky0mf")
+text = "Alena Krause-Goldhammer
+Leni Grimmeisen
+Janice Barbosa Trantow"
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/CenterContainer/MarginContainer/PanelContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 160
+theme_override_constants/margin_top = 25
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/CenterContainer/MarginContainer/PanelContainer/MarginContainer/GridContainer/MarginContainer2"]
+layout_mode = 2
+
+[node name="MarginContainer4" type="MarginContainer" parent="CanvasLayer/CenterContainer/MarginContainer/PanelContainer/MarginContainer/GridContainer/MarginContainer2/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer/MarginContainer/PanelContainer/MarginContainer/GridContainer/MarginContainer2/VBoxContainer2/MarginContainer4"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/CenterContainer/MarginContainer/PanelContainer/MarginContainer/GridContainer/MarginContainer2/VBoxContainer2/MarginContainer4/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 20
+
+[node name="AttributionsFontsHeader" type="Label" parent="CanvasLayer/CenterContainer/MarginContainer/PanelContainer/MarginContainer/GridContainer/MarginContainer2/VBoxContainer2/MarginContainer4/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.270222, 0.270222, 0.270222, 1)
+theme_override_fonts/font = ExtResource("2_uyal0")
+theme_override_font_sizes/font_size = 38
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ky0mf")
+text = "Fonts (Attributions)
+"
+
+[node name="AttributionsContent2" type="Label" parent="CanvasLayer/CenterContainer/MarginContainer/PanelContainer/MarginContainer/GridContainer/MarginContainer2/VBoxContainer2/MarginContainer4/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.270222, 0.270222, 0.270222, 1)
+theme_override_fonts/font = ExtResource("2_uyal0")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ky0mf")
+text = "Origin Tech by Ronin Design"
+
+[node name="MarginContainer3" type="MarginContainer" parent="CanvasLayer/CenterContainer/MarginContainer/PanelContainer/MarginContainer/GridContainer/MarginContainer2/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer/MarginContainer/PanelContainer/MarginContainer/GridContainer/MarginContainer2/VBoxContainer2/MarginContainer3"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/CenterContainer/MarginContainer/PanelContainer/MarginContainer/GridContainer/MarginContainer2/VBoxContainer2/MarginContainer3/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 20
+
+[node name="AttributionsHeader" type="Label" parent="CanvasLayer/CenterContainer/MarginContainer/PanelContainer/MarginContainer/GridContainer/MarginContainer2/VBoxContainer2/MarginContainer3/VBoxContainer/MarginContainer"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.270222, 0.270222, 0.270222, 1)
+theme_override_fonts/font = ExtResource("2_uyal0")
+theme_override_font_sizes/font_size = 42
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ky0mf")
+text = "Attributions"
+
+[node name="AttributionsSoundsHeader" type="Label" parent="CanvasLayer/CenterContainer/MarginContainer/PanelContainer/MarginContainer/GridContainer/MarginContainer2/VBoxContainer2/MarginContainer3/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.270222, 0.270222, 0.270222, 1)
+theme_override_fonts/font = ExtResource("2_uyal0")
+theme_override_font_sizes/font_size = 38
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ky0mf")
+text = "Sounds (Attributions)
+"
+
+[node name="AttributionsContent" type="Label" parent="CanvasLayer/CenterContainer/MarginContainer/PanelContainer/MarginContainer/GridContainer/MarginContainer2/VBoxContainer2/MarginContainer3/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.270222, 0.270222, 0.270222, 1)
+theme_override_fonts/font = ExtResource("2_uyal0")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ky0mf")
+text = "8 Bit Adventure by David Renda
+8 bit Music - Pixabay
+Bouncy Sound Effect Alexander Jauk - Pixabay
+Bubble Sound Effect by linhmitto - Pixabay
+Pick up 2 Sound Effect by Kamil - Pixabay
+Put down Sound Effect by u_2fbuaev0zn - Pixabay"
+
+[node name="CenterContainer2" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -124.0
+offset_top = -135.0
+offset_right = 124.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/CenterContainer2"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 145
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/CenterContainer2/MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_8ep64")
+
+[node name="ButtonExit" type="Button" parent="CanvasLayer/CenterContainer2/MarginContainer/PanelContainer"]
+layout_mode = 2
+icon = ExtResource("3_akkn4")
+flat = true
+icon_alignment = 1
+script = ExtResource("4_v0knq")
+
+[connection signal="mouse_entered" from="CanvasLayer/CenterContainer2/MarginContainer/PanelContainer/ButtonExit" to="CanvasLayer/CenterContainer2/MarginContainer/PanelContainer/ButtonExit" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/CenterContainer2/MarginContainer/PanelContainer/ButtonExit" to="CanvasLayer/CenterContainer2/MarginContainer/PanelContainer/ButtonExit" method="_on_button_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/CenterContainer2/MarginContainer/PanelContainer/ButtonExit" to="CanvasLayer/CenterContainer2/MarginContainer/PanelContainer/ButtonExit" method="_on_button_pressed"]
