@@ -11,7 +11,7 @@ signal _end_reached
 
 func _ready():
 	pass
-	##print(belt_path_follow)
+	#var parentNode := belt_path_follow.get_parent().get_parent() as Node2D
 	#belt_path_follow.progress_ratio = 0
 #
 	#var tween :Tween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)

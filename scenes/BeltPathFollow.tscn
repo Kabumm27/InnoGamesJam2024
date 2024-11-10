@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://oi62n1qn6eqc"]
+[gd_scene load_steps=2 format=3 uid="uid://r3b1o5d61q2h"]
 
 [ext_resource type="Script" path="res://scripts/belt_path_follow.gd" id="1_n02rl"]
 

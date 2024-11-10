@@ -7,6 +7,7 @@
 radius = 30.0
 
 [node name="BombSpawner" type="Node2D"]
+z_index = 20
 position = Vector2(-1408, -320)
 scale = Vector2(1, 1.00487)
 script = ExtResource("1_cjuny")

@@ -2,12 +2,15 @@ extends Area2D
 
 @onready var belt_path: Path2D = $"../BeltPath"
 
+#var currentZIndex := 0 as int
+
 const BELT_PATH_FOLLOW = preload("res://scenes/BeltPathFollow.tscn")
 
 func _on_body_entered(body: Node2D):
 		print("Entered")
 		var item := body as CharacterBody2D
 		if item:
+			
 			#if item.name == "item":
 			if item.has_method("toggle_collision"):
 				item.toggle_collision(false)
@@ -21,7 +24,12 @@ func _on_body_entered(body: Node2D):
 			
 			item.position = Vector2.ZERO
 			belt_path.add_child(beltPathFollowInstance)
-			
+			print(beltPathFollowInstance.get_parent().get_parent())
+			print(item.z_index)
+			item.z_as_relative = true
+			print(item.z_index)
+			item.z_index = beltPathFollowInstance.get_parent().get_parent().z_index + 1
+			print(item.z_index)
 			item.get_parent().remove_child.call_deferred(item)
 			await get_tree().create_timer(0.05).timeout
 			beltPathFollowInstance.add_child(item)
