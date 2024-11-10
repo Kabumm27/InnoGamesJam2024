@@ -13,12 +13,17 @@ var health = 3
 @onready var rotation_node: Node2D = $RotationNode
 @onready var health_bar: HBoxContainer = $health_bar
 
-@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite
+var animated_sprite: AnimatedSprite2D
 
 var handle_object: Node2D = null
 var carry_object: Node2D = null
 
 var last_move_dir: Vector2 = Vector2.RIGHT
+
+
+func _ready():
+	animated_sprite = get_node("Skin" + str(gamepad_id + 1))
+	animated_sprite.visible = true
 
 
 func pick_up(object: Node2D):
@@ -56,9 +61,15 @@ func set_sprite_state():
 	# sprite_default.visible = !carry_object
 
 	if velocity.length() > 0:
-		animated_sprite.play("walk")
+		if carry_object:
+			animated_sprite.play("move_carry")
+		else:
+			animated_sprite.play("move")
 	else:
-		animated_sprite.play("idle")
+		if carry_object:
+			animated_sprite.play("idle_carry")
+		else:
+			animated_sprite.play("idle")
 
 	var rot = roundi(rotation_node.rotation_degrees + 90) % 360
 	if rot < 0:

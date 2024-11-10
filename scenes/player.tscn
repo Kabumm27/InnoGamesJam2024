@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b18iwfskgx8ub"]
+[gd_scene load_steps=28 format=3 uid="uid://b18iwfskgx8ub"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_7p7au"]
 [ext_resource type="Texture2D" uid="uid://de1kxtlli6y8m" path="res://assets/sprites/character_128x128.png" id="2_wmj6r"]
@@ -8,23 +8,35 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_7sucb"]
 radius = 64.0312
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7cmiv"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_dg4ej"]
 atlas = ExtResource("2_wmj6r")
 region = Rect2(0, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4m1e8"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_pk7l6"]
+atlas = ExtResource("2_wmj6r")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8qyss"]
 atlas = ExtResource("2_wmj6r")
 region = Rect2(0, 128, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_g2yfl"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ac621"]
 atlas = ExtResource("2_wmj6r")
 region = Rect2(128, 128, 128, 128)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_ec7au"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1b2vu"]
+atlas = ExtResource("2_wmj6r")
+region = Rect2(0, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yeamn"]
+atlas = ExtResource("2_wmj6r")
+region = Rect2(128, 256, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yel57"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7cmiv")
+"texture": SubResource("AtlasTexture_dg4ej")
 }],
 "loop": true,
 "name": &"idle",
@@ -32,13 +44,162 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4m1e8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_g2yfl")
+"texture": SubResource("AtlasTexture_pk7l6")
 }],
 "loop": true,
-"name": &"walk",
+"name": &"idle_carry",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8qyss")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ac621")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1b2vu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yeamn")
+}],
+"loop": true,
+"name": &"move_carry",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x8htm"]
+atlas = ExtResource("2_wmj6r")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_060td"]
+atlas = ExtResource("2_wmj6r")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s4pho"]
+atlas = ExtResource("2_wmj6r")
+region = Rect2(256, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dt0eq"]
+atlas = ExtResource("2_wmj6r")
+region = Rect2(384, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4p3yq"]
+atlas = ExtResource("2_wmj6r")
+region = Rect2(256, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1sbi8"]
+atlas = ExtResource("2_wmj6r")
+region = Rect2(384, 256, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ec7au"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x8htm")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_060td")
+}],
+"loop": true,
+"name": &"idle_carry",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s4pho")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dt0eq")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4p3yq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1sbi8")
+}],
+"loop": true,
+"name": &"move_carry",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kqg6h"]
+atlas = ExtResource("2_wmj6r")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pb0se"]
+atlas = ExtResource("2_wmj6r")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s0ipk"]
+atlas = ExtResource("2_wmj6r")
+region = Rect2(512, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_52alp"]
+atlas = ExtResource("2_wmj6r")
+region = Rect2(640, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kvlvj"]
+atlas = ExtResource("2_wmj6r")
+region = Rect2(512, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xdy87"]
+atlas = ExtResource("2_wmj6r")
+region = Rect2(640, 128, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dii7k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kqg6h")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pb0se")
+}],
+"loop": true,
+"name": &"idle_carry",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s0ipk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_52alp")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kvlvj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xdy87")
+}],
+"loop": true,
+"name": &"move_carry",
 "speed": 5.0
 }]
 
@@ -53,10 +214,23 @@ script = ExtResource("1_7p7au")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_7sucb")
 
-[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+[node name="Skin1" type="AnimatedSprite2D" parent="."]
+visible = false
+scale = Vector2(1.2, 1.2)
+sprite_frames = SubResource("SpriteFrames_yel57")
+animation = &"idle_carry"
+
+[node name="Skin2" type="AnimatedSprite2D" parent="."]
+visible = false
 scale = Vector2(1.2, 1.2)
 sprite_frames = SubResource("SpriteFrames_ec7au")
-animation = &"idle"
+animation = &"move_carry"
+
+[node name="Skin3" type="AnimatedSprite2D" parent="."]
+visible = false
+scale = Vector2(1.2, 1.2)
+sprite_frames = SubResource("SpriteFrames_dii7k")
+animation = &"move_carry"
 
 [node name="RotationNode" type="Node2D" parent="."]
 
